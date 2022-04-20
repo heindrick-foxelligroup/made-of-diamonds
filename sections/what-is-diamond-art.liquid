@@ -1,0 +1,65 @@
+<style>
+
+  #{{ section.id }} {
+    text-align: center;
+    background: #FFF3F5;
+    padding: 40px;
+    /*margin: 40px 0 0 0;*/
+  }
+  
+  #{{ section.id }} .main-headline {
+    font-family: Caveat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 38px;
+    color: #E26DA7;
+  }
+  
+  #{{ section.id }} .divider {
+    padding: 12px 0;
+  }
+  
+  #{{ section.id }} .divider img {
+    height: 22px;
+  }
+  
+  #{{ section.id }} .what-is-diamond-text {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    max-width: 740px;
+    margin: 0 auto;
+  }
+  
+</style>
+
+<div id="{{ section.id }}" class="what-is-diamond-art-section">
+  <div class="main-headline">
+    <div>What is Diamond Art?</div>
+  </div>
+  <div class="divider">
+    <img src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/what-is-diamond-divider.png" alt="" loading="lazy" />
+    <img src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/what-is-diamond-divider.png" alt="" loading="lazy" />
+    <img src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/what-is-diamond-divider.png" alt="" loading="lazy" />
+  </div>
+  <div class="what-is-diamond-text">
+    The perfect blend between cross-stick and paint-by-numbers, diamond art is the ideal relaxing hobby for seekers of new mindful habits!
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Product - What is diamond",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product - What is diamond",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,811 @@
+{% comment %}
+******************************************
+	Info:
+		Custom reviews section section for product page.
+	  
+    Author: Zilvinas Vaisnoras
+	Original author: Edvinas Kilbauskas
+    Date created: 2022-01-10
+    Included in: templates/product.subscription-product.json and used separately on Index page
+******************************************
+{% endcomment %}
+
+{%- if section.settings.enable_mobile == true -%}
+
+<style>
+  
+  #{{section.id}} {     
+    background-color: #FFF3F5;
+  }
+
+  @media only screen and (min-width: 991px) {
+    #{{section.id}}.mobile .content{
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      background: url(https://cdn.shopify.com/s/files/1/0598/9649/6312/files/Group_18663_1.jpg?v=1638460231);
+      background-repeat: no-repeat;
+      background-size: cover;
+      /*box-shadow: 0 0 30px 30px white inset;*/
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #{{ section.id }}.mobile .slide{
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+
+    #{{ section.id }}.mobile .slick-dots{
+      bottom: -60px; 
+    }
+
+    #{{section.id}}.mobile ul.slick-dots li.slick-active button:before{
+      background-color: black !important;
+      top: 5px;
+      left: 5px;
+      width: 12px;
+      height: 12px;
+    }
+
+   #{{section.id}}.mobile ul.slick-dots li button:before {
+      background-color: #000!important;
+      border: 2px solid black !important;
+      top: 5px;
+      left: 5px;
+      width: 12px;
+      height: 12px;
+    }
+    
+  #{{section.id}}.mobile .title{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 30px;
+    text-align: center;
+    color: #5C2F8D;
+  }
+    
+  #{{section.id}}.mobile .ramen-divider{
+     	margin-top: -35px; 
+    }
+  }
+  
+    #{{ section.id }}.mobile .section__title__text{
+   	padding-top: 20px; 
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  #{{ section.id }}.mobile .testimonial{
+   	display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-evenly;
+    height: 100%;
+    align-items: flex-start;
+  }
+  
+  #{{ section.id }}.mobile .testimonial .info-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+  
+  #{{ section.id }}.mobile .info-section .stars{
+  	max-width: fit-content !important;
+    object-fit: contain;
+    margin: 10px auto;
+    height: 20px;
+  }
+  
+  #{{ section.id }}.mobile .info-section .quote {
+    padding-right: 15px;
+    margin-bottom: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #454466;
+  }
+  
+  #{{ section.id }}.mobile .info-section .quote p:last-child {
+  	text-align: center;
+  }
+  
+  
+  #{{ section.id }}.mobile .info-section .image{
+    width: 186px;
+    max-width: 300px;
+    margin: -60px auto 10px auto;
+    border-radius: 50%;
+  }
+  
+  #{{ section.id }}.mobile .info-section .stars .fa-star{
+    font-size: 12px;
+   	color: orange; 
+    
+  }
+  
+  #{{ section.id }}.mobile .testimonial .avatar-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  
+  #{{ section.id }}.mobile .slide{
+    background: white;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.15); 
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.15);
+    margin-top: 100px;
+  }
+
+    
+  #{{section.id}}.mobile .wrapper{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px !important;
+  }
+    
+      #{{section.id}}.mobile .ramen-divider{
+    margin-bottom: 40px;
+    
+  }
+  
+  @media only screen and (max-width: 990px){
+    
+    #{{section.id}}.mobile .wrapper {
+      padding: 0;
+      {%- if section.settings.section_bottom_bkg_on_off_mob -%}
+          background: url('https://cdn.shopify.com/s/files/1/0598/9649/6312/files/how-it-works-mobile-bg.svg') bottom center no-repeat;
+          background-size: cover;
+          padding-bottom: 100px;
+      {%- endif -%}
+    }
+
+    #{{section.id}}.mobile .ramen-divider{
+        margin-top: -15px;
+      }
+
+    #{{section.id}}.mobile .title{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 30px;
+      text-align: center;
+      color: #5C2F8D;
+      padding: 30px 20px 5px 20px;
+    }
+
+    .mobile .testimonial-slider .slick-list {
+      padding: 10px 20px 50px 20px !important;
+    }
+  }
+
+    #{{ section.id }}.mobile .slide{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+   
+  #{{section.id}}.mobile ul.slick-dots li.slick-active button:before{
+     background-color: #E26DA7 !important;
+     top: 5px;
+     left: 5px;
+     width: 12px;
+     height: 12px;
+   	 
+  }
+    
+  #{{section.id}}.mobile ul.slick-dots li button:before {
+   	 background-color: white !important;
+     border: 2px solid #E26DA7 !important;
+     top: 5px;
+     left: 5px;
+     width: 12px;
+     height: 12px;
+  }
+  
+  #{{ section.id }}.mobile .fancy-testimonials{
+   	background-color: {{ section.settings.section_bkg }};
+    padding-bottom: 25px;
+  }
+  
+  #{{ section.id }}.mobile .fancy-testimonials .title{
+   	text-align: center;
+	padding-top: 30px;
+   	font-size: 20px;
+    line-height: 22px;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 21px;
+    font-weight: 550;
+    color: var(--color_st);
+    line-height: 1.2em;
+    font-family: var(--fm_second);
+    font-style: var(--font_style_second);
+  }
+  
+  #{{ section.id }}.mobile .section__title__text {
+   	font-size: 26px; 
+  }
+  
+  #{{ section.id }}.mobile .fancy-testimonials .slick-track{
+    display: flex;
+    align-items: center;
+  }
+  
+  #{{ section.id }}.mobile .fancy-testimonials .slick-dots{
+   	bottom: -15px !important; 
+  }
+  
+  #{{ section.id }}.mobile .slick-track{
+    display: flex !important;
+  }
+
+  #{{ section.id }}.mobile .slick-slide{
+    height: inherit !important;
+  }
+  
+  #{{ section.id }}.mobile .slick-arrow span::before{
+    color: #E36DA8;
+  }
+  
+</style>
+
+{%- endif -%}
+
+{%- if section.settings.enable_desktop == true -%}
+
+<style>
+  
+  
+  @media only screen and (min-width: 991px){
+    
+     #{{section.id}}.desktop {
+       background: {{ section.settings.section_bkg }};
+       margin: {{ section.settings.desk_marg_top }}px {{ section.settings.desk_marg_right }}px {{ section.settings.desk_marg_bottom }}px {{ section.settings.desk_marg_left }}px;
+       padding: {{ section.settings.desk_padd_top }}px {{ section.settings.desk_padd_right }}px {{ section.settings.desk_padd_bottom }}px {{ section.settings.desk_padd_left }}px;
+     }
+    
+    
+    #{{section.id}}.desktop .content{
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #{{ section.id }}.desktop .slide{
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+
+    #{{ section.id }}.desktop .slick-dots {
+      bottom: -40px; 
+    }
+
+    #{{section.id}}.desktop ul.slick-dots li.slick-active button:before{
+     background-color: #FF4367 !important;
+     top: 5px;
+     left: 5px;
+     width: 20px;
+     height: 20px;
+   	 
+  }
+    
+  #{{section.id}}.desktop ul.slick-dots li button:before {
+   	 background-color: white !important;
+     border: 2px solid #FF4367 !important;
+     top: 5px;
+     left: 5px;
+     width: 20px;
+     height: 20px;
+  }
+    
+  #{{section.id}}.desktop .title{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #5C2F8D;
+    margin: 10px auto -15px auto;
+    {%- if product.type == "subscription box" -%}
+    	font-size: 28px;
+    	line-height: 32px;
+    {%- endif -%}
+}
+  }
+    
+  #{{section.id}}.desktop .ramen-divider{
+     	margin-top: -35px; 
+    }
+  }
+  
+    #{{ section.id }}.desktop .section__title__text{
+   	padding-top: 20px; 
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  #{{ section.id }}.desktop .testimonial{
+   	display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-evenly;
+    height: 310px;
+    align-items: flex-start;
+  }
+  
+  #{{ section.id }}.desktop .testimonial .info-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+  
+  #{{ section.id }}.desktop .info-section .stars{
+  	max-width: fit-content !important;
+    object-fit: contain;
+    margin: 10px auto;
+  }
+  
+  #{{ section.id }}.desktop .info-section .quote {
+    padding-right: 15px;
+    margin-bottom: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #454466;
+  }
+  
+  #{{ section.id }}.desktop .info-section .quote p:last-child {
+  	text-align: center;
+  }
+  
+  
+  #{{ section.id }}.desktop .info-section .image{
+
+    width: 65%;
+    max-width: 300px;
+    margin: -40px auto 10px auto;
+    border-radius: 50%;
+  }
+  
+  #{{ section.id }}.desktop .info-section .stars .fa-star{
+    font-size: 12px;
+   	color: orange; 
+    
+  }
+  
+  #{{ section.id }}.desktop .testimonial .avatar-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  
+  #{{ section.id }}.desktop .slide{
+    background: white;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 7px 0 rgba(0,0,0,0.15); 
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.15);
+    margin-top: 100px;
+  }
+    
+  #{{section.id}}.desktop .wrapper{
+    {%- if section.settings.section_bottom_bkg_on_off_desk -%}
+    	background: url(https://cdn.shopify.com/s/files/1/0598/9649/6312/files/how-it-works-desktop.jpg) center bottom no-repeat;
+    	background-size: contain;
+    {%- endif -%}
+    padding: 20px 15px 80px 15px;
+  }
+    
+  #{{section.id}}.desktop .ramen-divider{
+    margin-bottom: 40px;
+    
+  }
+  
+  #{{ section.id }}.desktop .testimonial-slider .slick-arrow {
+    cursor: pointer;
+  }
+  
+  #{{ section.id }}.desktop .testimonial-slider .slick-prev {
+    left: 0;
+  }
+  
+  #{{ section.id }}.desktop .testimonial-slider .slick-next {
+    right: 0;
+  }
+  
+</style>
+
+{%- endif -%}
+{% capture next_arrow_html %}
+  <svg class="slick-next" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<path d="M12.9835 11.8666L18.1168 17L12.9835 22.1333L15.3335 24.5L22.8335 17L15.3335 9.49996L12.9835 11.8666ZM0.333496 17C0.333496 26.2 7.80016 33.6666 17.0002 33.6666C26.2002 33.6666 33.6668 26.2 33.6668 17C33.6668 7.79996 26.2002 0.33329 17.0002 0.33329C7.80016 0.33329 0.333496 7.79996 0.333496 17ZM30.3335 17C30.3335 24.3666 24.3668 30.3333 17.0002 30.3333C9.6335 30.3333 3.66683 24.3666 3.66683 17C3.66683 9.63329 9.6335 3.66662 17.0002 3.66662C24.3668 3.66662 30.3335 9.63329 30.3335 17Z" fill="#FF4367"/>
+  </svg>
+{% endcapture %}
+
+{% capture prev_arrow_html %}
+  <svg class="slick-prev" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<path d="M21.0165 22.1334L15.8832 17L21.0165 11.8667L18.6665 9.50004L11.1665 17L18.6665 24.5L21.0165 22.1334ZM33.6665 17C33.6665 7.80004 26.1998 0.333374 16.9998 0.333374C7.79984 0.333374 0.333168 7.80004 0.333168 17C0.333168 26.2 7.79984 33.6667 16.9998 33.6667C26.1998 33.6667 33.6665 26.2 33.6665 17ZM3.6665 17C3.6665 9.63337 9.63317 3.66671 16.9998 3.66671C24.3665 3.66671 30.3332 9.63337 30.3332 17C30.3332 24.3667 24.3665 30.3334 16.9998 30.3334C9.63317 30.3334 3.6665 24.3667 3.6665 17Z" fill="#FF4367"/>
+  </svg>
+{% endcapture %}
+
+{%- if section.settings.enable_mobile == true -%}
+  <div id="{{section.id}}" class="mobile reviews-section-custom-mod fox-hide--medium-up">
+    <div class="wrapper">
+      <h2 class="title fox-uppercase"><span>We heard people talking</span></h2>
+      <div class="content">
+        <div class="testimonial-slider">
+          {% for block in section.blocks %}
+          <div class="slide">
+            <div class="testimonial">
+              <div class="info-section">
+                <div class="image"> <img class="image lazyload" data-src="{{ block.settings.author_avatar | img_url: 'large' }}" loading="lazy"/></div>
+                <img class="stars" src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/Group_983.png?v=1637853693"/>
+                <div class="quote">{{ block.settings.quote | strip }}</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{%- if section.settings.enable_desktop == true -%}
+
+  <div id="{{section.id}}" class="desktop section-reviews-section-custom2 fox-hide--small">
+    <div class="wrapper">
+      <h2 class="title fox-uppercase"><span>We heard people talking</span></h2>
+      <div class="content">
+        <div class="testimonial-slider">
+          {% for block in section.blocks %}
+          <div class="slide">
+            <div class="testimonial">
+              <div class="info-section">
+                <div class="image"> <img class="image lazyload" data-src="{{ block.settings.author_avatar | img_url: 'large' }}" loading="lazy"/></div>
+                <img class="stars" src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/Group_983.png?v=1637853693"/>
+                <div class="quote">{{ block.settings.quote | strip }}</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{%- endif -%}
+
+  
+<script>
+  window.addEventListener("DOMContentLoaded", function(){
+    $('#{{section.id}} .testimonial-slider').slick({
+      centerMode: true,
+      centerPadding: '400px',
+      slidesToShow: 1,
+      dots: true,
+      arrows: true,
+      prevArrow: `{{ prev_arrow_html }}`,
+      nextArrow: `{{ next_arrow_html }}`,
+      responsive: [
+        {
+          breakpoint: 990,
+          settings: {
+            arrows: true,
+            centerMode: true,
+            centerPadding: '20px',
+            slidesToShow: 1,
+      		nextArrow: `<button aria-label="button" class="slick-next lh1 slick-box slick-arrow" style="" aria-disabled="false"><span></span></button>`,
+      		prevArrow: `<button aria-label="button" class="slick-prev lh1 slick-box slick-arrow" aria-disabled="false" style=""><span></span></button>`
+          }
+        }
+      ]
+    });
+  });
+
+</script>
+
+{%- render 'section-background-end' -%}
+{% schema %}
+  {
+    "name": "Testimonials MOD",
+    "class": "testimonials-mod",
+    "max_blocks": 9,
+    "settings": [
+      {
+      "type": "checkbox",
+      "id": "enable_mobile",
+      "label": "Enable (mobile)",
+      "default": true
+      },
+      {
+      "type": "checkbox",
+      "id": "enable_desktop",
+      "label": "Enable (desktop)",
+      "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "[View the guide for this section](https://beloria-docs.boostheme.com/dynamic-sections/text/testimonials)"
+      },
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "checkbox",
+        "id": "bkg_enable",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "section_bkg",
+        "label": "Pick a background color",
+		"default": "#FFF3F5"
+      },
+      {
+        "type": "checkbox",
+        "id": "section_bottom_bkg_on_off_mob",
+        "label": "Enable bottom bkg image mobile",
+        "default": false
+      }
+	  ,
+      {
+        "type": "checkbox",
+        "id": "section_bottom_bkg_on_off_desk",
+        "label": "Enable bottom bkg image desktop",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "section_bkg_image",
+        "label": "Background image"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_gutter",
+        "label": "Background size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "medium"
+          },
+          {
+            "value": "high",
+            "label": "High"
+          }
+        ],
+        "default": "high"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_style",
+        "label": "Background image style",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "header",
+        "content": "Section Gutters"
+      },
+      {
+        "type": "checkbox",
+        "id": "top_gutter",
+        "label": "Enable top gutter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bottom_gutter",
+        "label": "Enable bottom gutter",
+        "default": true
+      },
+	  {
+        "type": "range",
+        "id": "desk_marg_top",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section margin top",
+        "default": 0
+      },
+	  {
+        "type": "range",
+        "id": "desk_marg_right",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section margin right",
+        "default": 0
+      },
+	  {
+        "type": "range",
+        "id": "desk_marg_bottom",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section margin bottom",
+        "default": 0
+      },
+	  {
+        "type": "range",
+        "id": "desk_marg_left",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section margin left",
+        "default": 0
+      },
+	  {
+        "type": "range",
+        "id": "desk_padd_top",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section padding top",
+        "default": 0
+      },
+	  {
+        "type": "range",
+        "id": "desk_padd_right",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section padding right",
+        "default": 0
+      },
+	  {
+        "type": "range",
+        "id": "desk_padd_bottom",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section padding bottom",
+        "default": 0
+      },
+	  {
+        "type": "range",
+        "id": "desk_padd_left",
+        "min": -100,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section padding left",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "General Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Testimonials"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub heading"
+      },
+      {
+        "type": "select",
+        "id": "heading_pos",
+        "label": "Heading position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "above",
+            "label": "Above"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Wide display"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "author_avatar",
+            "label": "Author's avatar"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials MOD",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote",
+            "settings": {
+              "name": "David"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "name": "Kane"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "name": "Susan"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

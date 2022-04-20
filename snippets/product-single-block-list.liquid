@@ -1,0 +1,80 @@
+{%- case block.type -%}
+{%- when 'text' -%}
+  {%- render 'product-single-text' with product: product, text: block.settings.text, text_style: block.settings.text_style -%}
+{%- when 'title' -%}
+  {%- render 'product-single-name' -%}
+{%- when 'price' -%}
+  {%- render 'product-single-price' with product: product, current_variant: current_variant, show_shipping_policy_link: block.settings.show_shipping_policy_link, block: block, left_holder: left_holder -%}
+{%- when 'sku' -%}
+  {%- render 'product-single-sku' with product: product, current_variant: current_variant, right_holder: right_holder -%}
+{%- when 'variant_picker' -%}
+  {%- unless product.has_only_default_variant -%}
+    {%- render 'product-single-variants' with product: product -%}
+  {%- endunless -%}
+{%- when 'quantity_buy_buttons' -%}
+  {%- render 'product-single-form' with product: product, current_variant: current_variant, full_qty_box: false, product_form_id: product_form_id, obj: block, inline_button: inline_button -%}
+{%- when 'description' -%}
+  {{ description }}
+{%- when 'share' -%}
+  {%- render 'product-single-social-sharing' with product: product -%}
+{%- when 'random_sold_number' -%}
+  {%- render 'product-single-sold' with product: product, obj: block -%}
+{%- when 'countdown_timer' -%}
+  {%- render 'product-single-countdown' with product: product, obj: block -%}
+{%- when 'payment_badge' -%}
+  {%- render 'product-single-payment-badge' with product: product, obj: block -%}
+{%- when 'size_chart' -%}
+  {%- render 'product-single-size-chart' with product: product, obj: block, sizechart: sizechart, right_holder: right_holder -%}
+{%- when 'limited_stock_text' -%}
+  {%- render 'product-single-hurry-up' with product: product, obj: block, current_variant: current_variant -%}
+{%- when 'review_stars' -%}  
+  {%- render 'product-review-single' with product: product -%}
+{%- when 'store-availability' -%}
+  {%- render 'product-single-store-availability' with product: product, show_top_line: true, show_bottom_line: true -%}
+{%- when 'collections-tags' -%}
+  {%- render 'product-single-sub-info' with product: product, obj: block, right_holder: right_holder -%}
+{%- when 'custom_field' -%}
+  {%- render 'product-single-customizable-field' with product: product, index: 1, obj: block, product_form_id: product_form_id, enable_field: true -%}
+{%- when 'custom_fields_group' -%}
+  {%- render 'product-single-customizable-fields' with product: product, obj: block, product_form_id: product_form_id -%}
+{%- when 'collapsible_tab_text' -%}
+  {%- render 'product-single-collapse-tab-text' with product: product, obj: block -%}
+{%- when 'collapsible_tab_desc' -%}
+  {%- render 'product-single-collapse-tab-desc' with product: product, obj: block, description: description -%}
+{%- when 'collapsible_tab_reviews' -%}
+  {%- render 'product-single-collapse-tab-reviews' with product: product, obj: block -%}
+{%- when 'collapsible_tab_toolkit' -%}
+  {%- render 'product-single-collapse-tab-toolkit' with product: product, obj: block -%}  
+{%- when 'popup' -%}
+  {%- if template.suffix != 'quick_view' -%}
+    {%- render 'product-single-popup-trigger' with product: product, obj: block -%}
+  {%- endif -%}
+{%- when 'group_1' -%}
+  {%- if block.settings.text_1 != blank -%}
+    {%- render 'product-single-text' with product: product, text: block.settings.text_1, text_style: block.settings.text_style_1 -%}
+  {%- endif -%}
+  {%- if block.settings.text_2 != blank -%}
+    {%- render 'product-single-text' with product: product, text: block.settings.text_2, text_style: block.settings.text_style_2 -%}
+  {%- endif -%}
+  {%- if block.settings.show_sku -%}
+    {%- render 'product-single-sku' with product: product, current_variant: current_variant, right_holder: right_holder -%} 
+  {%- endif -%}
+{%- when 'group_2' -%}
+  {%- if block.settings.show_review_stars -%}
+    {%- render 'product-review-single' with product: product -%}
+  {%- endif -%}
+  {%- if block.settings.show_price -%}
+    {%- render 'product-single-price' with product: product, current_variant: current_variant, show_shipping_policy_link: block.settings.show_shipping_policy_link, obj: block, left_holder: left_holder -%}
+  {%- endif -%}
+  {%- if block.settings.show_countdown -%}
+    {%- render 'product-single-countdown' with product: product, obj: block -%}
+  {%- endif -%}
+{%- when 'group_3' -%}
+  {%- render 'product-single-sub-info' with product: product, obj: block, right_holder: right_holder -%}
+  {%- if block.settings.show_payment_badge -%}
+    {%- render 'product-single-payment-badge' with product: product, obj: block -%}
+  {%- endif -%}
+  {%- if block.settings.show_sharing_icons -%}
+    {%- render 'product-single-social-sharing' with product: product -%}
+  {%- endif -%}
+{%- endcase -%}

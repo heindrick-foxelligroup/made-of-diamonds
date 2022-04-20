@@ -1,0 +1,16 @@
+{% comment %}
+******************************************
+
+Last changes: 2022-03-03 Zilvinas
+
+******************************************
+{% endcomment %}
+  
+<script>
+  $(document).ready(function() {
+    // Add info page seo name to <body> as class name
+    var url = location.href;
+    var className = url.match(/([^\/]+$)/);
+    $('body').addClass(className);
+  });
+</script>

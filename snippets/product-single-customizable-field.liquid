@@ -1,0 +1,57 @@
+{%- assign label_index = 'label_field_' | append: index -%}
+{%- if enable_field and obj.settings[label_index] != blank -%}
+{%- assign type_index = 'type_field_' | append: index -%}
+{%- assign require_index = 'required_field_' | append: index -%}
+{%- assign error_msg_index = 'error_msg_field_' | append: index -%}
+{%- assign html_id_field = 'properties-' | append: obj.settings[label_index] | handleize -%}
+<div class="w100 gutter-ele-top gutter-ele-bottom field pg__field flex flex-start-hoz">
+	{%- if obj.settings[type_index] != 'checkbox' -%}
+  	<label for="{{ html_id_field }}" class="gutter-ele-small-bottom">{{ obj.settings[label_index] }}{%- if obj.settings[require_index] -%}*{%- endif -%}</label>
+  {%- endif -%}
+  {%- if obj.settings[type_index] == 'text' -%}
+	  <input type="{{ obj.settings[type_index] }}" name="properties[{{ obj.settings[label_index] | escape }}]" id="{{ html_id_field }}" class="w100 pg__field__text"{% if obj.settings[type_index] == 'checkbox' %} value="{{ obj.settings[label_index] | escape }}"{% endif %}{% if obj.settings[require_index] %} required data-msg-required="{{ obj.settings[error_msg_index] | escape }}"{% endif %} form="{{ product_form_id }}">
+	  <span class="field__focus"></span>
+  {%- elsif obj.settings[type_index] == 'textarea' -%}
+  	<textarea name="properties[{{ obj.settings[label_index] | escape }}]" id="{{ html_id_field }}" class="w100 pg__field__text"{% if obj.settings[require_index] %} required data-msg-required="{{ obj.settings[error_msg_index] | escape }}"{% endif %} form="{{ product_form_id }}"></textarea>
+  {%- elsif obj.settings[type_index] == 'checkbox' -%}
+  	<div class="checkbox-one-line por">
+  		<input type="checkbox" data-target="#{{ html_id_field }}" value="{{ obj.settings[label_index] | escape }}" class="checkbox-one-line__input pg__field__ele hide" id="{{ html_id_field }}-ele"/>
+  		<label for="{{ html_id_field }}-ele" class="checkbox-one-line__label por use-color-inline">{{ obj.settings[label_index] }}{%- if obj.settings[require_index] -%}*{%- endif -%}</label>
+  		<input type="checkbox" name="properties[{{ obj.settings[label_index] | escape }}]" id="{{ html_id_field }}" value="{{ obj.settings[label_index] | escape }}" class="pg__field__checkbox pg__field__hidden"{% if obj.settings[require_index] %} required data-msg-required="{{ obj.settings[error_msg_index] | escape }}"{% endif %} form="{{ product_form_id }}"/>
+		</div>
+	{%- elsif obj.settings[type_index] == 'file' -%}
+		{%- assign accepted_type_index = 'accepted_types_field_' | append: index -%}
+		<input type="file" name="properties[{{ obj.settings[label_index] | escape }}]" id="{{ html_id_field }}" class="w100 db pg__field__file"{% if obj.settings[require_index] %} required data-msg-required="{{ obj.settings[error_msg_index] | escape }}"{% endif %}{% if obj.settings[accepted_type_index] != blank %} accept="{{ obj.settings[accepted_type_index] | escape }}"{% endif %} form="{{ product_form_id }}"/>	
+  {%- else -%}
+  	{%- assign options_index = 'options_field_' | append: index -%}
+  	{%- assign options = obj.settings[options_index] | split: ',' -%}
+  	{%- if obj.settings[type_index] == 'select' -%}
+  		<div class="select select--pg-field w100">
+		  	<select name="properties[{{ obj.settings[label_index] | escape }}]" id="{{ html_id_field }}" class="w100"{% if obj.settings[require_index] %} required data-msg-required="{{ obj.settings[error_msg_index] | escape }}"{% endif %} form="{{ product_form_id }}">
+		  		{%- for option in options -%}
+		  			<option value="{{ option | strip | escape }}">{{ option | strip }}</option>
+		  		{%- endfor -%}
+		  	</select>
+		  </div>
+	  {%- elsif obj.settings[type_index] == 'radio' -%}
+	  	{%- for option in options -%}
+	  	{%- assign html_option_id = 'field-' | append: option | handleize -%}
+	  	<div class="flex flex-align-ver w100 flex-start-hoz">
+	  		<input type="radio" value="{{ option | strip }}" class="pg__field__pointer margin0 pg__field__radio" id="{{ html_option_id }}-ele" data-target="#{{ html_id_field }}" name="{{ html_id_field }}" form="{{ product_form_id }}"/>
+	  		<label class="pg__field__radio-label pg__field__pointer" for="{{ html_option_id }}-ele">{{ option }}</label>
+	  	</div>
+	  	{%- endfor -%}
+	  	<input type="text" name="properties[{{ obj.settings[label_index] | escape }}]" class="pg__field__hidden pg__field__group-value"{% if obj.settings[require_index] %} required data-msg-required="{{ obj.settings[error_msg_index] | escape }}"{% endif %} id="{{ html_id_field }}" form="{{ product_form_id }}"/>
+	  {%- else -%}
+	  	{%- for option in options -%}
+	  		{%- assign html_option_id = 'field-' | append: option | handleize -%}
+	  		<div class="checkbox-one-line por w100 flex flex-start-hoz">
+		  		<input type="checkbox" id="{{ html_option_id }}" value="{{ option | strip | escape }}" class="checkbox-one-line__input pg__field__hidden pg__field__ele" data-target="#{{ html_id_field }}" form="{{ product_form_id }}"/>
+		  		<label for="{{ html_option_id }}" class="checkbox-one-line__label por use-color-inline">{{ option }}</label>
+				</div>
+	  	{%- endfor -%}
+	  	<input type="text" name="properties[{{ obj.settings[label_index] | escape }}]" class="pg__field__hidden pg__field__group-value pg__field__group-checkbox"{% if obj.settings[require_index] %} required data-msg-required="{{ obj.settings[error_msg_index] | escape }}"{% endif %} id="{{ html_id_field }}" form="{{ product_form_id }}"/>	
+  	{%- endif -%}
+  {%- endif -%}
+</div>
+{%- endif -%}

@@ -1,0 +1,57 @@
+{%- comment -%}
+	Custom JS code which is used in ALL pages in shop
+{%- endcomment -%}
+<script>
+      
+  /* toggle search input content on mobile with plain js clicking search icon */
+  var ready = (callback) => {
+    if (document.readyState != "loading") callback();
+    else document.addEventListener("DOMContentLoaded", callback);
+  }
+
+  ready(() => {
+    var searchIcon = document.querySelector('.header .mobile_search_icon');
+    var searchDropdownContent = document.querySelector('.mobile_search_dropdown');
+	searchDropdownContent.classList.add('hide');
+    searchIcon.addEventListener("click", (e) => {
+      if (searchDropdownContent.classList.contains("show")) {
+        searchDropdownContent.classList.replace("show", "hide");
+      } else if (searchDropdownContent.classList.contains("hide")) {
+        searchDropdownContent.classList.replace("hide", "show");
+      }
+    }); 
+  });
+
+// make Collections and Diamond Box buttons text clickable in mobile menu
+  setInterval(function(){ 
+    let link = $(".mobile-nav__item__top-link");
+    if(link.length){
+      link.off("click");
+      link.click(function(e) {
+        const arrowButton = $(this).next();
+        if (arrowButton.length) {
+          if(arrowButton.hasClass("hide") == false){
+            e.preventDefault(); 
+            arrowButton.click();
+          }
+        }
+      });
+    }
+  }, 1000);
+
+
+//make collection grid images clickable
+  $(document).ready(function(){
+
+    if($("#rich_banner_text_template--15164371140769__1634649514b892c051")){
+
+      $("#rich_banner_text_template--15164371140769__1634649514b892c051 .banner-item").click(function() {
+        window.location = $(this).find("a").first().attr("href");
+        return false;
+      });
+
+    }
+  
+})
+
+</script>

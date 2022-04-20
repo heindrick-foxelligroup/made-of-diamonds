@@ -1,0 +1,101 @@
+
+<div id="{{ section.id }}" class="product-headline-section">
+  <div class="main-headline">
+    <div>CREATE SOMETHING</div> 
+    <div>BEAUTIFUL EVERY MONTH</div>
+  </div>
+  <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/divider_2.jpg?v=1637600235"/>
+  <div class="sub-headline">Stress relieving subscription box</div>
+</div>
+
+<style>
+  
+  .breadcrumbs{
+   	display: none !important; 
+  }
+  
+  #{{ section.id }} *{
+   
+  }
+  
+  #{{ section.id }} {
+   	max-width: 1000px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #{{ section.id }} .main-headline{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 36px;
+    text-align: center;
+    color: #245E8D;
+    margin-top: 20px;
+    max-width: 610px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #{{ section.id }} .main-headline div{
+   
+  }
+  
+  #{{ section.id }} img{
+   	margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    width: 400px;
+    min-width: 0px;
+    display: block;
+  }
+  
+  #{{ section.id }} .sub-headline{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    /* identical to box height, or 120% */
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #3D4246; 
+    margin-bottom: 20px;
+  }
+  
+  
+  @media only screen and (max-width: 768px){
+    #{{ section.id }} img{
+      width: 250px;
+    }
+    
+    #{{ section.id }} .main-headline{
+    	font-size: 24px;
+      	line-height: 40px;
+    }
+    
+    #{{ section.id }} .sub-headline{
+     	font-size: 15px; 
+    }
+  
+      
+</style>
+
+{% schema %}
+  {
+    "name": "Product - Headline",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product - Headline",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

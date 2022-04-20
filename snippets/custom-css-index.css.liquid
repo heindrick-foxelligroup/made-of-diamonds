@@ -1,0 +1,258 @@
+{%- comment -%}
+  Custom CSS for all pages.
+  Custom selectors starts with "fox-"
+
+  Structure:
+	overwrite theme files
+	overwrite apps files
+	new custom elements
+{%- endcomment -%}
+
+<style>
+
+  /***** Overwrite theme files *****/
+  h2, h3 { 
+    text-transform: uppercase;
+    font-weight: 800; }
+
+  h2:not(.footer__column__title) { color: #5C2F8D!important; }
+
+  :is(#insta-feed, #shopify-section-template--15164371140769__1633601655932aaba0) h2 {
+    font-weight: 500;
+    color: initial!important;
+    text-transform: capitalize; }
+
+  .button { 
+    border-radius: 10px;
+    font-weight: 800; }
+
+  section.rich-banner-section .section__heading {
+    padding: 0;
+    text-align: center;
+  }
+
+  section.rich-banner-section .section__sub-title {
+    padding-top: 0;
+    padding-bottom: 12px;
+  }
+
+  section.rich-banner-section .banner-item {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #shopify-section-template--15164371140769__1634649514b892c051 .banner-item__text {
+    -webkit-box-pack: justify !important;
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+    top: 0px !important;
+    bottom: 0px;
+    padding: 0px !important;
+    position: absolute;
+  }
+
+  #shopify-section-template--15164371140769__1634649514b892c051 .banner-item__text1,
+  #shopify-section-template--15164371140769__1634649514b892c051 .banner-item__text2 {
+    padding: 0px !important;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  #shopify-section-template--15164371140769__1634649514b892c051 .banner-item__text1 p {
+ 	background-color: #FFF3F5;
+    padding: 10px 15px !important;
+    margin: 0px auto !important;
+    border-radius: 15px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 16px !important;
+  }
+
+  #shopify-section-template--15164371140769__1634649514b892c051 .banner-item__text2 a {
+ 	width: 100% !important;
+  }
+
+  .button--cart .btn-text {
+    text-transform: uppercase;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    font-family: Poppins, sans-serif !important;
+  }
+
+  section.product-single-deal .psd__desc,
+  section.product-single-deal a {
+	font-size: 15px;
+  }
+
+  @media all and (min-width: 768px){
+    .our-story-section img { 
+      width: 100%;
+      max-width:250px; }
+
+    #shopify-section-template--15164371140769__1634649514b892c051 .banner-item__text1 p {
+      padding: 10px 20px !important;
+      border-radius: 20px !important;
+      border-top-left-radius: 0px !important;
+      border-top-right-radius: 0px !important;
+      font-size: 30px !important;
+  	}
+  }
+
+  @media all (min-width: 1100px) {
+    #shopify-section-template--15164371140769__1634649514b892c051 .banner-item__text1 p {
+      font-size: 35px !important;
+  	}
+  }
+
+  @media all and (min-width: 1200px) {
+    .button--cart .btn-text {
+      display: none;
+    }
+  }
+
+  .single-deal-price-schedule { font-size: 75% }
+
+  /***** END OF overwrite theme files *****/
+
+  /***** Overwrite apps files *****/
+  /* Instagram home page feed */
+  body.template-index #insta-feed h2 {
+    text-align: left !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 15px !important;
+    margin: 10px auto;
+    font-size: 20px;
+    text-transform: none;
+  }
+
+  body.template-index #insta-feed h2:before {
+    content: ' '; 
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+    background: url('https://cdn.shopify.com/s/files/1/2987/3832/files/home-instagram-logo.svg') left center no-repeat;
+  }
+
+  body.template-index #insta-feed > [href="#1-insta-feed"]:before {
+      height: 35px;
+      width: 95%;
+      color: #000;
+      display: block;
+      float: left;
+      text-align: left;
+      margin-top: -30px;
+      margin-bottom: 3px;
+      margin-left: 1em;
+      font-size: 16px;
+      background: none;
+      line-height: 35px;
+  }
+
+  @media all and (max-width: 767px){
+    body.template-index #insta-feed h2 { 
+      font-size: 14px;
+    }
+  }
+
+  [data-section-type="newsletter"] .section__heading.section__heading--with-sub{
+   	 padding-bottom: 30px;
+  }
+
+  .banner-item--7e9b3012-15dc-4b6a-a71f-7217f9ddf0c2 li { 
+    position: relative;
+    left: -20px; }
+
+  .banner-item--7e9b3012-15dc-4b6a-a71f-7217f9ddf0c2 li:before {
+    content: "";
+    display: inline-block;
+    background-image: url('https://cdn.shopify.com/s/files/1/0536/0513/8593/files/pink_tick.png?v=1640013803');
+    background-repeat: no-repeat;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    top: 3px;
+    right: 5px;
+  }
+
+  .banner-item--7e9b3012-15dc-4b6a-a71f-7217f9ddf0c2 br { display: none }
+
+/*   arrow on collections prev / next */
+  .product-slider-section .simple-product-slider button.slick-arrow.button:hover {
+    background-color: transparent;
+  } 
+
+  #slick-prev-template--15164371140769__1634649520e9652dc5 button:hover span:before {
+     color: blue;
+  }
+
+  /* START of Fix Klaviyo form */
+  .newsletter-section.new-fox-design .klaviyo-form button.needsclick { 
+    position: relative;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background-color: #5C2F8D!important;
+    font-size: 12px!important;
+    font-weight: 800;
+    border-radius: 10px;
+  }
+
+  .newsletter-section.new-fox-design .klaviyo-form button.needsclick:after {  
+    position: absolute;
+    top: 0;
+    right: 0px;
+    bottom: 0;
+    left: 0;    
+    content: "GET IT";
+    color: #ffffff;
+    font-size: inherit;
+    font-weight: inherit;
+    z-index:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .newsletter-section.new-fox-design .klaviyo-form .kl-private-reset-css-Xuajs1 [data-testid="form-component"]:first-child {  
+    margin-right: -30px;
+  }
+
+  .newsletter-section.new-fox-design .klaviyo-form .kl-private-reset-css-Xuajs1 .ql-font-nunito-sans {  
+    color: #fff !important;
+  }
+
+  .newsletter-section.new-fox-design .klaviyo-form .kl-private-reset-css-Xuajs1 .ql-font-nunito-sans:first-child {  
+    font-size: 18px !important;
+  }
+
+  .newsletter-section.new-fox-design .klaviyo-form .kl-private-reset-css-Xuajs1 .ql-font-nunito-sans:last-child {  
+    font-size: 16px !important;
+  }
+
+  @media all and (min-width: 768px) {
+    .newsletter-section.new-fox-design button.needsclick {  
+      font-size: 20px!important;
+      width: 100px;
+    }
+    .newsletter-section.new-fox-design .klaviyo-form .kl-private-reset-css-Xuajs1 .ql-font-nunito-sans:first-child {  
+      font-size: 22px !important;
+    }
+
+    .newsletter-section.new-fox-design .klaviyo-form .kl-private-reset-css-Xuajs1 .ql-font-nunito-sans:last-child {  
+      font-size: 18px !important;
+    }
+  }
+ /* END of Fix Klaviyo form */
+
+  /***** END OF overwrite apps files *****/
+
+  /***** CSS for custom/new elements *****/
+  /***** END OF CSS for custom/new elements *****/
+</style>

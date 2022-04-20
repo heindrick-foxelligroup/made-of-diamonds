@@ -1,0 +1,40 @@
+<link class="preload-css" rel="preload" href="{{ 'heading-font.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+<noscript><link rel="stylesheet" href="{{ 'heading-font.css' | asset_url }}"></noscript>
+{%- if template.name == 'collection' or template.name == 'search' -%}
+  <link class="preload-css" rel="preload" href="{{ 'styles-collection-page.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'styles-collection-page.css' | asset_url }}"></noscript>
+{%- endif -%}
+<link class="preload-css" rel="preload" href="{{ 'bootstrap.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+<noscript><link rel="stylesheet" href="{{ 'bootstrap.css' | asset_url }}"></noscript>
+<link class="preload-css" rel="preload" href="{{ 'bt-icons.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+<noscript><link rel="stylesheet" href="{{ 'bt-icons.css' | asset_url }}"></noscript>
+<link class="preload-css" rel="preload" href="{{ 'styles.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+<noscript><link rel="stylesheet" href="{{ 'styles.css' | asset_url }}"></noscript>
+{%- if template.name == 'product' -%}
+  <link class="preload-css" rel="preload" href="{{ 'cloudzoom.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'cloudzoom.css' | asset_url }}"></noscript>
+  <link class="preload-css" rel="preload" href="{{ 'quick-view.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'quick-view.css' | asset_url }}"></noscript>
+  <link class="preload-css" rel="preload" href="{{ 'product-single.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'product-single.css' | asset_url }}"></noscript>
+{%- endif -%}
+{%- if template.name != 'index' and template.name != 'collection' and template.name != 'product' and template.name != 'cart' -%}
+	<link class="preload-css" rel="preload" href="{{ 'styles-remain-pages.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'styles-remain-pages.css' | asset_url }}"></noscript>
+{%- endif -%}
+<link class="preload-css" rel="preload" href="{{ 'navigation-mobile.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'navigation-mobile.css' | asset_url }}"></noscript>
+{%- if enable_rtl -%}
+  <link class="preload-css" rel="preload" href="{{ 'bootstrap-rtl.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'bootstrap-rtl.css' | asset_url }}"></noscript>
+  <link class="preload-css" rel="preload" href="{{ 'styles-rtl.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'styles-rtl.css' | asset_url }}"></noscript>
+{%- endif -%}
+{%- if request.path contains 'challenge' -%}
+  <link class="preload-css" rel="preload" href="{{ 'challenge.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'challenge.css' | asset_url }}"></noscript>
+{%- endif -%}
+{%- if settings.load_custom_css -%}
+	<link class="preload-css" rel="preload" href="{{ 'custom-css.scss.css' | asset_url }}" as="style" onload="this.rel='stylesheet';">
+	<noscript><link rel="stylesheet" href="{{ 'custom-css.scss.css' | asset_url }}"></noscript>
+{%- endif -%}

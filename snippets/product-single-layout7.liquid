@@ -1,0 +1,51 @@
+<div class="col-xs-12 col-md-6 no-gutter{% if enable_rtl %} f-right{% endif %}">
+  {%- include 'product-single-media' with no_wide: true -%}
+</div>
+
+<div class="col-xs-12 col-md-5 gutter-ele-top-tbs pg__single-right"{% if template.suffix == 'quick_view' %} style="padding-top:0;"{% endif %}>
+  {%- if template.suffix != 'quick_view' and settings.header_style == 'style2' -%}
+  <div class="gutter-top hidden-xs hidden-sm"></div>
+  {%- endif -%}
+  {%- render 'product-single-breadcrumbs' with product: product -%}
+  {%- render 'product-single-vendor' with product: product, gutter_bottom: true -%}
+  {%- render 'product-single-name' with product: product -%}
+  {%- render 'product-single-sku' with current_variant: current_variant -%}
+  <div class="flex flex-align-ver flex-align-space-between">
+    {%- render 'product-single-sold' with product: product -%}
+    {%- render 'product-single-social-sharing' with product: product -%}
+  </div>
+  {%- capture review_single_html -%}
+    {%- render 'product-review-single' with product: product -%}
+  {%- endcapture -%}
+  {%- if review_single_html != blank or sizechart -%}
+  <div class="gutter-ele-small-top gutter-ele-bottom{% if review_single_html != blank and sizechart %} flex flex-align-space-between{% endif %}">
+    {{ review_single_html }}
+    {%- render 'product-single-size-chart' with product: product, sizechart: sizechart -%}
+  </div>
+  {%- endif -%}
+  {%- render 'product-single-price' with product: product, current_variant: current_variant -%}
+  {%- render 'product-single-short-desc' with product: product, description: description -%}
+  <div class="pg__main-options">
+    {%- unless product.has_only_default_variant -%}
+    {%- render 'product-single-variants' with product: product -%}
+    {%- endunless -%}
+    {%- render 'product-single-form' with product: product, current_variant: current_variant, full_qty_box: false, left_holder: left_holder -%}
+  </div>
+  {%- render 'product-single-store-availability' with custom_classes: 'gutter-ele-top gutter-ele-bottom' -%}
+  <hr>
+  {%- render 'product-single-sub-info' with product: product -%}
+  {%- render 'product-single-countdown' with product: product -%}
+  {%- render 'product-single-hurry-up' with current_variant: current_variant -%}
+  {%- render 'product-single-payment-badge' -%}
+  {%- if template.suffix == 'quick_view' -%}
+    {%- unless section.settings.general_info contains '[description]' -%}
+      <div class="gutter-ele-top gutter-ele-bottom">{{ description }}</div>
+    {%- endunless -%}
+  {%- endif -%}
+  {%- render 'product-single-view-details' with product: product -%}
+  {%- if template.suffix != 'quick_view' -%}
+  <div class="gutter-top">
+    {%- render 'product-single-tabs-content' with product: product, description: description -%}
+  </div>
+  {%- endif -%}
+</div>

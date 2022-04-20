@@ -1,0 +1,79 @@
+{% comment %}
+******************************************
+	Info:
+		Adds loading circle gif to CTA button.
+		This loading circle is shown only while page is loading - 
+		When DOM is ready (a.k.a. on.load)
+		
+
+	Author: Zilvinas Vaisnoras
+    Date created: 2022-01-28
+    Included in: templates/product.subscription-product.json
+******************************************
+{% endcomment %}
+
+<style>
+  
+  /* loading cicrcle in subox for CTA button */
+  .product-form__item:before,
+  .button.cta-subox-button:before {
+    content:url('{{ 'lg-loading.gif' | asset_url}}');
+    width: 100%;
+    margin: 0 0 -100px 0;
+    cursor: not-allowed;
+    position: relative;
+    padding: 60px 0 0 0;
+    z-index: 1;
+  }
+
+
+  .hide-after:before {
+    display: none; 
+    cursor: pointer;
+  }
+  
+  /* for desktop */
+  @media only screen and (min-width: 991px) {
+    .product-form__item:before {
+      left: calc(50% - 18px);
+    }
+  }
+  
+  /* for mobile */
+  @media only screen and (max-width: 990px) {
+
+  }
+  
+</style>
+
+<script>
+  $('.add-cart-btn').prop('disabled', true);
+  $('.product-form__item').prop("disabled", true);
+  //console.log('Zilvinas >> load time');
+  $(window).on('load', function () {
+    $('.add-cart-btn').prop('disabled', false);
+    $('.product-form__item').prop("disabled", false);
+    $('.product-form__item').addClass('hide-after');
+    $('.button.cta-subox-button').addClass('hide-after');
+  }) 
+
+</script>
+
+
+{% schema %}
+{
+  "name": "Product - CTA load circle",
+  "class": "product-loading-circle",
+  "settings": [
+   
+  ],
+  "presets": [
+    {
+      "name": "Product - CTA loading circle",
+      "category": "Collection",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

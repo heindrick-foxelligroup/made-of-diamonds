@@ -1,0 +1,349 @@
+{%- render 'section-background-start' -%}
+
+<style>
+  .fancy-testimonials .section__title__text{
+   	padding-top: 20px; 
+  }
+  
+  .testimonial{
+   	display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+  
+  .testimonial .info-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+  
+  .info-section .stars{
+  	margin-bottom: 5px;  
+  }
+  
+  .info-section .quote {
+     padding-right: 15px;
+   	 margin-bottom: 5px;
+     color: #003833;
+  }
+  
+  .info-section .quote p{
+  	display: inline; 
+  }
+  
+  
+  .info-section .author-name{
+    color: gray;
+    
+  }
+  
+  .info-section .stars .fa-star{
+    font-size: 12px;
+   	color: orange; 
+    margin-right: 5px;
+    
+  }
+  
+  .testimonial .avatar-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .avatar-section img{
+    min-width: 80px;
+    min-height: 80px;
+   	max-width: 80px;
+    max-height: 80px;
+    border-radius: 100px;
+    border: 1px solid gray;
+    padding: 5px;
+  }
+  
+  .slide{
+    background: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 30px;
+    -webkit-box-shadow: 8px 8px 30px 0px rgba(0,0,0,0.34); 
+    box-shadow: 8px 8px 30px 0px rgba(0,0,0,0.34);
+  }
+  
+  .testimonial-slider .slick-list{
+   	padding: 40px 20px !important; 
+  }
+  
+  .fancy-testimonials{
+   	background-color: {{ section.settings.section_bkg }};
+    padding-bottom: 25px;
+  }
+  
+  .fancy-testimonials .title{
+   	text-align: center;
+	padding-top: 30px;
+   	font-size: 20px;
+    line-height: 22px;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 21px;
+    font-weight: 550;
+    color: var(--color_st);
+    line-height: 1.2em;
+    font-family: var(--fm_second);
+    font-style: var(--font_style_second);
+  }
+  
+  .fancy-testimonials .slick-track{
+    display: flex;
+    align-items: center;
+  }
+  
+  .fancy-testimonials .slick-dots{
+   	bottom: -15px !important; 
+  }
+</style>
+
+<div class="fancy-testimonials">
+  <div class="section__title__text text-center"><h2>What Thousands Of<br class="fox-hide--medium-up"/> Happy Customers Are Saying</h2></div>
+	<div class="testimonial-slider">
+      {% for block in section.blocks %}
+      <div class="slide">
+        <div class="testimonial">
+          <div class="info-section">
+            <div class="stars">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i></div>
+            <div class="quote">"{{ block.settings.quote | strip }}"</div>
+            <div class="author-name">- <i>{{ block.settings.name }}</i> </div>
+          </div>
+
+          <div class="avatar-section">
+			<img class="lazyload" data-src="{{ block.settings.author_avatar | img_url: "200x200" }}" width="200" height="200" />
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+  </div>
+  
+</div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function(){
+    $('.testimonial-slider').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      dots: true,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '20px',
+            slidesToShow: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '10px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  });
+
+</script>
+
+{%- render 'section-background-end' -%}
+{% schema %}
+  {
+    "name": "Fancy Testimonials",
+    "class": "index-section",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "[View the guide for this section](https://beloria-docs.boostheme.com/dynamic-sections/text/testimonials)"
+      },
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "checkbox",
+        "id": "bkg_enable",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Background color"
+      },
+      {
+        "type": "color",
+        "id": "section_bkg",
+        "label": "Pick a background color"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_bkg_image",
+        "label": "Background image"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_gutter",
+        "label": "Background size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "medium"
+          },
+          {
+            "value": "high",
+            "label": "High"
+          }
+        ],
+        "default": "high"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_style",
+        "label": "Background image style",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "header",
+        "content": "Section Gutters"
+      },
+      {
+        "type": "checkbox",
+        "id": "top_gutter",
+        "label": "Enable top gutter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bottom_gutter",
+        "label": "Enable bottom gutter",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "General Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Testimonials"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub heading"
+      },
+      {
+        "type": "select",
+        "id": "heading_pos",
+        "label": "Heading position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "above",
+            "label": "Above"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Wide display"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "author_avatar",
+            "label": "Author's avatar"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Fancy Testimonials",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote",
+            "settings": {
+              "name": "David"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "name": "Kane"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "name": "Susan"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

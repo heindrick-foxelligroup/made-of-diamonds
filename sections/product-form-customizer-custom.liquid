@@ -1,0 +1,121 @@
+<script>
+	$(".product-price-wrap").after("<div class='extra-description'>Create an awesome diamond painting yourself and proudly show it off on your wall! Your home will look super colorful and playful like never before!</div>");
+    $(".product-single__title").after("<img class='review-stars' src='https://cdn.shopify.com/s/files/1/0536/0513/8593/files/Group_18562.png?v=1637695447'/>");
+  	$(".atc-badges-img").after("<img class='atc-badges fox-hide--small' src='https://cdn.shopify.com/s/files/1/0536/0513/8593/files/06.09.2021_1.png?v=1637697024'/>");
+  	$(".atc-badges-img").after("<img class='atc-badges fox-hide--medium-up' src='https://cdn.shopify.com/s/files/1/0536/0513/8593/files/06.09.2021_2.png?v=1637697024'/>");
+  	$(".atc-badges-img").remove();
+  	$(".add-cart-btn span").html("Add to cart - {{ product.price | money }}");
+</script>
+
+<style>
+
+  form[action="/cart/add"]{
+    flex-direction: column;
+  }
+  
+  .product-single{
+   	max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .atc-badges{
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: -10px;
+   	margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .product-single__title{
+   	text-transform: uppercase; 
+    font-weight: 500;
+  }
+  
+  .review-stars{
+   	max-width: 100px; 
+  }
+  
+  .lnr-plus:before, .lnr-minus:before{
+   	color: #245E8D; 
+    font-size: 18px;
+  }
+  
+  .extra-description{
+   	 margin-bottom: 10px;
+     max-width: 400px;
+  }
+  
+  .product-price__price{
+   	font-weight: 400; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .qty-box--single{
+    height: 49px;
+  	max-width: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #F2F5F8;
+    border-radius: 3px;
+  }
+  
+  .qty-box--single input{
+    color: #3D4246;
+    width: 25px;
+    font-size: 18px !important;
+  }
+  
+  .add-cart-btn .lnr-shopping-cart{
+   	display: none; 
+  }
+  
+  .rc-container-wrapper{
+   	display: none; 
+  }
+  
+  .add-cart-btn{
+    transition: none;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 400;
+    padding: 15px 15px;
+   	background-color: #245E8D; 
+  }
+  
+  .add-cart-btn span{
+    max-height: 20px;
+  }
+
+  @media only screen and (max-width: 768px){
+    .extra-description{
+      margin-bottom: 10px;
+      max-width: 100%;
+    }
+    
+    .qty-box--single{
+     	display: none !important; 
+    }
+    
+    .add-cart-btn{
+     	width: 100%; 
+    }
+  }
+  
+      
+</style>
+
+{% schema %}
+  {
+    "name": "Product - Custom Form",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product - Custom Form",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

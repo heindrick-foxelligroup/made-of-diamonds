@@ -1,0 +1,105 @@
+{%- if template.suffix != 'quick_view' -%}
+{%- unless no_container -%}
+<div class="container{% include 'wide-css-class' %}">
+{%- endunless -%}  
+  <div class="row">
+{%- endif -%}
+<div class="col-xs-12">
+  <div class="row flex"{% unless enable_rtl %} style="flex-flow:row-reverse wrap;"{% endunless %}>
+    <div class="col-xs-12 col-md-8{% unless enable_rtl %} f-right{% endunless %} no-gutter-left-mb no-gutter-right-mb gutter-ele-bottom-tbs">
+      <div class="product-single__photos pg__mains pg__mains--scroll-hoz scroll-main-hoz por custom-scrollbar flex use-touch-mobile">
+        {%- assign single_custom_class = 'pg__main--scroll-hoz por no-gutter' -%}
+        {%- if product.media.size == 1 -%}
+          {%- assign single_custom_class = single_custom_class | append: ' pg__main--scroll-hoz--full-mobile' -%}
+        {%- endif -%}
+        {%- include 'product-single-main' with media: featured_media, lazyload: false, use_slider: false, no_gutter: true, custom_class: single_custom_class, show_media_btn_inner: true -%}
+        {%- for media in product.media -%}
+          {%- if media != featured_media -%}
+            {%- include 'product-single-main' with lazyload: true, use_slider: false, no_gutter: true, custom_class: single_custom_class, show_media_btn_inner: true -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {{ youtubeCapture }}
+        {{ vimeoCapture }}
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4 flex flex-align-ver gutter-ele-top-tbs">
+      {%- include 'product-single-vendor' with product: product, gutter_bottom: true -%}
+      <div class="w100">
+        {%- render 'product-single-name' with product: product -%}
+        {%- render 'product-single-sold' with product: product -%}
+        {%- render 'product-single-sku' with current_variant: current_variant -%}
+        {%- capture review_single_html -%}
+          {%- render 'product-review-single' with product: product -%}
+        {%- endcapture -%}
+        {%- if review_single_html != blank or sizechart -%}
+        <div class="gutter-ele-small-top gutter-ele-bottom{% if review_single_html != blank and sizechart %} flex flex-align-space-between{% endif %}">
+          {{ review_single_html }}
+          {%- render 'product-single-size-chart' with product: product, sizechart: sizechart -%}
+        </div>
+        {%- endif -%}
+        {%- render 'product-single-price' with product: product, current_variant: current_variant -%}
+        {%- render 'product-single-short-desc' with product: product, description: description -%}
+        {%- render 'product-single-store-availability' with custom_classes: 'gutter-ele-top gutter-ele-bottom' -%}
+      </div>
+      {%- capture single_add_info -%}
+        {%- render 'product-single-countdown' with product: product -%}
+        {%- render 'product-single-hurry-up' with current_variant: current_variant -%}
+        {%- render 'product-single-social-sharing' with product: product -%}
+      {%- endcapture -%}
+      {%- if single_add_info != '' -%}  
+      <div class="hidden-xs hidden-sm w100">
+        {{ single_add_info | raw }}
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<div class="col-xs-12 gutter-top">
+  <div class="pg__main-options pg__main-options--border flex flex-align-ver">
+    {%- unless product.has_only_default_variant -%}
+    <div class="col-xs-12 col-md-4">
+      {%- render 'product-single-variants' with product: product -%}
+    </div>
+    {%- endunless -%}
+    <div class="col-xs-12 no-gutter col-md-8">
+      {%- render 'product-single-form' with product: product, current_variant: current_variant, full_qty_box: false, inline_button: true, left_holder: left_holder -%}
+    </div>
+  </div>
+</div>
+<div class="col-xs-12 gutter-top">
+{%- render 'product-single-breadcrumbs' with product: product -%}
+</div>
+{%- capture payment_sub -%}
+  {%- render 'product-single-payment-badge' -%}
+  {%- render 'product-single-sub-info' with product: product -%}
+{%- endcapture -%}
+{%- capture single_add_info_bottom -%}
+  {%- if single_add_info != '' -%}  
+  <div class="hidden-md hidden-lg">
+    {{ single_add_info | raw }}
+  </div>
+  {%- endif -%}
+  {%- if payment_sub != '' -%}
+    {{ payment_sub | raw }}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if single_add_info_bottom != '' -%}
+<div class="col-xs-12 gutter-top{% if payment_sub == '' %} hidden-md hidden-lg{% endif %}">
+  <div class="pg__main-options--border">
+    {{ single_add_info_bottom | raw }}
+  </div>
+</div>
+{%- endif -%}
+{%- if template.suffix == 'quick_view' -%}
+  {%- unless section.settings.general_info contains '[description]' -%}
+    <div class="gutter-top col-xs-12">{{ description }}{%- render 'product-single-view-details' with product: product -%}</div>
+  {%- endunless -%}
+{%- endif -%}
+
+{%- if template.suffix != 'quick_view' -%}
+</div>
+{%- unless no_container -%}
+</div>
+{%- endunless -%}
+{%- endif -%}

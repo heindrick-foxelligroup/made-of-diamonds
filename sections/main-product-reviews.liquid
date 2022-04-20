@@ -1,0 +1,38 @@
+<div class="main-product-reviews-section container{% render 'wide-css-class' %}{% render 'section-gutters-nobkg' %}" id="main-product-reviews-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="main-product-reviews">
+  {%- render 'section-heading' -%}
+  {%- render 'product-review-form' with product: product -%}
+</div>
+{% schema %}
+{
+  "name": "Main product - Reviews",
+  "tag": "section",
+  "templates": ["product"],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Use this section if you want to show the reviews outside the tabs section."
+    },
+    {
+      "type": "header",
+      "content": "Section Gutters"
+    },
+    {
+      "type": "checkbox",
+      "id": "top_gutter",
+      "label": "Enable top gutter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "bottom_gutter",
+      "label": "Enable bottom gutter",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main product - Reviews"
+    }
+  ]
+}
+{% endschema %}

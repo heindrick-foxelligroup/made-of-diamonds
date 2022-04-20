@@ -1,0 +1,48 @@
+<div style="background: #ffffff" class="bottom-mobile-toolbar bmt flex flex-align-space-between flex-align-ver hidden-sm hidden-md hidden-lg">
+	
+  <div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">	
+      <a style="color:{{ settings.sec_font_color }}" href="/" class="flex flex-align-hoz" data-placement-mobile="up" title="Home">
+        <div class="por flex">	
+          <i class="lnr-home fw-bold bmt__icon"></i>
+        </div>
+        <span class="w100 db text-center fw-bold bmt__text">Home</span>
+      </a>	
+  </div>
+  
+  <div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+      <a style="color: #000000" href="/collections/best-sellers" class="flex flex-align-hoz" title="{{ 'general.accessibility.your_compare' | t | escape }}">
+        <div class="por flex">
+          <img data-src="{{ 'icon-star.svg' | asset_url }}" class="img-responsive lazyload" alt="Best Sellers">
+        </div>
+        <span class="w100 db text-center fw-bold bmt__text">Best Sellers</span>
+      </a>
+  </div>
+  
+  <div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+      <a style="color: #000000" href="/collections/new" class="flex flex-align-hoz" data-placement-mobile="up" title="Sale">
+        <div class="por flex">	
+          <img data-src="{{ 'icon-tag.svg' | asset_url }}" class="img-responsive lazyload" alt="Sale">
+        </div> 
+          <span class="w100 db text-center fw-bold bmt__text">News</span>
+      </a>
+  </div>
+  
+  <div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+      <a style="color: #000000" href="/collections" class="flex flex-align-hoz">
+        <div class="por flex">
+          <img data-src="{{ 'icon-diamond.svg' | asset_url }}" class="img-responsive lazyload" alt="Collections">
+        </div>
+        <span class="w100 db text-center fw-bold bmt__text">Collections</span>
+      </a>
+  </div>  
+  
+  <div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+      <a style="color: #000000" href="/collections/all" class="flex flex-align-hoz" title="Shop All">
+        <div class="por flex">
+            {%- render 'icon-cart-header' with add_class: 'fw-bold bmt__icon' -%}
+        </div>
+        <span class="w100 db text-center fw-bold bmt__text">Shop All</span>
+      </a> 
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+{%- capture filter_list -%}
+{%- for product_vendor in collection.all_vendors -%}
+  <li class="{% if product_vendor == collection.current_vendor %}active {% endif %}cf__item__link">{{ product_vendor | link_to_vendor | replace: '<a ','<a class="cf__link cf__link--box" ' }}</li>
+{%- endfor -%}
+<li class="{% if active_tag != '' %}active {% endif %}cf__item__link">{{ tagHtml }}</li>
+{%- endcapture -%}
+{%- if filter_list != '' -%}
+<div class="cf__item cf__item--color w100{% unless is_last %} gutter-bottom{% endunless %}">
+  <a class="cf__item__title{% unless is_first %} gutter-top cf__item__title--border{% endunless %} gutter-bottom flex flex-align-space-between expand-trigger{% if block.settings.default_expand == 'expand' %} open{% endif %}" href="#" title="{{ block.settings.title | escape }}">
+    <span>{{ block.settings.title }}</span>
+    {%- render 'icon-collapse' -%}
+  </a>
+  <div class="cf__item__content expand-content"{% if block.settings.default_expand != 'expand' %} style="display:none;"{% endif %}>
+    <ul class="cf__item--swatch-list dib">
+    {{ filter_list }}
+    </ul>
+  </div>
+</div>
+{%- if block.settings.show_spr_line -%}
+	<hr>
+{%- endif -%}
+{%- endif -%}

@@ -1,0 +1,11 @@
+{%- if block.settings.bkg_banner != blank and block.settings.bkg_banner_enable -%}
+  <div style="background-color:{{ block.settings.bkg_banner }};" class="w100 h100 flex{% if ver_align_text %} flex-align-ver{% endif %}{% if row_reverse %} flex-row-reverse{% endif %}">
+     {{ banner_html }}
+  </div>
+{%- elsif ver_align_text -%}
+	<div class="w100 h100 flex{% if ver_align_text %} flex-align-ver{% endif %}{% if row_reverse %} flex-row-reverse{% endif %}">
+    {{ banner_html }}
+  </div>
+{%- else -%}
+	{{ banner_html }}    
+{%- endif -%}

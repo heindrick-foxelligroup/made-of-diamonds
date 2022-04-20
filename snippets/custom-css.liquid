@@ -1,0 +1,20 @@
+{%- comment -%}
+	Custom CSS files/includes by page type/template name
+	This file is included in theme.liquid
+	Not all cases/templates are here used. Full list of template names can be found here: https://shopify.dev/themes/architecture/templates#template-files
+{%- endcomment -%}
+
+{%- render 'custom-css-global.css' -%}
+
+{%- case template.name -%}
+	{%- when 'index' -%}
+		{%- render 'custom-css-index.css' -%}
+	{%- when 'collection' -%}
+		{%- render 'custom-css-collection.css' -%}
+	{%- when 'product' -%}
+		{%- render 'custom-css-product.css' -%}
+	{%- when 'blog' -%}
+		{%- render 'custom-css-blog.css' -%}
+	{%- when 'cart' -%}
+		{%- render 'custom-css-cart.css' -%}
+{%- endcase -%}

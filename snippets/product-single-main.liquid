@@ -1,0 +1,51 @@
+{%- capture img_alt -%}{%- render 'alt-img-shortcode-ign', str: media.alt -%}{%- endcapture -%}
+<div class="pg__main pg__main--{{ section.id }}{% if is_active %} active{% endif %}{% unless no_gutter %}{% if use_slider %}{% if lazyload %} hide-in-loading{% endif %}{% else %}{% if lazyload %} gutter-top{% endif %} gutter-ele-bottom{% endif %}{% endunless %}{% if custom_class %} {{ custom_class }}{% endif %}{% if show_media_btn_inner %} por{% endif %}">
+	{%- case media.media_type -%}
+    {%- when 'external_video' -%}
+    	{%- if use_slider -%}
+				{%- render 'product-single-main-video' with video_type: media.host, video_id: media.external_id, video_ratio: ratio, media: media -%}
+			{%- else -%}
+				{%- render 'product-single-main-video-iframe' with video_type: media.host, video_id: media.external_id, media: media -%}	
+			{%- endif -%}
+    {%- when 'video' -%}
+      {%- if use_slider -%}
+				{%- render 'product-single-main-video' with video_type: media.media_type, video_url: media.sources[0].url, media: media -%}
+			{%- else -%}
+				{%- render 'product-single-main-video-iframe' with video_type: media.media_type, media: media -%}	
+			{%- endif -%}
+    {%- when 'model' -%}
+    	<div style="padding-top: 100%" data-image-id="{{ media.id }}" data-product-media-type-model class="pg__main__link pg__main__link--model ignore-lightbox por">
+        {{ media | model_viewer_tag: image_size: '720x720', reveal: 'interaction', toggleable: true, data-model-id: media.id }}
+      </div>
+    {%- else -%}
+     	{%- unless media.alt contains '{{video' or media.alt contains '{{youtube' or media.alt contains '{{vimeo' -%}
+				<a href="{{ media.src | img_url: 'master' }}" class="pg__main__link img-container" title="{{ img_alt | escape }}" data-image-id="{{ media.id }}" style="padding-top:{{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;" data-width="{{ media.width }}" data-height="{{ media.height }}">
+					<img srcset="{% unless single_main_size == '50w' %}{% render 'img-srcset' with image: media.preview_image %}{% else %}{% render 'img-srcset-50w' with image: media.preview_image %}{% endunless %}"
+					  sizes="{{ single_main_size }}"
+					  alt="{{ media.alt | escape }}"
+					  loading="lazy"
+					  width="{{ media.preview_image.width }}"
+					  height="{{ media.preview_image.height }}"
+					  class="w100 img-responsive{% if section.settings.enable_zoom %} cloudzoom{% endif %} img-abs"
+					  data-cloudzoom="image:'{{ media | img_url: '300x' }}', zoomImage: '{{ media | img_url: 'master' }}'"
+					>
+			  </a>
+			{%- else -%}
+				{%- if use_slider -%}
+					{%- render 'alt-img-shortcode' with media: media -%}
+				{%- else -%}
+					{%- render 'alt-img-shortcode-iframe' with media: media -%}	
+				{%- endif -%}
+			{%- endunless -%}
+			{%- if show_media_btn_inner -%}
+				{%- render 'product-single-media-btn' with show_media_btn: section.settings.show_media_btn, hide_media_text: true, media_id: media.id -%}
+			{%- endif -%}
+  {%- endcase -%} 
+</div>
+{%- if is_active and template.name == 'product' -%}
+	{%- unless single_main_size == '50w' -%}
+		{%- render 'lcp-mark' with image: media.preview_image, sizes: single_main_size -%}
+	{%- else -%}
+		{%- render 'lcp-mark-50w' with image: media.preview_image, sizes: single_main_size -%}	
+	{%- endunless -%}	
+{%- endif -%}

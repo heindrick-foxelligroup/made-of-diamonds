@@ -1,0 +1,74 @@
+<div class="bottom-mobile-toolbar bmt flex flex-align-space-between flex-align-ver hidden-sm hidden-md hidden-lg">
+	{%- if settings.enable_wishlist -%}
+		<div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+			{%- unless settings.wishlist_type == 'growave' and settings.enable_growave -%}
+        <a href="javascript:void(0);" class="header__link--wishlist flex flex-align-hoz" title="{{ 'general.accessibility.your_wishlist' | t | escape }}">
+					<div class="por flex">
+						{%- render 'icon-wishlist' with add_class: 'fw-bold bmt__icon' -%}
+						<span class="wishlist-number abs-number bmt__abs-number fw-bold">0</span>
+					</div>
+					<span class="w100 db text-center fw-bold bmt__text">{{ 'general.accessibility.your_wishlist' | t }}</span>
+				</a>
+      {%- else -%}
+        <a href="{{ root_url }}" class="flex flex-align-hoz" title="{{ 'collections.product_item.wishlist' | t | escape }}">
+        	<div class="por flex">
+        		{%- render 'icon-home' with add_class: 'fw-bold bmt__icon' -%}
+        		<span class="ssw-counter-fave-menu abs-number wishlist-number bmt__abs-number" style="display:none;">0</span>
+        	</div>
+        	<span class="w100 db text-center fw-bold bmt__text">{{ 'general.accessibility.your_wishlist' | t }}</span>
+        </a> 
+      {%- endunless -%}
+		</div>
+	{%- endif -%}
+	{%- if settings.enable_compare -%}
+		<div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+			<a href="javascript:void(0);" class="header__link--compare flex flex-align-hoz" title="{{ 'general.accessibility.your_compare' | t | escape }}">
+				<div class="por flex">
+					{%- render 'icon-compare' with add_class: 'fw-bold bmt__icon' -%}
+					<span class="compare-number abs-number bmt__abs-number fw-bold">0</span>
+				</div>
+				<span class="w100 db text-center fw-bold bmt__text">{{ 'general.accessibility.your_compare' | t }}</span>
+			</a>
+		</div>
+	{%- endif -%}
+	{%- if template.name != 'cart' -%}
+	<div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+		<a href="{{ routes.cart_url }}" class="bt-sidebar-btn flex flex-align-hoz" data-target="#bt-sidebar-cart" data-placement="{{ right_holder }}">
+			<div class="por flex">
+				{%- render 'icon-cart-header' with add_class: 'fw-bold bmt__icon' -%}
+				<span class="cart-number abs-number bmt__abs-number fw-bold">{{ cart.item_count }}</span>
+			</div>
+			<span class="w100 db text-center fw-bold bmt__text">{{ 'layout.cart.title' | t }}</span>
+		</a>
+	</div>
+	{%- endif -%}
+	<div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+		{%- unless has_collection_filter -%}
+			<a href="{{ root_url }}" class="flex flex-align-hoz">
+				{%- render 'icon-home' with add_class: 'fw-bold bmt__icon' -%}
+				<span class="w100 db text-center fw-bold bmt__text">
+					{{ 'layout.navigation.shop' | t }}
+				</span>
+			</a>
+		{%- else -%}
+			<a href="javascript:void(0);" class="bt-sidebar-btn flex flex-align-hoz" data-target="#sidebar-filter" data-placement="{% unless enable_rtl %}left{% else %}right{% endunless %}" data-placement-mobile="up" title="{{ 'collections.general.filter' | t | escape }}">
+				<div class="por flex">
+					{%- render 'icon-filter' with add_class: 'fw-bold bmt__icon' -%}
+					<span class="filter-active-number abs-number bmt__abs-number fw-bold hide"></span>
+				</div>
+				<span class="w100 db text-center fw-bold bmt__text">
+					{{ 'collections.general.filter' | t }}
+				</span>
+			</a>
+		{%- endunless -%}
+	</div>
+	
+	{%- unless template.name == 'search' -%}
+		<div class="bmt__item gutter-ele-small-top gutter-ele-small-bottom text-center">
+			<a href="javascript:void(0);" class="search-full-trigger flex flex-align-hoz">
+				{%- render 'icon-search' with add_class: 'fw-bold bmt__icon' -%}
+				<span class="w100 db text-center fw-bold bmt__text">{{ 'layout.navigation.search' | t }}</span>
+			</a>
+		</div>
+	{%- endunless -%}
+</div>

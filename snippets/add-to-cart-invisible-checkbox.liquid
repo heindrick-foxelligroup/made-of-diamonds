@@ -1,0 +1,27 @@
+{%- comment -%}
+	This file to eliminate error, when in subox item user clicks ADD TO CART when page is not fully loaded
+	error appears, that no plan is selected for recharge item.
+{%- endcomment -%}
+
+{%- if template.name == 'product' -%}
+  {%- if product.type == "subscription box" -%}
+	<script>
+      /*document.querySelector(".add-cart-btn").addEventListener("click", function(event){
+        //event.stopImmediatePropagation();
+        event.preventDefault()
+        console.log('Zilvinas >>> prevent default');
+      });*/
+	$(".add-cart-btn").click(function(event) {
+      //event.preventDefault();
+      $(this).prop('disabled', true);
+      $('#hidden-buy-button-trigger').prop('checked', true);
+      console.log('Zilvinas >>> disabled');
+    });
+      $(document).ready(function() {
+        $(this).prop('disabled', true);
+        $('#hidden-buy-button-trigger').prop('checked', true);
+          console.log('Zilvinas >>> buy button enabled');
+      });
+    </script>
+  {%- endif -%}
+{%- endif -%}

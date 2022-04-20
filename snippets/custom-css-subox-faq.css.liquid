@@ -1,0 +1,94 @@
+{%- comment -%} 
+  Custom CSS for product FAQ pages.
+  Custom selectors starts with "fox-"
+
+  Structure:
+	overwrite theme files
+	overwrite apps files
+	new custom elements
+{%- endcomment -%}
+
+<style>
+  
+  /***** Overwrite theme styles *****/
+  /***** END OF Overwrite theme styles *****/
+
+  /***** Overwrite apps styles *****/
+  /***** END OF Overwrite apps styles *****/
+
+  /***** CSS for new/custom elements *****/
+
+  .tab-pane input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  /* Accordion styles */
+  .tab-pane .tabs {
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .tab-pane .tab {
+    width: 100%;
+    color: #000;
+    overflow: hidden;
+    position: relative;
+  }
+  .tab-pane .tab:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .tab-pane .tab-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    /* Icon */
+  }
+  .tab-pane .tab-label:hover {
+    background-color: #B3DED8;
+    color: #fff;
+  }
+  .tab-pane .tab-label::after {
+    content: "❯";
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    transition: all 0.35s;
+  }
+  .tab-pane .tab-content {
+    max-height: 0;
+    padding: 0 1em;
+    color: #2c3e50;
+    background: white;
+    transition: all 0.35s;
+  }
+  .tab-pane .tab-close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    font-size: 0.75em;
+    background: #2c3e50;
+    cursor: pointer;
+  }
+  .tab-pane .tab-close:hover {
+    background: #1a252f;
+  }
+  .tab-pane input:checked + .tab-label {
+    background: hsl(76 59% 55%);
+    color: #fff; 
+  }
+  .tab-pane input:checked + .tab-label::after {
+    transform-origin: center;
+    transform: rotate(90deg);
+  }
+  .tab-pane input:checked ~ .tab-content {
+    max-height: 100vh;
+    padding: 1em;
+  }
+
+  /***** END OF CSS for new/custom elements *****/
+</style>
+
+

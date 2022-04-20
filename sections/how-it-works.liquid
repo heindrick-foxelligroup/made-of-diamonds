@@ -1,0 +1,549 @@
+{% comment %}
+******************************************
+	Info:
+		How it works section fully customizable
+
+	  
+    Author: Zilvinas Vaisnoras
+    Date created: 2022-01-09
+    Included in: templates/product.subscription-product.json
+******************************************
+{% endcomment %}
+
+{%- if section.settings.enable_on_mobile == true -%}
+
+<style>
+  
+  #{{section.id}}.mobile {
+   background: #FFF3F5;
+  }
+  
+  #{{section.id}}.mobile,
+  #{{section.id}}.mobile .wrapper {
+    position: relative;
+  }
+  
+  #{{section.id}}.mobile .triangle-middle {
+    position: absolute;
+    top: 36%;
+    right: 0;
+    border-style: solid;
+    border-width: 400px 160vw 500px 0;
+    border-color: transparent #fff transparent transparent;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  #{{section.id}}.mobile .title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #5C2F8D;
+    justify-content: center;
+	padding: 40px 20px;
+    background: #fff;
+  }
+  #{{section.id}}.mobile .text-wrapper {
+    font-size: 16px;
+    line-height: 20px;
+    color: #30454C;
+    max-width: 100%;
+    padding: 30px 30px 0 30px;
+  }
+  #{{section.id}}.mobile .text-item {
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  #{{section.id}}.mobile .text-item.third-item {
+    margin-bottom: 0;
+  }
+  #{{section.id}}.mobile .text-head {
+    font-size: 24px;
+    line-height: 32px;
+    color: #E84C35;
+    font-weight: 900;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  #{{section.id}}.mobile .text-head-title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 22px;
+    text-align: center;
+    color: #FF4367;
+    padding: 20px 20px 0 20px;
+    text-transform: uppercase;
+  }
+  
+  #{{section.id}}.mobile .text-head-img-wrapper img {
+	width: 100%;
+  }
+  
+  #{{section.id}}.mobile .text-content {
+  	/*padding: 0 1vh;*/
+  }
+  
+  #{{section.id}}.mobile .text-content-text__desc {
+    font-family: Caveat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 0.03em;
+    color: #FF4367;
+    padding: 20px 0;
+  }
+  
+  #{{section.id}}.mobile .text-content-text__bullets {
+    font-size: 18px;
+    line-height: 24px;
+    color: #323050;
+    font-weight: initial;
+    /*padding: 0 30px 0 0;*/
+  }
+  #{{section.id}}.mobile .text-content-text__bullets ul {
+   list-style: none;
+   padding: 10px;
+  }
+  
+  #{{section.id}}.mobile .text-content-text__bullets ul li {
+    padding: 6px 0;
+  }
+  
+  #{{section.id}}.mobile .text-content-text__bullets ul li:before {
+    content: "\2022";
+    color: #FF4367;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 4px 0 -10px;
+	font-size: 20px;
+  }
+  
+  @media only screen and (max-width: 579px){
+    #{{section.id}}.mobile .text-head-title {
+      padding: 0;
+    } 
+    #{{section.id}}.mobile .text-head {
+      justify-content: left;
+    }
+   }
+  @media only screen and (max-width: 430px){
+	#{{section.id}}.mobile .flex-container {
+      justify-content: start;
+    }
+    #{{section.id}}.mobile .main-image-wrapper {
+      margin-left: -50px;
+    }
+    #{{section.id}}.mobile .main-image {
+      width: 100%;
+    }
+    #{{section.id}}.mobile .img-arrow {
+      position: absolute;
+      bottom: -10px;
+      right: -180px;
+      height: 130px;
+    }
+    #{{section.id}}.mobile .text-content-text__bullets {
+      font-size: 16px;
+    }
+    #{{section.id}}.mobile .text-content-text__bullets ul {
+      padding: 0;
+    }
+  }
+  	
+</style>
+
+<div id="{{section.id}}" class="mobile section-how-it-works fox-hide--medium-up">
+  <div class="triangle-middle"></div>
+  <div class="wrapper">
+    <div class="flex title fox-uppercase">
+       	How it works
+    </div>
+    <div class="flex text-wrapper">
+    	<div class="flex text-item first-item">	
+          <div class="flex text-head">
+             <div class="flex text-head-title fox-uppercase">
+              You subscribe
+            </div>
+            <div class="flex text-head-img-wrapper">
+            	<img class="text-head-img lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/how-it-works-desk-1.png" loading="lazy"/>
+            </div>
+          </div>
+          <div class="flex text-content">
+            <div class="text-content-text__desc">
+              Subscribe today and get ready to experience a new way of mindful relaxation! 
+            </div>
+            <div class="text-content-text__bullets">
+              <ul>
+                <li>Each month get all you need for a whole new project in a single box! <br>All tools included</li>
+                <li>We’ll ship your first box immediately – have it in your hands in the next <br>2-6 days</li>
+                <li>Cancel anytime, for any reason.</li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="flex text-item second-item">	
+          <div class="flex text-head">
+            <div class="flex text-head-title fox-uppercase">
+              We curate
+            </div>
+            <div class="flex text-head-img-wrapper">
+            	<img class="text-head-img lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/how-it-works-desk-2.png" loading="lazy"/>
+            </div>
+          </div>
+          <div class="flex text-content">
+            <div class="text-content-text__desc">
+              Sit back, relax, and let us curate your first box!  
+            </div>
+            <div class="text-content-text__bullets">
+              Every month you’ll find:
+              <ul>
+                <li>A soft canvas</li>
+                <li>Plenty of sparkly diamonds</li>
+                <li>Handy application tools</li>
+                <li>High-quality application wax</li>
+                <li>Easy to follow step-by-step guide.</li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="flex text-item third-item">	
+          <div class="flex text-head">
+            <div class="flex text-head-title fox-uppercase">
+              You enjoy
+            </div>
+            <div class="flex text-head-img-wrapper">
+            	<img class="text-head-img lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/how-it-works-desk-3.png" loading="lazy"/>
+            </div>
+          </div>
+          <div class="flex text-content">
+            <div class="text-content-text__desc">
+              Dedicate time to yourself and get ready to:
+            </div>
+            <div class="text-content-text__bullets">
+              <ul>
+                <li>Unwind with a new relaxing hobby</li>
+                <li>Build a new mindful habit by making art</li>
+                <li>Wave boredom goodbye with new DYI projects every month</li>
+                <li>Decorate your home with shiny hand-made diamond art pieces!</li>
+                <li>Create handmade gifts for your loved ones! No need to think about what to get them again.</li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}
+
+{%- if section.settings.enable_on_desktop == true -%}
+
+<style>
+  
+  #{{section.id}}.desktop {
+   background: #FFF3F5;
+  }
+  
+  #{{section.id}}.desktop,
+  #{{section.id}}.desktop .wrapper {
+    position: relative;
+  }
+  
+  #{{section.id}}.desktop .triangle-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 110vw 300px 0;
+    border-color: transparent #fff transparent transparent;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  #{{section.id}}.desktop .triangle-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 0 220px 100vw;
+    border-color: transparent transparent #fff transparent;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  #{{section.id}}.desktop .title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #5C2F8D;
+    justify-content: center;
+	padding: 40px 20px;
+  }
+  #{{section.id}}.desktop .main-image-wrapper {
+    align-items: center;
+  }
+  
+  #{{section.id}}.desktop .text-wrapper {
+    font-size: 18px;
+    line-height: 24px;
+    color: #323050;
+    padding: 30px 0 50px 30px;
+    flex-flow: column;
+    max-width: 1100px;
+    margin: auto;
+    align-items: start;
+  }
+  #{{section.id}}.desktop .text-item {
+    width: 100%;
+    width: 100%;
+    padding: 0 30px;
+  }
+  
+  #{{section.id}}.desktop .text-item:not(:first-child) {
+    margin-top: 60px;
+  }
+  
+  #{{section.id}}.desktop .text-item > div {
+      padding: 10px;
+  }
+  
+  #{{section.id}}.desktop .text-head {
+    width: 40%;
+  }
+
+  #{{section.id}}.desktop .text-head-title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: 0.05em;
+    color: #FF4367;
+    text-align: left;
+  }
+  
+  #{{section.id}}.desktop .text-head-img-wrapper img {
+	width: 100%;
+    height: auto;
+    position: relative;
+    top: -48px;
+    object-fit: contain;
+  }
+  
+  #{{section.id}}.desktop .text-content {
+    width: 60%;
+  }
+  
+  #{{section.id}}.desktop .text-content-text__desc {
+    font-family: Caveat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 30px;
+    letter-spacing: 0.03em;
+    color: #FF4367;
+    padding: 20px 0;
+    text-align: left;
+  }
+  
+  #{{section.id}}.desktop .text-content-text__bullets {
+    font-size: 18px;
+    line-height: 24px;
+    color: #323050;
+    font-weight: initial;
+    padding: 0 30px 0 0;
+  }
+  #{{section.id}}.desktop .text-content-text__bullets ul {
+   list-style: none;
+   padding: 10px;
+  }
+  
+  #{{section.id}}.desktop .text-content-text__bullets ul li {
+    padding: 6px 0;
+  }
+  
+  #{{section.id}}.desktop .text-content-text__bullets ul li:before {
+    content: "\2022";
+    color: #FF4367;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 4px 0 -10px;
+	font-size: 20px;
+  }
+  
+  @media only screen and (max-width: 579px){
+    #{{section.id}}.desktop .text-head-title {
+      padding: 0;
+    } 
+    #{{section.id}}.desktop .text-head {
+      justify-content: left;
+    }
+   }
+  @media only screen and (max-width: 400px){
+	#{{section.id}}.desktop .flex-container {
+      justify-content: start;
+    }
+  }
+  	
+</style>
+
+<div id="{{section.id}}" class="desktop section-how-it-works fox-hide--small">
+  <div class="triangle-top"></div>
+  <div class="triangle-bottom"></div>
+  <div class="wrapper">
+    <div class="flex title fox-uppercase">
+      How it works
+    </div>
+    <div class="flex text-wrapper">
+      <div class="flex text-item first-item">	
+          <div class="flex text-head">
+             <div class="flex text-head-title fox-uppercase">
+              You subscribe
+            </div>
+            <div class="text-content-text__desc">
+              Subscribe today and get ready to experience a new way of mindful relaxation! 
+            </div>
+            <div class="text-content-text__bullets">
+              <ul>
+                <li>Each month get all you need for a whole new project in a single box! All tools included</li>
+                <li>We’ll ship your first box immediately – have it in your hands in the next 2-6 days</li>
+                <li>Cancel anytime, for any reason.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex text-content">
+            <div class="flex text-head-img-wrapper">
+            	<img class="text-head-img lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/how-it-works-desk-1.png" loading="lazy"/>
+            </div>
+          </div>
+      </div>
+      <div class="flex text-item second-item">	
+          <div class="flex text-content">
+            <div class="flex text-head-img-wrapper">
+            	<img class="text-head-img lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/how-it-works-desk-2.png" loading="lazy"/>
+            </div>
+          </div>
+          <div class="flex text-head">
+            <div class="flex text-head-title fox-uppercase">
+              We curate
+            </div>
+            <div class="text-content-text__desc">
+              Sit back, relax, and let us curate your first box!  
+            </div>
+            <div class="text-content-text__bullets">
+              Every month you’ll find:
+              <ul>
+                <li>A soft canvas</li>
+                <li>Plenty of sparkly diamonds</li>
+                <li>Handy application tools</li>
+                <li>High-quality application wax</li>
+                <li>Easy to follow step-by-step guide.</li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="flex text-item third-item">	
+          <div class="flex text-head">
+            <div class="flex text-head-title fox-uppercase">
+              You enjoy
+            </div>
+            <div class="text-content-text__desc">
+              Dedicate time to yourself and get ready to:
+            </div>
+            <div class="text-content-text__bullets">
+              <ul>
+                <li>Unwind with a new relaxing hobby</li>
+                <li>Build a new mindful habit by making art</li>
+                <li>Wave boredom goodbye with new DYI projects every month</li>
+                <li>Decorate your home with shiny hand-made diamond art pieces!</li>
+                <li>Create handmade gifts for your loved ones! No need to think about what to get them again.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex text-content">
+            <div class="flex text-head-img-wrapper">
+            	<img class="text-head-img lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/how-it-works-desk-3.png" loading="lazy"/>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product - How it works",
+  "class": "how-it-works",
+  "settings": [
+    {
+      "type": "header",
+      "content": "How it works"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_on_mobile",
+      "label": "Enable on mobile",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_on_desktop",
+      "label": "Enable on desktop",
+      "default": false
+    },
+	{
+      "type": "text",
+      "id": "section_name",
+      "label": "Section name",
+      "default": "How it works"
+    },
+	{
+      "type": "image_picker",
+      "id": "bg_top_mobile",
+      "label": "Background top mobile"
+    },
+	{
+      "type": "image_picker",
+      "id": "bg_top_desktop",
+      "label": "Background top desktop"
+    },
+	{
+      "type": "image_picker",
+      "id": "main_image_mobile",
+      "label": "Main image mobile"
+    },
+	{
+      "type": "image_picker",
+      "id": "main_image_desktop",
+      "label": "Main image desktop"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How it works",
+      "category": "Collection",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

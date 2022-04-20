@@ -1,0 +1,25 @@
+{%- if thumbs_layout == 'grid' -%}
+	{%- assign use_slider = false -%}
+{%- else -%}
+	{%- assign use_slider = true -%}
+	{%- assign ov_slider = 5 -%}
+	{%- assign ov_slider_mobile = 5 -%}
+{%- endif -%}
+<div class="w100 flex flex-wrap flex-align-space-between flex-align-ver{% if thumbs_layout != 'ver_slider' %} distance-top-ele{% endif %}{% if use_slider and product.media.size > ov_slider_mobile %} product-single__thumbs-wrap{% endif %}{% if section.settings.enable_small_images == false %} hide{% endif %}{% if section.settings.hide_small_images_mb %} hidden-xs hidden-sm{% endif %}">
+	{%- if use_slider -%}
+	<button aria-label="button" class="slick-prev slick-arrow--single-thumbs slick-arrow slick-box{% if thumbs_layout == 'ver_slider' %} slick-arrow--single-thumbs-vertical{% endif %}{% if product.media.size <= ov_slider_mobile %} hide{% elsif product.media.size <= ov_slider %} hidden-md hidden-ld{% endif %}" style="margin-top:10px;width: 20px;position: relative;border:none;background:none;padding:0;"><span></span></button>
+	{%- endif -%}
+	<div class="pg__thumbs pg__thumbs--single grid pg__thumbs--large{% if use_slider %} pg__thumbs--slider re-calc-index{% if product.media.size > ov_slider_mobile %} pg__thumbs--slider-width{% endif %}{% if thumbs_layout == 'ver_slider' %} pg__thumbs--slider-vertical{% endif %}{% endif %}{% if no_wide == true or product.media.size > 5 %} no-wide{% endif %}">{%- comment -%}add class pg__thumbs--slider to display thumbs as slider{%- endcomment -%}
+		{%- render 'product-single-thumb' with product: product, media: featured_media, is_active: true, use_slider: use_slider, ov_slider: ov_slider, ov_slider_mobile: ov_slider_mobile, index: 1 -%}
+		{%- assign index = 1 -%}
+		{% for media in product.media %}
+			{%- if media != featured_media -%}
+				{%- assign index = index | plus: 1 -%}
+      	{%- render 'product-single-thumb' with product: product, media: media, is_active: false, use_slider: use_slider, ov_slider: ov_slider, ov_slider_mobile: ov_slider_mobile, index: index -%}
+      {%- endif -%}
+    {% endfor %}
+	</div>
+	{%- if use_slider -%}
+	<button aria-label="button" class="slick-next slick-arrow--single-thumbs slick-arrow slick-box{% if thumbs_layout == 'ver_slider' %} slick-arrow--single-thumbs-vertical{% endif %}{% if product.media.size <= ov_slider_mobile %} hide{% elsif product.media.size <= ov_slider %} hidden-md hidden-lg{% endif %}" style="margin-top:10px;width: 20px;position: relative;border:none;background:none;padding:0;"><span></span></button>
+	{%- endif -%}
+</div>

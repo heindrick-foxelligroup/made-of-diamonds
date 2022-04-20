@@ -1,0 +1,233 @@
+<div id="{{ section.id }}">
+  <div class="main-headline">
+    <div>FAQS</div>
+  </div>
+  <img class="lazyload divider" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/Vector_7.jpg?v=1637646925"/>
+
+  <div class="alt-faqs-accordeon__wrapper boxed">
+    <div class="faq__container faq-tab">
+      <div class="faq">
+        <div class="faq-question">
+          <input type="checkbox" id="Q-1">
+          <label class="tab-label accordion-tab-label" for="Q-1">
+            Shipping
+          </label>
+          <p class="faq-answer-new">
+            All our subscription boxes ship FREE anywhere in the US! Sign up today and your first box will be shipped immediately! You will receive your first box within 2-6 days and all following boxes will be shipped on the 7th of each month.
+          </p>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="faq-question">
+          <input type="checkbox" id="Q-2">
+          <label class="tab-label accordion-tab-label" for="Q-2">
+            Returns
+          </label>
+          <p class="faq-answer-new">
+            You're either fully satisfied... head over heels thrilled with your box, or just return it within 30 days for a full refund. Just shoot us an email or give us a call and we’ll send you a free of charge return label to ensure a hassle-free return.
+          </p>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="faq-question">
+          <input type="checkbox" id="Q-3">
+          <label class="tab-label accordion-tab-label" for="Q-3">
+            FAQS
+          </label>
+          <div class="faq-answer-new">
+            <div class="tab-pane rte rte-wrapped">
+            {{ pages.frequently-asked-questions.content }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  
+  #{{ section.id }}{
+   	max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #{{ section.id }} .main-headline{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    color: #245E8D;
+    margin-top: 20px;
+    max-width: 610px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #{{ section.id }} .divider{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    width: 400px;
+    min-width: 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    display: block;
+  }
+  
+  #{{section.id}} .boxed{
+   	background-color: #fff;
+    padding: 30px 18px 39px 18px;
+    margin: 0px 12px 0 12px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 24px); 
+  }
+  
+:is(.template-page, .tab-pane) input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  /* Accordion styles */
+  :is(.template-page, .tab-pane) .tabs {
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  :is(.template-page, .tab-pane) .tab {
+    width: 100%;
+    color: #000;
+    overflow: hidden;
+    position: relative;
+  }
+  :is(.template-page, .tab-pane) .tab:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  :is(.template-page, .tab-pane) .tab-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    /* Icon */
+  }
+  :is(.template-page, .tab-pane) .tab-label:hover {
+    background-color: #245E8D;
+    color: #fff;
+  }
+  :is(.template-page, .tab-pane) .tab-label::after {
+    content: "❯";
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    transition: all 0.35s;
+  }
+  :is(.template-page, .tab-pane) .tab-content {
+    max-height: 0;
+    padding: 0 1em;
+    color: #2c3e50;
+    background: white;
+    transition: all 0.35s;
+  }
+  :is(.template-page, .tab-pane) .tab-close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    font-size: 0.75em;
+    background: #2c3e50;
+    cursor: pointer;
+  }
+  :is(.template-page, .tab-pane) .tab-close:hover {
+    background: #1a252f;
+  }
+  :is(.template-page, .tab-pane) input:checked + .tab-label {
+    background: #245E8D;
+    color: #fff; 
+  }
+  :is(.template-page, .tab-pane) input:checked + .tab-label::after {
+    transform-origin: center;
+    transform: rotate(90deg);
+  }
+  :is(.template-page, .tab-pane) input:checked ~ .tab-content {
+    max-height: inherit;
+    padding: 1em;
+  }
+  
+  
+      /* alt-faqs-accordeon__wrapper */
+    .alt-faqs-accordeon__wrapper {
+      padding-bottom: 0!important;
+      margin-bottom: 20px!important; }
+    
+    .alt-faqs-accordeon__wrapper .faq { cursor: pointer; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 15px 0; 
+      overflow: hidden; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > input { display: none; }
+
+    .alt-faqs-accordeon__wrapper .faq-question > label {
+      position: relative;
+      display: block;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > label:after {
+      position: absolute;
+      right: 0;
+      top: -2px;
+      cursor: pointer;
+      -webkit-transition: 3s ease-in-out;
+      -o-transition: 3s ease-in-out;
+      transition: 3s ease-in-out; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > label:after { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/plus_1.svg?v=1622479077"); }
+    .alt-faqs-accordeon__wrapper .faq-question > input:checked + label:after { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/plus_2.svg?v=1622479077"); }
+
+    .alt-faqs-accordeon__wrapper .faq-answer-new { 
+      font-weight: 300;
+      margin: 0!important;
+      max-height:0;
+      font-size: 16px;
+      line-height: 24px;;
+      color: transparent!important;
+      -webkit-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > input:checked ~ .faq-answer-new {
+        max-height: inherit;
+        padding-top: 10px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        color: var(--dark-grey-content-color)!important; }
+
+    .alt-faqs-accordeon__wrapper .faq-question:last-of-type .faq-answer-new { overflow: auto; }
+
+    .alt-faqs-accordeon__wrapper .js-tabs__text.faq-tab { margin:0!important; }
+
+    .alt-faqs-accordeon__wrapper .faq__container > .faq-category-title { display: none; }
+
+</style>
+{% schema %}
+  {
+    "name": "Product - FAQ",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product - FAQ",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

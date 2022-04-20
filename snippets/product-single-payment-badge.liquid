@@ -1,0 +1,29 @@
+{%- assign has_payment_badge = false -%}
+{%- capture payment_badge -%}
+	{%- unless obj.settings.trusted_payment_badge -%} 
+    {% unless shop.enabled_payment_types == empty %}
+      {%- assign has_payment_badge = true -%}
+      <span class="gutter-ele-small-bottom pg__payment-label dib blur-color text-uppercase">{{ 'general.payment.method' | t }}:</span>
+      <ul class="payment-icons list--inline dib" style="margin-left:15px;">
+        {%- for type in shop.enabled_payment_types -%}
+          <li class="payment-icon">
+            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {% endunless %}
+  {%- else -%}
+    {%- assign has_payment_badge = true -%}
+    {%- assign img_url = obj.settings.trusted_payment_badge | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    <div class="img-container" style="padding-top:{{ 1 | divided_by: obj.settings.trusted_payment_badge.aspect_ratio | times: 100}}%;">
+      <img data-aspectratio="{{ obj.settings.trusted_payment_badge.aspect_ratio }}"
+        data-src="{{ img_url }}"
+        data-sizes="auto"{% render 'img-one-pixel' %} alt="{{ obj.settings.trusted_payment_badge.alt | escape }}" class="img-responsive lazyload img-abs w100 button--rad"/>
+    </div>
+  {%- endunless -%}
+{%- endcapture -%}
+{%- if has_payment_badge -%}
+<div class="gutter-ele-top product-single__sub-info">
+  {{ payment_badge | raw }}
+</div>
+{%- endif -%}

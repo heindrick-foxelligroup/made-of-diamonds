@@ -1,0 +1,10 @@
+{%- if show_wishlist_btn and settings.enable_wishlist -%}
+  {%- if settings.wishlist_type == "growave" and settings.enable_growave %}
+    {% capture the_snippet_fave_icon %}{% render 'ssw-widget-faveicon' with product.id %}{% endcapture %}
+    {% unless the_snippet_fave_icon contains 'Liquid error' %}
+    {{ the_snippet_fave_icon }}
+    {% endunless %} 
+  {% else %}
+    <a title="{{ 'collections.product_item.wishlist' | t | escape }}" href="{{ product.handle }}" class="button button--wl flex{% if btn_style_classes %} {{ btn_style_classes }}{% endif %}" data-product-title="{{ product.title | escape }}">{% render 'icon-product-wishlist' %}{%- unless hide_wishlist_text -%} {{ 'collections.product_item.wishlist'|t }}{%- endunless -%}</a>
+  {% endif %}
+{%- endif -%}

@@ -1,0 +1,7 @@
+{%- if template.name != 'cart' -%}
+	{%- render 'sidebar-cart' with enable_rtl: enable_rtl, left_holder: left_holder, right_holder: right_holder, root_url: root_url -%}
+{%- endif -%}
+{%- render 'sidebar-mobile-nav' with enable_rtl: enable_rtl, left_holder: left_holder, right_holder: right_holder, root_url: root_url -%}
+{%- if shop.customer_accounts_enabled and use_growave_account_app == false -%}
+	{%- render 'sidebar-login' with use_growave_account_app: use_growave_account_app, enable_rtl: enable_rtl, left_holder: left_holder, right_holder: right_holder, root_url: root_url -%}
+{%- endif -%}

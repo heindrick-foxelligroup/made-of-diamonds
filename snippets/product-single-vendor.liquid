@@ -1,0 +1,1 @@
+<a href="{{ product.vendor | url_for_vendor }}" class="{% unless top_gutter %}gutter-ele-top-tbs{% else %}gutter-ele-top{% endunless %}{% if gutter_bottom %} gutter-ele-bottom{% endif %} db w100 pg__vendor--single" title="{{ custom_text | default: product.vendor | escape }}">{{ custom_text | default: product.vendor }}</a>

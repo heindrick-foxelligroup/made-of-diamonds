@@ -1,0 +1,9 @@
+{%- case input_vendor -%}
+
+      {%- when "Made of Diamonds" -%}
+          {%- assign shipping_time = "2-6 days" -%}
+      {%- else -%}
+          {%- assign shipping_time = "8-14 days" -%}
+  {%- endcase -%}
+
+{{ shipping_time }}

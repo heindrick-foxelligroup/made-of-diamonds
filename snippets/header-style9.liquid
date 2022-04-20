@@ -1,0 +1,105 @@
+<div class="container-fluid">
+	<div class="row header__wrap{% if settings.use_sticky %} use-sticky--desktop{% endif %} flex flex-align-ver">
+		<div class="col-xs-1">
+			<div class="header__wrap-logo text-center">{% render 'header__logo' %}</div>
+		</div>
+		<div class="col-xs-11 position-static">
+			<div class="header__right position-static">
+				<div class="header__top w100 flex flex-align-space-between flex-align-ver{% if settings.use_sticky %} hide-in-sticky{% endif %}">
+					{%- if settings.header_text != blank -%}
+					<div class="header__link-text header__top__typo rte">{{ settings.header_text | raw }}</div>
+					{%- endif -%}
+					<div class="header__top__right flex">
+						{%- render 'language-picker', data_group: 'header__links', show_language_icon: false, hide_language_code: false, wrap_class: 'header__top__ele dib', flex_trigger: true, addition_classes: 'header__top__typo bt-dropdown__trigger--arrow', no_full_height: true -%}
+						{%- render 'currency-switcher', flex_trigger: true, addition_classes: 'header__top__typo bt-dropdown__trigger--arrow', add_wrap_classes: 'dib header__top__ele', data_group: 'header__links', currency_dropdown_align: 'bt-dropdown__content--auto-center', no_full_height: true -%}
+						{%- render 'header-social-links', add_wrap_classes: 'dib header__top__ele' -%}	
+					</div>
+				</div>
+				<div class="header__bottom w100 flex flex-align-space-between">
+					{% section 'navigation' %}
+					<div class="header__bottom__right flex flex-align-ver">
+						{%- if settings.enable_compare -%}
+							<a href="javascript:void(0);" class="header__link--compare header__bottom__ele header__bottom__typo por" title="{{ 'collections.product_item.compare' | t | escape }}">
+								{%- render 'icon-compare' -%}
+								<span class="compare-number abs-number fw-bold"></span>
+							</a>
+						{%- endif -%}
+						{%- if settings.enable_wishlist -%}
+							{%- unless settings.wishlist_type == 'growave' and settings.enable_growave -%}
+	              <a href="javascript:void(0);" class="por header__link--wishlist header__bottom__ele header__bottom__typo" title="{{ 'collections.product_item.wishlist' | t | escape }}">
+	                {%- render 'icon-wishlist' -%}
+	                <span class="wishlist-number abs-number"></span>
+	              </a> 
+              {%- else -%}
+	              <a href="{{ root_url }}pages/wishlist" class="por header__bottom__ele header__bottom__typo" title="{{ 'collections.product_item.wishlist' | t | escape }}">
+	                {%- render 'icon-wishlist' -%}
+	                <span class="ssw-counter-fave-menu abs-number" style="display:none;">0</span>
+	              </a>
+              {%- endunless -%}
+						{%- endif -%}
+						<a href="/search" class="header__bottom__ele header__bottom__typo search-full-trigger" title="{{ 'general.search.placeholder' | t | escape }}">
+							{% render 'icon-search' %}
+						</a>
+						{%- if shop.customer_accounts_enabled -%}
+							{% unless use_growave_account_app %}
+								<div class="bt-dropdown h100 flex flex-align-ver header__bottom__ele{% if customer %} por{% endif %}" data-group="header__links">
+									{%- if customer -%}
+										<a class="bt-dropdown__trigger header__bottom__typo" title="{{ 'customer.account.title' | t | escape }}" href="{{ routes.account_url }}">
+											{%- render 'icon-account' -%}
+										</a>
+										<div class="bt-dropdown__content bt-dropdown__content--auto-center" style="white-space:nowrap;min-width:auto;">
+											<a href="{{ routes.account_url }}" title="{{ 'customer.account.title' | t | escape }}" class="db w100 gutter-ele-top gutter-ele-bottom">
+												{% render 'icon-account' %}&nbsp;<span>{{ 'customer.account.title' | t }}</span>
+											</a>
+											<a href="{{ routes.account_logout_url }}" title="{{ 'layout.customer.log_out' | t | escape }}" class="db w100 gutter-ele-top gutter-ele-bottom">
+												{%- render 'icon-sign-out' -%}&nbsp;<span>{{ 'layout.customer.log_out' | t }}</span>
+											</a>
+										</div>
+									{%- else -%}
+										<a class="bt-dropdown__trigger header__bottom__typo" title="{{ 'customer.login.title' | t | escape }}" href="{{ routes.account_login_url }}">
+											{%- render 'icon-account' -%}
+										</a>
+										<div class="bt-dropdown__content bt-dropdown__content--right bt-dropdown__content--right-fluid">
+											{%- render 'login-form-header', id: 'customer_login_header', suffix_id_field: 'Header', left_holder: left_holder, right_holder: right_holder -%}
+										</div>
+									{%- endif -%}
+								</div>
+							{%- else -%}
+								<div id="ssw-topauth" class="ssw-topauth flex flex-align-ver header__bottom__ele{% if customer %} por{% endif %}">
+                  {% if customer %}
+	                  <div class="ssw-tprofile ssw-dropdown">
+	                    <a class="ssw-dropdown-toggle header__bottom__typo" data-toggle="ssw-dropdown" href="javascript:void(0);">
+	                      <i class="ssw-icon-user"></i>
+	                      {{ customer.first_name }}
+	                      {% if customer.last_name != 'Unknown' %}
+	                      {{ customer.last_name | slice:0 | upcase }}.
+	                      {% endif %}
+	                      <i class="ssw-icon-down-open-big"></i>
+	                    </a>
+	                    <ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+	                      <li id="customer_myorders_li"><a tabindex="-1" href="{{ root_url }}account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+	                      {% render 'ssw-widget-dropdown' %}
+	                      <li class="ssw-divider"></li>
+	                      <li><a id="customer_logout_link" tabindex="-1" href="{{ root_url }}account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+	                    </ul>
+	                  </div>
+                  {% else %}
+                  	<a id="customer_login_link" class="header__bottom__typo" href="#" onclick="event.preventDefault()" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')">
+											{%- render 'icon-account' -%}
+										</a>
+                  {% endif %}
+                </div>	
+							{%- endunless -%}	
+						{%- endif -%}
+						{%- render 'header-cart', data_group: 'header__links', cart_dropdown_direction: 'bt-dropdown__content--right bt-dropdown__content--right-fluid', addition_classes: 'header__bottom__ele header__bottom__typo flex flex-align-ver flex-align-space-between', show_cart_text: true -%}
+						{%- comment -%}
+                      	<a class="fox-element" href="/products/ms-sub-box" title="GET STARTED">
+                          <span class="fox-element header__cart--button-join">GET STARTED</span>
+                        </a>
+                        {%- endcomment -%}
+                  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,731 @@
+{%- render 'section-background-start' -%}
+{%- liquid 
+  unless settings.enable_rtl and settings.rtl_language_codes contains request.locale.iso_code
+    assign left_holder = 'left'
+    assign right_holder = 'right'
+    assign enable_rtl = false
+  else
+    assign left_holder = 'right'
+    assign right_holder = 'left'
+    assign enable_rtl = true
+  endunless
+-%}
+<div id="quotes_{{ section.id }}" class="container{% if section.settings.full_width %}-fluid{% endif %}{% render 'section-gutters-nobkg' %} bq" data-section-id="{{ section.id }}" data-section-type="quotes">
+  <div class="row">
+    <div class="bq__col bq__col--right col-xs-12 col-sm-4 f-{{ right_holder }}">
+      {%- if section.settings.title != blank or section.settings.sub_title != blank or section.settings.btn_text != blank -%}
+      <div class="bq__text-block big-gutter-bottom">
+        {%- if section.settings.sub_title != blank -%}
+        <p class="secondary-font margin0 gutter-bottom bq__sub-title-{{ section.id }}" style="color:{{ section.settings.subtitle_color }};">{{ section.settings.sub_title }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+        <h2 class="margin0 gutter-bottom bq__title-{{ section.id }}" style="color:{{ section.settings.title_color }};">{{ section.settings.title | raw }}</h2>
+        {%- endif -%}
+        {%- if section.settings.btn_text != blank -%}
+        <a class="button flex-inline flex-align-ver lh1 bq__btn-text-{{ section.id }} distance-top-ele button--style1 button--transparent" href="{{ section.settings.btn_link | default: '#' }}" title="{{ section.settings.btn_text | escape }}" style="font-size:{{ section.settings.btn_fs }}px;">{{ section.settings.btn_text }}{%- unless enable_rtl -%}{%- render 'icon-chevron-right' -%}{%- else -%}{%- render 'icon-chevron-left' -%}{%- endunless -%}</a>
+        {%- endif -%}
+      </div>
+      {%- endif -%}
+      <div class="big-gutter-top big-gutter-bottom">
+        {%- render 'banner-quotes-image' with 
+          image: section.settings.image_3,
+          link: section.settings.link_3,
+          btn_text: section.settings.btn_text_3,
+          section_id: section.id,
+          index: 3
+        -%}
+      </div>
+      <div class="big-gutter-top">
+        {%- if section.settings.quote_heading != blank -%}
+        <h5 class="margin0 gutter-bottom" style="color:{{ section.settings.quote_heading_color }};font-size:{{ section.settings.quote_heading_fs }}px;">{{ section.settings.quote_heading }}</h5>
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <div class="quotes-slider quotes-slider-{{ section.id }} use-slider grid grid--full" data-slider='{"slidesToShow": 1,"arrows":false,"dots":true,"responsive":[{"breakpoint":767,"settings":{"slidesToShow":1}}]}'>
+            {%- for item in section.blocks -%}
+            <blockquote class="grid__item{% if forloop.index > 1 %} ov-slider-tb ov-slider-mb{% endif %} por quotes-slider__blockquote" {{ block.shopify_attributes }}>
+              <span class="quote-icon">{% render 'icon-quote' %}</span>
+              <div class="bq__quote-{{ section.id }} secondary-font w100 big-gutter-bottom">{{ item.settings.quote }}</div>
+              <span class="bq__quote-author-{{ section.id }} fw-bold">{{ item.settings.title }}</span>
+            </blockquote>
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          {% render 'no-blocks' %}
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="bq__col bq__col--left col-xs-12 col-sm-7 f-{{ left_holder }}">
+      <div class="big-gutter-bottom{% if section.settings.image_bkg_1 != blank %} bq__bkg-{{ section.id }}-1 lazyload{% endif %} distance-bottom-ele"{% if section.settings.image_bkg_1 != blank %} data-bgset="{% render 'bgset' with section.settings.image_bkg_1 as image %}"
+       data-sizes="auto"{% endif %}>
+        {%- render 'banner-quotes-image' with 
+          image: section.settings.image_1,
+          link: section.settings.link_1,
+          btn_text: section.settings.btn_text_1,
+          section_id: section.id,
+          index: 1
+        -%}
+      </div>
+      <div class="big-gutter-top{% if section.settings.image_bkg_2 != blank %} bq__bkg-{{ section.id }}-2 lazyload{% else %} big-gutter-bottom{% endif %} distance-bottom-ele"{% if section.settings.image_bkg_2 != blank %} data-bgset="{% render 'bgset' with section.settings.image_bkg_2 as image %}"
+       data-sizes="auto" data-index="-100"{% endif %}>
+        {%- render 'banner-quotes-image' with 
+          image: section.settings.image_2,
+          link: section.settings.link_2,
+          btn_text: section.settings.btn_text_2,
+          section_id: section.id,
+          index: 2
+        -%}
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="bq__col col-xs-12 col-sm-4 f-{{ left_holder }}">
+      <div class="big-gutter-top{% if section.settings.image_bkg_4 != blank %} bq__bkg-{{ section.id }}-4 lazyload{% endif %} distance-bottom-ele"{% if section.settings.image_bkg_4 != blank %} data-bgset="{% render 'bgset' with section.settings.image_bkg_4 as image %}"
+       data-sizes="auto" data-index="-100"{% endif %}>
+        {%- render 'banner-quotes-image' with 
+          image: section.settings.image_4,
+          link: section.settings.link_4,
+          btn_text: section.settings.btn_text_4,
+          section_id: section.id,
+          index: 4
+        -%}
+      </div>
+    </div>
+    <div class="bq__col col-xs-12 col-sm-7 big-gutter-top gutter-ele-top-mb f-{{ right_holder }}">
+      <div class="big-gutter-top big-gutter-bottom">
+        {%- render 'banner-quotes-image' with 
+          image: section.settings.image_5,
+          link: section.settings.link_5,
+          btn_text: section.settings.btn_text_5,
+          section_id: section.id,
+          index: 5
+        -%}
+      </div>
+    </div>
+    {%- if section.settings.bottom_text != blank -%}
+    <div class="big-gutter-top col-xs-12 text-center">
+      <h3 class="margin0 bg__bottom-text-{{ section.id }} bkg-end dib secondary-font">{{ section.settings.bottom_text | raw }}</h3>
+      {%- if section.settings.bottom_btn_text != blank -%}
+      <div class="big-gutter-top">
+        <a href="{{ section.settings.bottom_link | default: '#' }}" title="{{ section.settings.bottom_btn_text | escape }}" class="button flex-inline flex-align-ver lh1 bg__bottom-btn-{{ section.id }} button--style1 button--transparent">{{ section.settings.bottom_btn_text }}{%- unless enable_rtl -%}{%- render 'icon-chevron-right' -%}{%- else -%}{%- render 'icon-chevron-left' -%}{%- endunless -%}</a>
+      </div>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- render 'section-background-end' -%}
+{%- style -%}
+.bq__sub-title-{{ section.id }}{font-size:{{ section.settings.subtitle_fs_mb }}px;}
+.bq__title-{{ section.id }}{font-size:{{ section.settings.title_fs_mb }}px;line-height:1.5em;}
+.bq__btn-image-text-{{ section.id }}{position:absolute;bottom:20px;{{ left_holder }}:20px;box-shadow: 0px 0px 5px 0px {{ settings.color_general | color_modify: 'alpha', 0.1 }};}
+{%- if section.settings.image_bkg_1 != blank -%}.bq__bkg-{{ section.id }}-1{background-position: 100% 0px;padding-top: 35px;padding-{{ right_holder }}:37px;background-repeat:no-repeat;background-size:125px;}{%- endif -%}
+{%- if section.settings.image_bkg_2 != blank -%}.bq__bkg-{{ section.id }}-2{background-position: 100% 100%;padding-bottom: 30px;padding-{{ right_holder }}:37px;background-repeat:no-repeat;background-size:123px;}{%- endif -%}
+{%- if section.settings.image_bkg_4 != blank -%}.bq__bkg-{{ section.id }}-4{background-position: 100% 100%;padding-bottom:45px;padding-{{ right_holder }}:35px;background-repeat:no-repeat;background-size:80px;}{%- endif -%}
+@media(min-width: 768px){
+  .bq__sub-title-{{ section.id }}{font-size:{{ section.settings.subtitle_fs }}px;}
+  .bq__title-{{ section.id }}{font-size:{{ section.settings.title_fs }}px;}
+  {%- if section.settings.image_bkg_1 != blank -%}.bq__bkg-{{ section.id }}-1{padding-top: 50px;padding-{{ right_holder }}: 57px;background-size:190px;}{%- endif -%}
+  {%- if section.settings.image_bkg_2 != blank -%}.bq__bkg-{{ section.id }}-2{padding-bottom: 45px;padding-{{ right_holder }}: 57px;background-size:155px;}{%- endif -%}
+}
+{%- if section.settings.btn_text != blank -%}
+  .bq__btn-text-{{ section.id }}{color:{{ section.settings.btn_color }};border: 1px solid {{ section.settings.btn_color }};}
+{%- endif -%}
+{%- if section.settings.btn_text_1 != blank -%}
+  {%- render 'banner-quotes-image-style' with 
+    section_id: section.id,
+    index: 1,
+    color: section.settings.btn_color_1,
+    background: section.settings.btn_bkg_1,
+    font_size: section.settings.btn_fs_1,
+  -%}
+{%- endif -%}
+{%- if section.settings.btn_text_2 != blank -%}
+  {%- render 'banner-quotes-image-style' with 
+    section_id: section.id,
+    index: 2,
+    color: section.settings.btn_color_2,
+    background: section.settings.btn_bkg_2,
+    font_size: section.settings.btn_fs_2,
+  -%}
+{%- endif -%}
+{%- if section.settings.btn_text_3 != blank -%}
+  {%- render 'banner-quotes-image-style' with 
+    section_id: section.id,
+    index: 3,
+    color: section.settings.btn_color_3,
+    background: section.settings.btn_bkg_3,
+    font_size: section.settings.btn_fs_3,
+  -%}
+{%- endif -%}
+{%- if section.settings.btn_text_4 != blank -%}
+  {%- render 'banner-quotes-image-style' with 
+    section_id: section.id,
+    index: 4,
+    color: section.settings.btn_color_4,
+    background: section.settings.btn_bkg_4,
+    font_size: section.settings.btn_fs_4,
+  -%}
+{%- endif -%}
+{%- if section.settings.btn_text_5 != blank -%}
+  {%- render 'banner-quotes-image-style' with 
+    section_id: section.id,
+    index: 5,
+    color: section.settings.btn_color_5,
+    background: section.settings.btn_bkg_5,
+    font_size: section.settings.btn_fs_5,
+  -%}
+{%- endif -%}
+{%- if section.blocks.size > 0 -%}
+.bq__quote-{{ section.id }}{color:{{ section.settings.quote_text_color }};font-size:{{ section.settings.quote_text_fs }}px;line-height:1.3em;}
+.bq__quote-author-{{ section.id }}{color:{{ section.settings.quote_author_color }};font-size:{{ section.settings.quote_author_fs }}px;}
+.quotes-slider-{{ section.id }} .slick-dots{ {{ right_holder }}:15px;bottom:17px;width:auto;}
+@media(min-width: 768px){.quotes-slider-{{ section.id }} .slick-dots{bottom:27px;} }
+{%- endif -%}
+{%- if section.settings.bottom_text != blank -%}
+.bg__bottom-text-{{ section.id }}{color:{{ section.settings.bottom_text_color }};font-size:{{ section.settings.bottom_text_fs }}px;}
+.bg__bottom-btn-{{ section.id }}{color:{{ section.settings.bottom_btn_color }};border:1px solid {{ section.settings.bottom_btn_color }};font-size:{{ section.settings.bottom_btn_fs }}px;}
+{%- endif -%}
+.quotes-slider__blockquote{border:none;margin-bottom:0;}
+{%- endstyle -%}
+{% schema %}
+  {
+    "name": "Banner and Testimonials",
+    "class": "index-section",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "[View the guide for this section](https://beloria-docs.boostheme.com/dynamic-sections/banner-and-image/banner-and-quotes)"
+      },
+      {
+        "type": "header",
+        "content": "Background color"
+      },
+      {
+        "type": "checkbox",
+        "id": "bkg_enable",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "section_bkg",
+        "label": "Pick a color"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Wide display"
+      },
+      {
+        "type": "header",
+        "content": "Section Gutters"
+      },
+      {
+        "type": "checkbox",
+        "id": "top_gutter",
+        "label": "Enable top gutter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bottom_gutter",
+        "label": "Enable bottom gutter",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Text block"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Heading",
+        "default": "Testimonials"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub heading"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button link"
+      },
+      {
+        "type": "paragraph",
+        "content": "------- Colors -------"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "subtitle_color",
+        "label": "Subtitle",
+        "default": "#fe0200"
+      },
+      {
+        "type": "color",
+        "id": "btn_color",
+        "label": "Button",
+        "default": "#000"
+      },
+      {
+        "type": "paragraph",
+        "content": "------- Font size -------"
+      },
+      {
+        "type": "range",
+        "id": "title_fs_mb",
+        "label": "Title on mobile",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "title_fs",
+        "label": "Title on tablet and desktop",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 44
+      },
+      {
+        "type": "range",
+        "id": "subtitle_fs_mb",
+        "label": "Subtitle on mobile",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 13
+      },
+      {
+        "type": "range",
+        "id": "subtitle_fs",
+        "label": "Subtitle on tablet and desktop",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "btn_fs",
+        "label": "Button",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 13
+      },
+      {
+        "type": "header",
+        "content": "Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Pick an image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_bkg_1",
+        "label": "Pick a background image"
+      },
+      {
+        "type": "text",
+        "id": "btn_text_1",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "link_1",
+        "label": "The link"
+      },
+      {
+        "type": "color",
+        "id": "btn_color_1",
+        "label": "Button color",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "btn_bkg_1",
+        "label": "Button background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "btn_fs_1",
+        "label": "Button font size",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "header",
+        "content": "Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Pick an image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_bkg_2",
+        "label": "Pick a background image"
+      },
+      {
+        "type": "text",
+        "id": "btn_text_2",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "link_2",
+        "label": "The link"
+      },
+      {
+        "type": "color",
+        "id": "btn_color_2",
+        "label": "Button color",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "btn_bkg_2",
+        "label": "Button background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "btn_fs_2",
+        "label": "Button font size",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "header",
+        "content": "Image 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_3",
+        "label": "Pick an image"
+      },
+      {
+        "type": "text",
+        "id": "btn_text_3",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "link_3",
+        "label": "The link"
+      },
+      {
+        "type": "color",
+        "id": "btn_color_3",
+        "label": "Button color",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "btn_bkg_3",
+        "label": "Button background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "btn_fs_3",
+        "label": "Button font size",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "header",
+        "content": "Image 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_4",
+        "label": "Pick an image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_bkg_4",
+        "label": "Pick a background image"
+      },
+      {
+        "type": "text",
+        "id": "btn_text_4",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "link_4",
+        "label": "The link"
+      },
+      {
+        "type": "color",
+        "id": "btn_color_4",
+        "label": "Button color",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "btn_bkg_4",
+        "label": "Button background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "btn_fs_4",
+        "label": "Button font size",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "header",
+        "content": "Image 5"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_5",
+        "label": "Pick an image"
+      },
+      {
+        "type": "text",
+        "id": "btn_text_5",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "link_5",
+        "label": "The link"
+      },
+      {
+        "type": "color",
+        "id": "btn_color_5",
+        "label": "Button color",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "btn_bkg_5",
+        "label": "Button background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "btn_fs_5",
+        "label": "Button font size",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "header",
+        "content": "Testimonials settings"
+      },
+      {
+        "type": "text",
+        "id": "quote_heading",
+        "label": "Heading"
+      },
+      {
+        "type": "paragraph",
+        "content": "------- Colors -------"
+      },
+      {
+        "type": "color",
+        "id": "quote_heading_color",
+        "label": "Heading",
+        "default": "#fe0200"
+      },
+      {
+        "type": "color",
+        "id": "quote_text_color",
+        "label": "Quote",
+        "default": "#222222"
+      },
+      {
+        "type": "color",
+        "id": "quote_author_color",
+        "label": "Author name",
+        "default": "#979797"
+      },
+      {
+        "type": "paragraph",
+        "content": "------- Font size -------"
+      },
+      {
+        "type": "range",
+        "id": "quote_heading_fs",
+        "label": "Title",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "quote_text_fs",
+        "label": "Quote",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "quote_author_fs",
+        "label": "Author name",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "header",
+        "content": "The bottom text"
+      },
+      {
+        "type": "textarea",
+        "id": "bottom_text",
+        "label": "Your text"
+      },
+      {
+        "type": "text",
+        "id": "bottom_btn_text",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "bottom_link",
+        "label": "The link"
+      },
+      {
+        "type": "paragraph",
+        "content": "------- Colors -------"
+      },
+      {
+        "type": "color",
+        "id": "bottom_text_color",
+        "label": "Text",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "bottom_btn_color",
+        "label": "Button",
+        "default": "#000"
+      },
+      {
+        "type": "paragraph",
+        "content": "------- Font size -------"
+      },
+      {
+        "type": "range",
+        "id": "bottom_text_fs",
+        "label": "Text",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 38
+      },
+      {
+        "type": "range",
+        "id": "bottom_btn_fs",
+        "label": "Button",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 13
+      }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner and Testimonials",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote",
+            "settings": {
+              "title": "David",
+              "quote": "<p>These products are exactly looking for. Very nice design quality. I will be recommend to all friends for sure.<p>"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "title": "Kane",
+              "quote": "<p>These products are exactly looking for. Very nice design quality. I will be recommend to all friends for sure.<p>"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "title": "Susan",
+              "quote": "<p>These products are exactly looking for. Very nice design quality. I will be recommend to all friends for sure.<p>"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

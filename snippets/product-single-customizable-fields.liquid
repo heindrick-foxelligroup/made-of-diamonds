@@ -1,0 +1,4 @@
+{%- for i in (1..4) -%}
+	{%- assign enable_index = 'enable_field_' | append: i -%}
+	{%- render 'product-single-customizable-field' with index: i, obj: obj, product_form_id: product_form_id, enable_field: obj.settings[enable_index] -%}
+{%- endfor -%}

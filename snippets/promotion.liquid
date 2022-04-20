@@ -1,0 +1,100 @@
+{% comment %}
+******************************************
+  Last changes: 2022-03-18 Zilvinas
+******************************************
+{% endcomment %}
+
+{%- if settings.promo_enable -%}
+<div class="promo{% if settings.promo_bkg_image %} por{% endif %} close" style="transition:none;-webkit-transition:none;{% if settings.promo_bkg_color != blank and settings.promo_use_bkg_color %}background-color: {{ settings.promo_bkg_color }};{% endif %}">
+	{%- if settings.promo_bkg_image -%}
+		{%- assign img_url = settings.promo_bkg_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+		<img data-aspectratio="{{ settings.promo_bkg_image.aspect_ratio }}"
+	            data-src="{{ img_url }}"
+	            data-sizes="auto" class="w100 h100 center-block img-abs center-abs lazyload op1"{% render 'img-one-pixel' %} alt="{{ settings.promo_bkg_image.alt | escape }}" data-image-size="1x1"/>
+	{%- endif -%}            
+	<div class="container{% if settings.promo_wide %}-fluid{% endif %}">
+		<div class="row">
+			<div class="col-xs-12" style="z-index:3;">
+				<div class="promo__inner">
+					{%- assign promo_item_size = 0 -%}
+					{%- capture promo_items -%}
+						{%- assign index_list = ',1,2,3,4' | split: ',' -%}
+						{%- for index in index_list -%}
+							{%- assign promo_text_index = 'promo_text' | append: index -%}
+							{%- assign promo_text_url_index = 'promo_text_url' | append: index -%}
+							{%- assign promo_text_target_index = 'promo_text_target' | append: index -%}
+							{%- assign promo_button_enable_index = 'promo_button_enable' | append: index -%}
+							{%- assign promo_button_text_index = 'promo_button_text' | append: index -%}
+							{%- assign promo_button_url_index = 'promo_button_url' | append: index -%}
+							{%- assign promo_button_target_index = 'promo_button_target' | append: index -%}
+							{%- if settings[promo_text_index] != blank -%}
+                  				{%- for line_item in cart.items  -%}
+                  					{%- if line_item.product.type == "subscription box" -%}
+                  						{%- assign subscription_box_item_in_cart = true -%}
+                  						{%- break -%}
+                  					{%- endif  -%}
+                  				{%- endfor  -%}
+                  				{% if template contains "cart" and subscription_box_item_in_cart %}
+                  					{% capture final_promo_text = %}💎 Always Free Shipping 💎{% endcapture %}
+                                {% elsif template contains "product" and product.type == "subscription box" %}
+									{% capture final_promo_text = %}💎 Always Free Shipping 💎{% endcapture %}
+								{% else %}
+									{% capture final_promo_text = %} {{ settings[promo_text_index] | raw }} {% endcapture %}
+                  				{% endif %}
+								<div class="promo__itemPROMO_ITEM_HOLDER_CLASS">
+									<a class="promo__text" id="header-promo-text-line" 
+                                       href="{{ settings[promo_text_url_index] | default: '#' }}" 
+                                       {% if settings[promo_text_target_index] %} target="_blank"{% endif %} >
+                                       {{ final_promo_text }}
+                                    </a>
+									{%- if settings[promo_button_enable_index] -%}
+										<a href="{{ settings[promo_button_url_index] | default: '#' }}" class="promo__button button button--style2 hidden-xs"{% if settings[promo_button_target_index] %} target="_blank"{% endif %}>{{ settings[promo_button_text_index] }}</a>
+									{%- endif -%}
+								</div>
+								{%- assign promo_item_size = promo_item_size | plus: 1 -%}
+							{%- endif -%}
+						{%- endfor -%}
+					{%- endcapture -%}
+					<div class="promo__list flex-align-ver gutter-ele-small-top gutter-ele-small-bottom{% if promo_item_size > 1 %} flex-inline promo__list--marque{% else %} flex flex-align-hoz{% endif %}">
+						{%- if promo_item_size > 1 -%}
+							{{ promo_items | replace: 'PROMO_ITEM_HOLDER_CLASS',' promo__item--marque' }}
+						{%- else -%}
+							{{ promo_items | replace: 'PROMO_ITEM_HOLDER_CLASS','' }}	
+						{%- endif -%}
+					</div>
+				</div>
+				<a class="promo__close flex flex-align-ver flex-align-hoz h100" href="#"{% if settings.promo_text_color %} style="color:{{ settings.promo_text_color }};"{% endif %} title="close promotion">{%- render 'icon-close' -%}</a>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
+
+{% if template contains "cart" %}
+  <script>
+
+    function docReady(fn) {
+      if (document.readyState === "complete" || document.readyState === "interactive") {
+          setTimeout(fn, 1);
+      } else {
+          document.addEventListener("DOMContentLoaded", fn);
+      }
+    }
+
+    docReady(function() {
+      var removeItemFromCartButtonArray = document.getElementsByClassName('cart__remove');
+
+      for(let i = 0; i < removeItemFromCartButtonArray.length; i++) {
+        removeItemFromCartButtonArray[i].addEventListener("click", function() {
+          //console.log('Zilvinas >>> clicked element index' + i);
+          if (typeof window.jQuery !== 'undefined') {
+            $(document).ajaxStop(function () {
+              window.location.reload();
+            });
+          }
+          //document.getElementById('header-promo-text-line').innerHTML = 'Updated: {{ final_promo_text }}';
+        })
+      }
+    });
+  </script>
+{% endif %}

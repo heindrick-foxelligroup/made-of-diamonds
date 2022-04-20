@@ -1,0 +1,11 @@
+{%- if section.blocks.size > 0 or product.metafields.btt.customtabs != blank -%}
+<div class="pg__tabs-wrap gutter-top gutter-ele-top-tbs">
+  <div class="container{% render 'wide-css-class' %} big-gutter-top big-gutter-bottom">
+    <div class="row">
+      <div class="col-xs-12">
+        {%- render 'product-single-tabs-content' with product: product, description: description, center: center -%}
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}

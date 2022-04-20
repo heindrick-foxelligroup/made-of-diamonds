@@ -1,0 +1,60 @@
+{%- comment -%}
+  Custom CSS for product pages.
+  Custom selectors starts with "fox-"
+
+  Structure:
+	overwrite theme files
+	overwrite apps files
+	new custom elements
+{%- endcomment -%}
+
+<style>
+  
+  /***** Overwrite theme styles *****/
+  .product-single .pg__vendor--single,
+  .product-single .product-form .checkbox-one-line,
+  .product-single .product__policies {
+	display: none;
+  }
+
+  button.add-cart-btn {
+	font-family: var(--fm_general);
+  }
+
+  h1.product-single__title {
+	font-size: 20px;
+  }
+
+  .main-product-tabs-section .nav-tab-content .tab-pane {
+	text-align: center;
+  }
+  /***** END OF Overwrite theme styles *****/
+
+  /***** Overwrite apps styles *****/
+
+  /* hide Recharge widget */
+  .template-product .rc_popup__hover { display: none } 
+
+  /***** END OF Overwrite apps styles *****/
+
+  /***** CSS for new/custom elements *****/
+  /* Product page banner height fix */
+  .atc-badges-img {
+      height: auto; 
+      object-fit: contain;
+      margin-top: 20px;
+      padding: 0;
+      max-width: 100%;
+  }
+
+  .atc-badges-img-wrapper {
+      text-align: center;
+  }
+  
+  @media all and (min-width: 768px) {
+  	.atc-badges-img{
+      padding: 0 60px;
+    }
+  }
+  /***** END OF CSS for new/custom elements *****/
+</style>

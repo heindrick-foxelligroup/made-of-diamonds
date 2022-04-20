@@ -1,0 +1,103 @@
+
+<div id="{{ section.id }}" class="product-banner-section">
+  <div class="main-headline">
+    <div>The process couldn’t be easier!</div>
+  </div>
+  <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/divider_1.png?v=1637762888"/>
+  <div class="sub-headline">UNSUBSCRIBE ANY TIME FOR ANY REASON
+    <div>No questions asked!</div>
+  </div>
+</div>
+
+<style>
+  
+  .breadcrumbs{
+   	display: none !important; 
+  }
+  
+  #{{ section.id }} *{
+   
+  }
+  
+  #{{ section.id }} {
+   	max-width: 100vw;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #245E8D;
+  }
+  
+  #{{ section.id }} .main-headline{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    max-width: 610px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #{{ section.id }} .main-headline div{
+   
+  }
+  
+  #{{ section.id }} img{
+   	margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    width: 400px;
+    min-width: 0px;
+    display: block;
+  }
+  
+  #{{ section.id }} .sub-headline{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 42px;
+    /* identical to box height, or 120% */
+
+    text-align: center;
+
+    color: white; 
+    margin-bottom: 20px;
+  }
+  
+  
+  @media only screen and (max-width: 768px){
+    #{{ section.id }} img{
+      width: 250px;
+    }
+    
+    #{{ section.id }} .main-headline{
+    	font-size: 24px;
+      	line-height: 40px;
+    }
+    
+    #{{ section.id }} .sub-headline{
+     	font-size: 15px; 
+    }
+  
+      
+</style>
+
+{% schema %}
+  {
+    "name": "Product - Banner",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product - Banner",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

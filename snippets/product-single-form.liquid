@@ -1,0 +1,103 @@
+{% capture "form_classes" -%}
+  flex product-form product-form-{{ section.id }}{% if obj.settings.enable_payment_button and product.has_only_default_variant%} product-form--payment-button-no-variants{% endif %}{% if inline_button %} flex{% endif %}
+{%- endcapture %}
+{%- assign has_compare_btn = false -%}
+{%- assign has_wishlist_btn = false -%}
+{%- if obj.settings.show_compare_btn and settings.enable_compare -%}
+  {%- assign has_compare_btn = true -%}
+{%- endif -%}
+{%- if obj.settings.show_wishlist_btn and settings.enable_wishlist -%}
+  {%- assign has_wishlist_btn = true -%}
+{%- endif -%}
+{%- form 'product', product, data-productid: product.id, class:form_classes, novalidate: 'novalidate', id: product_form_id -%}
+
+<!-- Begin ReCharge code -->
+{% if product.available %}{% render 'subscription-product' with product as product %}{% endif %}
+<!-- End ReCharge code -->
+
+<div class="product-form__item product-form__item--quantity{% if align_center_button %} center-block text-center{% endif %} gutter-ele-top gutter-ele-bottom flex{% if inline_button %} product-form__item--inline{% endif %}">
+  {%- if obj.settings.show_quantity_selector -%}
+  <div class="qty-box qty-box--single flex flex-align-ver flex-align-space-between{% if full_qty_box %} qty-box--single-full{% endif %}">
+    <a href="#" class="qty-box__ctrl qty-box__ctrl--descrease flex flex-align-hoz flex-align-ver" aria-label="button">
+      {%- render 'icon-minus' -%}
+    </a>
+    <input type="number" name="quantity" value="1" min="1" class="qty-box__input w100{% if template.suffix != 'quick_view' %} qty-box__input--sync{% endif %} text-center h100 qty-box__input--single" aria-label="form" style="font-size:20px;">
+    <a href="#" class="qty-box__ctrl qty-box__ctrl--increase flex flex-align-hoz flex-align-ver" aria-label="button">
+      {%- render 'icon-plus' -%}
+    </a>
+  </div>
+  {%- endif -%}
+  {%- if current_variant.available -%}
+    {%- unless settings.pre_order_enable and product.first_available_variant.inventory_policy == 'continue' and product.first_available_variant.inventory_quantity <= 0 -%}
+      {%- assign cart_text = 'products.product.add_to_cart' | t -%}
+    {%- else -%}
+      {%- assign cart_text = 'products.product.pre_order' | t -%}
+    {%- endunless -%}
+  {%- else -%}
+    {%- assign cart_text = 'products.product.sold_out' | t -%}  
+  {%- endif -%}
+  <button class="button button--one-line add-cart-btn button--single-cart button--cart flex flex-align-ver flex-align-hoz add-cart-btn--state por button--single-cart-main button--single{% unless current_variant.available %} soldout{% endunless %} fw-bold text-uppercase h100" type="submit" name="add" title="{{ 'products.product.add_to_cart' | t | escape }}" aria-label="button"{% unless current_variant.available %} disabled="disabled"{% endunless %}>
+    {%- render 'icon-cart' -%}
+    <span{% if has_compare_btn or has_wishlist_btn or inline_button == false %} class="{% if has_compare_btn or has_wishlist_btn %}hidden-xs{% endif %}{% if inline_button and has_compare_btn and has_wishlist_btn %} hidden-md{% endif %}{% if inline_button == false %} hidden-md{% endif %}"{% endif %}>{{ cart_text }}</span>
+  </button>
+</div>
+{%- if has_compare_btn or has_wishlist_btn -%}
+  {%- if has_compare_btn -%}
+    <a title="{{ 'collections.product_item.add_to_compare' | t | escape }}" data-handle="{{ product.handle }}" href="#" class="button--style3 button--cp button--icon button--square flex flex-align-ver flex-align-hoz distance-top-ele button--single button--single-inline{% unless inline_button %} hidden-md hidden-lg{% endunless %} bt-tooltip" data-product-title="{{ product.title | escape }}">
+      {% render 'icon-compare' %}
+      <span class="bt-tooltip__inner bt-tooltip__inner--top">{{ 'collections.product_item.add_to_compare' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if has_wishlist_btn -%}
+    {%- unless settings.wishlist_type == "growave" and settings.enable_growave %}
+      <a title="{{ 'collections.product_item.add_to_wishlist' | t | escape }}" data-handle="{{ product.handle }}" href="#" class="button--style3 button--wl button--icon button--square w100 flex flex-align-ver flex-align-hoz distance-top-ele button--single button--single-inline{% unless inline_button %} hidden-md hidden-lg{% endunless %} bt-tooltip button--wl-text" data-product-title="{{ product.title | escape }}">
+        {% render 'icon-wishlist' %}
+        <span class="bt-tooltip__inner bt-tooltip__inner--top wishlist-text">{{ 'collections.product_item.add_to_wishlist' | t }}</span>
+      </a>    
+    {%- else -%}
+      {% capture the_snippet_fave %}{% render 'socialshopwave-widget-fave' %}{% endcapture %}
+      {% unless the_snippet_fave contains 'Liquid error' %}
+        {{ the_snippet_fave }}
+      {% endunless %}
+    {%- endunless -%}
+  {%- endif -%}  
+{%- endif -%}
+{%- if template.suffix != 'quick_view' and template.suffix != 'select_option' and obj.settings.show_dynamic_checkout -%}
+  <div class="shopify-payment-btn-wrap w100">
+    {{ form | payment_button }}
+  </div>
+{%- endif -%}
+{%- if template.suffix != 'quick_view' and template.suffix != 'select_option' -%}
+  {%- assign cart_terms_for_id = 'single-page-' | append: section.id -%}
+  {%- render 'cart-terms' with for_id: cart_terms_for_id, small_gutter_top: true -%}
+{%- endif -%}
+{%- unless inline_button -%}
+  {%- if has_compare_btn or has_wishlist_btn -%}
+  <div class="gutter-top gutter-ele-bottom hidden-xs hidden-sm w100">
+    {%- if has_compare_btn -%}
+    <a title="{{ 'collections.product_item.add_to_compare' | t | escape }}" data-handle="{{ product.handle }}" href="#" class="button--cp w100 db" data-product-title="{{ product.title | escape }}">{% render 'icon-compare' %}&nbsp;{{ 'collections.product_item.add_to_compare'|t }}</a>
+    {%- endif -%}
+    {%- if has_wishlist_btn -%}
+      {%- unless settings.wishlist_type == "growave" and settings.enable_growave %}
+        <a title="{{ 'collections.product_item.add_to_wishlist' | t | escape }}" data-handle="{{ product.handle }}" href="#" class="button--wl button--wl-text w100 db{% if has_compare_btn %} gutter-ele-top{% endif %}" data-product-title="{{ product.title | escape }}">{% render 'icon-wishlist' %}&nbsp;<span class="wishlist-text">{{ 'collections.product_item.add_to_wishlist'|t }}</span></a>
+      {%- else -%}
+        {% capture the_snippet_fave %}{% render 'socialshopwave-widget-fave' %}{% endcapture %}
+        {% unless the_snippet_fave contains 'Liquid error' %}
+          {{ the_snippet_fave }}
+        {% endunless %}    
+      {%- endunless -%}
+    {%- endif -%}
+  </div>
+  {%- endif -%}
+{%- endunless -%}  
+{%- if template.suffix != 'quick_view' and template.suffix != 'select_option' and obj.settings.enable_shop_pay_banner -%}
+<div class="gutter-ele-top gutter-ele-bottom">
+  {{ form | payment_terms }}
+</div>
+{%- endif -%}
+
+<input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" class="variant-id">
+{%- endform -%}
+
+{%- render 'atc-badges' -%}
+{{ act_desktop_badge_default }}

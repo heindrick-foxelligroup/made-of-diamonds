@@ -1,0 +1,18 @@
+@font-face {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://fonts.shopifycdn.com/poppins/poppins_n4.934accbf9f5987aa89334210e6c1e9151f37d3b6.woff2?h1=bWFkZW9mZGlhbW9uZHMuY29t&hmac=f398fc0817e7aa0073c6d79e60f87883941df2cb0dba986685ff09e48ec91c51") format("woff2"),
+       url("https://fonts.shopifycdn.com/poppins/poppins_n4.ee28d4489eaf5de9cf6e17e696991b5e9148c716.woff?h1=bWFkZW9mZGlhbW9uZHMuY29t&hmac=f27c5759ed53981c7df2f759fd56d2b752891385bc1f8bf2e0729cec70d3277e") format("woff");
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://fonts.shopifycdn.com/poppins/poppins_n7.58aca33913fc6666cc9e8a53f6b16ec5c3c05a3f.woff2?h1=bWFkZW9mZGlhbW9uZHMuY29t&hmac=e25ba0b043b6867cf7e92ab33ee9389c31ec475dccee7d782090dff6683de1b0") format("woff2"),
+       url("https://fonts.shopifycdn.com/poppins/poppins_n7.59016f931f3f39434d2e458fba083eb7db7a07d9.woff?h1=bWFkZW9mZGlhbW9uZHMuY29t&hmac=90d828d1378ee8db29d7a2006c1421652e7a1798deb1ab4660a479172ef4bb7d") format("woff");
+}
+

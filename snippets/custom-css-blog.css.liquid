@@ -1,0 +1,36 @@
+{%- comment -%} 
+  Custom CSS for BLOG pages.
+  Custom selectors starts with "fox-"
+
+  Structure:
+	overwrite theme files
+	overwrite apps files
+	new custom elements
+{%- endcomment -%}
+
+<style>
+  
+  /***** Overwrite theme styles *****/
+  
+  .template-blog h1.breadcrumbs-page-title + p { display: none }
+
+  @media only screen and (min-width: 767px) {
+	h1.breadcrumbs-page-title {
+      text-transform: uppercase;
+      font-size: 19px;
+      font-weight: 600;
+      text-align: left;
+      padding: 0 45px;
+      top: 20px;
+      position: relative;
+    }
+  }
+
+  /***** END OF Overwrite theme styles *****/
+
+  /***** Overwrite apps styles *****/
+  /***** END OF Overwrite apps styles *****/
+
+  /***** CSS for new/custom elements *****/
+
+</style>

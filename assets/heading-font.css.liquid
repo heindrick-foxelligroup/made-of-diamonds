@@ -1,0 +1,6 @@
+{%- assign heading_font = settings.heading_font -%}
+{%- assign heading_font_bold = heading_font | font_modify: 'weight', 'bolder' -%}
+{{ heading_font | font_face: font_display: 'swap' }}
+{%- if heading_font != heading_font_bold -%}
+  {{ heading_font_bold | font_face: font_display: 'swap' }}
+{%- endif -%}

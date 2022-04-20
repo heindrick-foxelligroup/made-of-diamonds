@@ -1,0 +1,7 @@
+{%- if show_compare_btn and settings.enable_compare -%}
+<a title="{{ 'collections.product_item.add_to_compare' | t | escape }}" data-handle="{{ product.handle }}" href="#" class="button button--cp flex flex-align-ver flex-align-hoz bt-tooltip{% if btn_style_classes %} {{ btn_style_classes }}{% endif %}">
+	{% render 'icon-compare' %}
+	{%- unless hide_compare_text -%} {{ 'collections.product_item.compare' | t }}{%- endunless -%}
+	<span class="bt-tooltip__inner bt-tooltip__inner--{{ tooltip_pos }}">{{ 'collections.product_item.compare' | t }}</span>
+</a>
+{%- endif -%}

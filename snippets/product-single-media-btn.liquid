@@ -1,0 +1,5 @@
+{%- if show_media_btn -%}
+<a href="{{ product.url }}" class="button--media button pull-left flex flex-align-hoz flex-align-ver button--media-single button--square button--icon" title="{{ 'collections.product_item.media' | t | escape }}"{% if media_id %} data-media-id="{{ media_id }}"{% endif %}>
+	{% render 'icon-expand' %}{% unless hide_media_text %} {{ 'collections.product_item.media' | t }}{% endunless %}
+</a>
+{% endif %}

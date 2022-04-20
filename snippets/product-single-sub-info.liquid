@@ -1,0 +1,39 @@
+{%- assign show_collections = false -%}
+{%- if product.collections.size > 0 and obj.settings.show_collections -%}
+{%- assign show_collections = true -%}
+{%- endif -%}
+{%- assign show_tags = false -%}
+{%- if product.tags.size > 0 and obj.settings.show_tags -%}
+{%- assign show_tags = true -%}
+{%- endif -%}
+{%- assign product_tags = '' -%}
+{%- if show_tags -%}
+	{%- assign has_tag = false -%}
+	{%- capture product_tags -%}
+		{%- for tag in product.tags -%}
+  		{%- unless tag contains 'upsell_' -%}
+  			{%- if has_tag -%}, &nbsp;{%- endif -%}
+		  	<a href="{% if collection %}{{ collection.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}/{{ tag | handleize }}" title="{{ tag | escape }}" class="dib">{{ tag }}</a>
+		  	{%- assign has_tag = true -%}
+  		{%- endunless -%}
+		{%- endfor -%}
+	{%- endcapture -%}
+{%- endif -%}
+{%- if show_collections or product_tags != '' -%}
+<div class="gutter-ele-top clearfix product-single__sub">
+	{%- if show_collections -%}
+		<p class="product-single__sub-info">
+	    <span class="dib text-uppercase blur-color" style="margin-right: 10px;">{{ 'products.product.collections' | t }}:</span>
+    	{%- for collection in product.collections -%}
+			  <a href="{{ collection.url }}" title="{{ collection.title }}" class="dib">{{ collection.title }}</a>{%- unless forloop.last -%}, &nbsp;{%- endunless -%}
+			{%- endfor -%}
+	  </p>
+	{%- endif -%}
+	{%- if product_tags != '' -%}
+		<p class="product-single__sub-info">
+	    <span class="dib text-uppercase blur-color" style="margin-right: 10px;">{{ 'products.product.tags' | t }}:</span>
+	    {{ product_tags }}
+	  </p>
+  {%- endif -%}
+</div>
+{%- endif -%}

@@ -1,0 +1,31 @@
+{%- if show_cart_btn -%}
+<form method="post" enctype="multipart/form-data" class="{% unless no_effect %}effect-hover__content effect-hover__cart-btn {% endunless %}w100{% unless no_gutter_cart_btn %} gutter-ele-top{% endunless %}">
+  {%- if product.available -%}
+    <input type="hidden" class="variant-id" name="id" data-productid="{{ product.id }}" value="{{ product.first_available_variant.id }}"/>
+  {%- endif -%}
+
+  {%- if product.available -%}
+    {%- if product.has_only_default_variant or show_options -%}
+      {%- unless settings.pre_order_enable and product.first_available_variant.inventory_policy == 'continue' and product.first_available_variant.inventory_quantity <= 0 -%}
+        {%- assign cart_text = 'products.product.add_to_cart' | t -%}
+      {%- else -%}
+        {%- assign cart_text = 'products.product.pre_order' | t -%}
+      {%- endunless -%}
+      <button class="button button--cart add-cart-btn w100 flex flex-align-ver flex-align-hoz{% unless no_effect or no_gutter_cart_btn %} distance-top-ele{% endunless %}" type="submit" name="add" title="{{ cart_text | escape }}" aria-label="button">
+        {%- render 'icon-cart' -%}<span class="visible-lg">{{ cart_text }}</span>
+        <span class="btn-text">Add to cart</span>
+      </button>
+    {%- else -%}
+      <a class="button button--cart button--select-option w100 flex flex-align-ver flex-align-hoz{% unless no_effect or no_gutter_cart_btn %} distance-top-ele{% endunless %}" href="{{ product.url }}" title="{{ 'products.product.select_options' | t | escape }}">
+        {%- render 'icon-cart' -%}<span class="visible-lg">{{ 'products.product.select_options' | t }}</span>
+        <span class="btn-text">Add to cart</span>
+      </a>
+    {%- endif -%}
+  {%- else -%}
+    <button class="button button--cart add-cart-btn w100 flex flex-align-ver flex-align-hoz{% unless no_effect or no_gutter_cart_btn %} distance-top-ele{% endunless %} soldout" type="button" name="add" title="{{ 'products.product.sold_out' | t | escape }}" aria-label="button" disabled="disabled">
+      {%- render 'icon-cart' -%}<span class="visible-lg">{{ 'products.product.sold_out' | t }}</span>
+      <span class="btn-text">Add to cart</span>
+    </button>
+  {%- endif -%}
+</form>
+{%- endif -%}

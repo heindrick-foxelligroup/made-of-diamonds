@@ -1,0 +1,21 @@
+<div class="sidebar__item grid__item">
+  <div class="sidebar__title gutter-bottom">
+    {{ section.settings.show_blogs_nav_title }}
+  </div>
+  <div class="sidebar__content dib w100">
+    <div class="article__tags--list item__tags gutter-bottom">
+      <ul class="no-gutter list--inline" style="margin: -10px -5px;">
+      
+        {% for link in linklists.blogs.links %}
+         <li class="article__tag-li">
+          <a class="article__tag" href="{{ link.url }}">
+              {{ link.title }}
+          </a>
+         </li>
+       {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+  
+</div>

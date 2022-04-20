@@ -1,0 +1,32 @@
+{%- capture fre_bought_content -%}{%- render 'product-single-fre-bought-content' with fre_handles: fre_handles, product: product, enable_rtl: enable_rtl -%}{%- endcapture -%}
+{%- if fre_bought_content != '' or section.settings.rule == 'auto' -%}
+<div class="fre-bought freb">
+  <div class="row flex">
+		<div class="col-xs-4 visible-lg freb__main-image-wrap{% if enable_rtl %} f-right{% endif %}">
+			<div class="img-container loading freb__main-image" style="padding-top:{{ 1 | divided_by: product.featured_media.aspect_ratio | times: 100 }}%;">
+				{%- assign img_url = product.featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+				<img data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+		        data-src="{{ img_url }}"
+		        data-sizes="auto" class="w100 img-responsive img-abs lazyload ignore-effect"{% render 'img-one-pixel' %} alt="{{ product.featured_media.alt | escape }}" data-image-size="1x1"/>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-8">
+			<div class="row freb__inner freb__inner-js">
+				{%- if fre_bought_content != '' -%}
+					{{ fre_bought_content }}
+				{%- elsif section.settings.rule == 'auto' -%}
+					{%- unless recommendations.performed -%}
+					<div class="loading-not-full load-crossell" data-view="recommendation_widget" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit | plus: cart.item_count }}" style="margin-top:50px;">
+            <i class="loading-ajax"></i>
+          </div>
+          {%- else -%}
+	        	<div class="empty-products"></div>  	
+          {%- endunless -%}
+        {%- else -%}  
+        	<div class="empty-products"></div>
+        {%- endif -%}
+      </div>	
+    </div>
+	</div>
+</div>
+{%- endif %}

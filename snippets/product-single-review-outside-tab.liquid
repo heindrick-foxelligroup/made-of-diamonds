@@ -1,0 +1,9 @@
+{%- if section.settings.show_review_form_outside_tab and settings.enable_review -%}
+<div class="container{% render 'wide-css-class' %} big-gutter-top big-gutter-bottom{% if layout_name == 'product-single-layout9' %} gutter-ele-top-tbs{% endif %}">
+  <div class="row">
+    <div class="col-xs-12">
+      {%- render 'product-review-form' with product: product -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}

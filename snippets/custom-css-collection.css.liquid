@@ -1,0 +1,44 @@
+{%- comment -%}
+  Custom CSS for all collection pages.
+  Custom selectors starts with "fox-"
+
+  Structure:
+	overwrite theme files
+	overwrite apps files
+	new custom elements
+{%- endcomment -%}
+
+<style>
+  
+  /***** Overwrite theme styles *****/
+  #collection-template > div:nth-child(1) h1,
+  #collection-template > div:nth-child(1) p {
+	text-align: left;
+    padding: 0 15px;
+  }
+
+  #collection-template > div.flex.flex-align-ver.flex-align-hoz.w100.gutter-top.gutter-bottom > p{
+   	display: none; 
+  }
+
+  @media all and (min-width: 992px) {
+    #collection-template > div:nth-child(1) h1,
+    #collection-template > div:nth-child(1) p {
+      padding: 0 30px;
+    }
+  }
+
+  @media all and (min-width: 1366px) {
+    #collection-template > div:nth-child(1) h1,
+    #collection-template > div:nth-child(1) p {
+      padding: 0 45px;
+    }
+  }
+  /***** END OF Overwrite theme styles *****/
+
+  /***** Overwrite apps styles *****/
+  /***** END OF Overwrite apps styles *****/
+
+  /***** CSS for new/custom elements *****/
+
+</style>

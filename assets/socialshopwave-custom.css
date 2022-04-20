@@ -1,0 +1,145 @@
+#widget-fave-html {
+  display: inline;
+  width: 100%;
+}
+
+#widget-fave-html .ssw-fave-btn-content {
+  border: none;
+}
+
+#widget-fave-html .ssw-fave-btn-content:focus,
+#widget-fave-html .ssw-fave-btn-content:active {
+  outline: none;
+  box-shadow: none;
+}
+
+#widget-fave-html .ssw-fave-btn-counter,
+#widget-fave-html .ssw-fave-btn-counter:before {
+  border: none;
+}
+
+@media all and (max-width: 991px) {
+  #widget-fave-html .ssw-fave-btn-content {
+    padding: 0; 
+  }
+
+  #widget-fave-html .ssw-fave-btn-content > i:before {
+    margin-left: 0;
+  }
+  
+  #widget-fave-html .ssw-fave-btn-content > i {
+    margin-right: 0;
+  }
+}
+
+.ssw-faveiticon {
+  position: relative;
+  font-size: 13px;
+  text-align: center;
+  display: inline;
+}
+
+.ssw-faveiticon .faves-count {
+  position: absolute;
+  left: 22px;
+  bottom: 0px;
+}
+
+.item__actions {
+  text-align: center;
+}
+
+.header__middle__links #ssw-topauth {
+  display: flex;
+}
+
+.header__bottom-links #ssw-topauth {
+  display: flex;
+}
+
+.gutter-ele-top.gutter-bottom #ssw-topauth {
+  margin-right: 15px;
+  padding-top: 5px;
+}
+
+.gutter-ele-top.gutter-bottom .ssw-dropdown-toggle  {
+  font-size: 20px;
+}
+
+.ssw-page input,
+.ssw-page textarea,
+.ssw-modal input[type="text"],
+.ssw-modal input[type="email"],
+.ssw-modal input[type="number"],
+.ssw-modal input[type="password"] {
+  padding: 8px 16px;
+  border: 1px solid silver;
+  outline: none;
+}
+
+#sidebar-mobile-nav .ssw-dropdown {
+  width: 100%;
+}
+
+#sidebar-mobile-nav .ssw-dropdown-menu {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+#sidebar-mobile-nav  #ssw-topauth {
+  padding: 0 20px;
+}
+
+#sidebar-mobile-nav .ssw-dropdown-menu a:hover,
+#sidebar-mobile-nav .ssw-dropdown-menu a:focus{
+  background: none;
+} 
+
+#sidebar-mobile-nav  .ssw-dropdown-backdrop {
+  display: none;
+}
+
+.ssw-edit-profile-page h2 {
+  line-height: 10px;
+  margin-top: 5px;
+}
+
+.ssw-nav > li > a {
+  padding-bottom: 5px;
+}
+
+#ssw-page {
+  padding: 0 20px;
+}
+
+.ssw-fbconnect.ssw-social-btn a i {
+  width: 30% !important;
+}
+
+.ssw-fbconnect.ssw-social-btn a i:before {
+ margin: 0 auto;
+}
+
+.ssw-fbconnect.ssw-social-btn a span {
+  padding-left: 10px !important;
+}
+
+
+.ssw-social-login-widget {
+  display: none !important;
+}
+
+
+
+#ssw-fave-list-widget {
+  display: none;
+}
+
+
+
+#ssw-widget-review-bar {
+  display: none;
+}

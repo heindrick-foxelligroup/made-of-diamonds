@@ -1,0 +1,232 @@
+
+<div id="{{ section.id }}" class="badges-2-section">
+  <div class="main-headline">
+    <div>HOW IT WORKS?</div>
+  </div>
+  <img class="lazyload divider" data-src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/Vector_7.jpg?v=1637646925"/>
+
+  <div class="items">
+
+    <div class="item">
+      <img src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/Group_18567.png?v=1637667986"/>
+      <div class="text">
+        <div class="title">YOU SUBSCRIBE</div>
+        <div class="description">Click the “subscribe” button and get ready to join the international community of talented & creative individuals!</div>
+      </div>
+    </div>
+    <div class="item reverse">
+      <img src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/Group_18573.png?v=1637667986"/>
+      <div class="text">
+        <div class="title">We deliver</div>
+        <div class="description">Once subscribed, there’s nothing else to think about! The first package is shipped immediately and delivered within the next 2-6 days. All the next paintings will be delivered at your doorstep on the 7th of the month. <div class="shipping-text">Shipping is FREE!</div></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://cdn.shopify.com/s/files/1/0536/0513/8593/files/Group_18574.png?v=1637667986"/>
+      <div class="text">
+        <div class="title">You enjoy</div>
+        <div class="description">Forget about everything around and dive into the process of creating your own masterpiece!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  
+  #{{ section.id }} *{
+  }
+  
+  #{{ section.id }} {
+   	max-width: 100vw;
+    text-align: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  #{{ section.id }} .main-headline{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    color: #245E8D;
+    margin-top: 20px;
+    max-width: 610px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #{{ section.id }} .divider{
+   	margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    width: 400px;
+    min-width: 0px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: block;
+  }
+  
+  #{{ section.id }} .sub-headline{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* identical to box height, or 120% */
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #3D4246; 
+    margin-bottom: 20px;
+  }
+  
+  #{{ section.id }} .items{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+  
+  #{{ section.id }} .item {
+   	width: 30%; 
+    padding: 10px;
+  }
+  
+  #{{ section.id }} .item .title {
+	padding-top: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    /* or 100% */
+
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #245E8D;
+;
+  }
+  
+  #{{ section.id }} .item .description {
+	padding-top: 10px;
+    font-size: 13px;
+    line-height: 19px;
+    /* or 100% */
+	text-align: justify;
+    align-items: center;
+    text-align: center;
+    color: #3D4246;
+  }
+  
+  #{{ section.id }} .item .description .shipping-text{
+   	color: black;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-top: 20px;
+  }
+  
+  #{{ section.id }} .item img {
+   	max-width: 80px;
+    padding: 0px;
+    background-color: white;
+    margin-bottom: 10px;
+  }
+
+  @media only screen and (max-width: 768px){
+    #{{ section.id }} .divider{
+      width: 150px;
+    }
+    
+    #{{ section.id }} .main-headline{
+    	font-size: 24px;
+      	line-height: 40px;
+    }
+    
+    #{{ section.id }} .sub-headline{
+     	font-size: 15px; 
+      	padding-left: 15px;
+      	padding-right: 15px;
+    }
+
+    
+    #{{ section.id }} .item{
+     	width: 100%; 
+      	display: flex;
+        flex-direction: row;
+      	align-items: center;
+      	padding-top: 0;
+      	padding-bottom: 0;
+      	padding-left: 20px;
+      	padding-right: 20px;
+    }
+    
+    #{{ section.id }} .item:not(:first-child) {
+      margin-top: 25px;
+    }
+    
+
+    
+    #{{ section.id }} .item.reverse{
+        flex-direction: row-reverse;
+    }
+    
+    #{{ section.id }} .item img{
+      	display: inline-block;
+     	max-width: 30%; 
+      
+      	margin-bottom: 0;
+    }
+    
+    #{{ section.id }} .item .text div{
+        text-align: left;
+    }
+    
+    #{{ section.id }} .item .text .title{
+        text-align: left;
+      	margin-left: 0;
+    }
+    
+    #{{ section.id }} .item.reverse .text{
+        text-align: left;
+     	padding-right: 20px;
+      	
+    }
+    #{{ section.id }} .item:not(.reverse) .text{
+      padding-left: 20px;
+      width: 70%; 
+      padding-top: 0;
+    }
+    
+    #{{ section.id }} .item .description .shipping-text{
+      margin-top: 15px;
+    }
+  }
+      
+</style>
+
+{% schema %}
+  {
+    "name": "Product - Badges & text 2",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product - Badges & text 2",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

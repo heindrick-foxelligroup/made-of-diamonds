@@ -1,0 +1,1225 @@
+{% comment %} snippets/new-subox-design.liquid  {% endcomment %}
+{% comment %} New mobile design {% endcomment %}
+
+<style>
+
+  .quotetext > p { margin: 0; }
+  .additional-checkout-buttons,
+  .button--media { display: none; } 
+  
+  .template-product { padding-bottom: 0 }
+  
+  @media only screen and (min-width: 768px) { .product-quote { display: none; } }
+  
+  .new-design-mobile { 
+    margin: 0 -15px;
+    width: unset!important; }
+  
+  .product-quote {
+    text-align: center;
+    margin-bottom: 0;
+    padding: 0 22px!important;
+    max-width: 100vw; }
+
+  .main-product-subscription .new-mobile-design > div { 
+    width: 100%;
+    max-width: 100vw!important;  }
+  
+  .quoteOntop > h2 {
+    color: var(--dark-blue-title-color);
+    font-family: 'Futura PT';
+    font-size: 1.25rem;
+    letter-spacing:2px;
+    margin-top:0;
+    padding-top: 0; }
+  
+  .quotetext > p {
+    color: var(--dark-grey-content-color);
+    font-family: 'Futura PT Book';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.5rem; }
+  
+  .main-product-subscription .new-mobile-design,
+  .main-product-subscription .new-mobile-description { display: none!important; }
+  
+  .main-product-subscription { color: var(--dark-blue-title-color) !important; }
+  
+  @media all and (max-width: 767px){
+    
+    #bt-sidebar-cart { width: 100vw; }
+
+    html { overflow-x: hidden; }
+    body { min-width: 340px; }
+
+    .main-product-tabs-section { display: none; } 
+    
+    .main-product-subscription   .new-mobile-design,
+    .main-product-subscription   .new-mobile-description { 
+      display: -webkit-box!important; 
+      display: -ms-flexbox!important; 
+      display: flex!important;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+    
+    .main-product-subscription .row { 
+       max-width: 100%;
+       margin-left: 0!important;
+       margin-right: 0!important; }
+    
+    .main-product-subscription .pg__tabs { display: none; }
+    
+    /* css variables */
+    :root { 
+    /* colors */
+      --new-accent-color: #FEBCBC;
+      --light-pink-color: #FEF5F1;
+      --dark-grey-main-color: #333333;
+      --dark-blue-title-color: #305875;
+      --dark-grey-content-color: #5F6472; }
+
+    .main-product-subscription .use-sticky.active { 
+      max-width: 100vw;
+      margin-left: 0; }
+
+    /* fonts */
+    @font-face {
+      font-family: 'Futura PT';
+      src: url(' {{ "FuturaPT-Heavy.woff2" | asset_url }} ') format('woff2'),
+          url(' {{ "FuturaPT-Heavy.woff" | asset_url }} ') format('woff');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap; }
+  
+    @font-face {
+      font-family: 'Futura PT';
+      src: url(' {{ "FuturaPT-Bold.woff2" | asset_url }} ') format('woff2'),
+      url(' {{ "FuturaPT-Bold.woff" | asset_url }} ') format('woff');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap; }
+    
+    @font-face {
+      font-family: 'Futura PT Book';
+      src: url('{{ "FuturaPT-Book.woff2" | asset_url }}') format('woff2'),
+          url('{{ "FuturaPT-Book.woff" | asset_url }}') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap; }
+    
+    @font-face {
+      font-family: 'Futura PT';
+      src: url(' {{ "FuturaPT-Medium.woff2" | asset_url }} ') format('woff2'),
+          url(' {{ "FuturaPT-Medium.woff" | asset_url }} ') format('woff');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap; }
+    
+    @font-face {
+      font-family: 'Futura PT';
+      src: url(' {{ "FuturaPT-Light.woff2" | asset_url }} ') format('woff2'),
+          url(' {{ "FuturaPT-Light.woff" | asset_url }} ') format('woff');
+      font-weight: 300;
+      font-style: normal; } 
+
+    #shopify-section-header .header-ed { width: 100%!important; }
+    
+    .main-product-subscription { padding-top: 0!important; }
+
+    /* announcement-bar */
+    .announcement_mobile { 
+      background-color: var(--new-accent-color); 
+      height: 34px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+    /* header */
+    header.site-header > div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+    
+    .site-header__search-toggle,
+    .site-header__icons--plus { -webkit-box-ordinal-group: 2; -ms-flex-order: 1; order: 1; }
+
+    header.site-header > .phone_mobile,
+    .breadcrumbs,
+    .breadcrumbs__list,
+    .site-header__cart > span { display: none; }
+
+    .site-header { 
+      border-bottom: none!important;
+      padding-bottom: 0!important; }
+
+    /* logo, hamburger, search, basket */
+    .mobile_header_logo > img { width: 100%!important; }
+    .mobile_header_logo > img,
+    #mobile_menu .icon.icon-hamburger,
+    .site-header__search-toggle .icon.icon-search,
+    .site-header__cart #Layer_1 { opacity: 0; }
+
+    button.btn--link.site-header__search-toggle { 
+      left: 13vw;
+      margin-left: 0!important;
+      margin-right: -20px;
+      position: relative;
+      z-index: 999; }
+
+    button.site-header__search-toggle,
+    .grid__item.small--two-tenths,
+    .site-header__cart { margin-top: -8px!important; }
+
+    .grid__item { width: 100vw!important; }
+
+    #mobile_menu { left: 8px; }
+
+    .site-header__cart.head_cart { 
+      padding-right: 0;
+      margin-right: -5px; }
+    
+    .site-header__cart #CartCount { 
+      margin-left: 5px!important;
+      margin-top: -2px!important; }
+
+    .mobile_header_logo,
+    #mobile_menu,
+    .site-header__search-toggle,
+    .site-header__cart { 
+      position: relative;
+      padding: 0; }
+    
+    .header--mobile,
+    .site-header,
+    .product-quote { 
+      padding-top: 14px;
+      background-color: var(--light-pink-color); }
+    
+    .header-mobile__logo__image,
+    .site-header__logo {
+      background-image: url("https://cdn.shopify.com/s/files/1/2987/3832/files/logo.svg?v=1622479077");
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: contain;
+      position: relative;
+      top: -6px; }
+    
+    .header-mobile__logo__image {
+      content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/logo.svg?v=1622479077"); }
+
+    .mobile-nav-bar.bt-sidebar-btn:before { 
+      content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/hamburger.svg?v=1622479077");
+      position: relative;
+      bottom: 5px; }
+    
+    .mobile-nav-bar.mobile_search_icon:before { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/search.svg?v=1622479077"); }
+    .header__cart-trigger-mobile:before { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/bag.svg?v=1622479077"); }
+
+    .mobile-nav-bar.bt-sidebar-btn i,
+    .mobile-nav-bar.mobile_search_icon i,
+    .header__cart-trigger-mobile i { display: none; }
+
+    /* logo, hamburger, search, basket pseudoelements settings */
+    .mobile-nav--open:before,
+    .site-header__search-toggle:before,
+    .site-header__cart:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+
+    /* slider thumbnails/dots */
+    .carousel.slick-initialized { display: none; }
+
+    .sync.slick-dotted.slick-slider { margin-bottom: 110px!important; }
+    .sync .slick-dots { bottom: -50px; }
+
+    .slick-slider .slick-dots li button::before {
+      border: 1px solid var(--dark-grey-main-color);
+      background: transparent; }
+    
+    .slick-slider .slick-dots li.slick-active button::before { background: var(--dark-grey-main-color); }
+
+    /* placement */
+    .template-product .main-content { padding-top: 0; }
+
+    /* body */
+    #PageContainer.page-container > p { display: none; }
+
+    .header--mobile { border: none; }
+
+    .main-product-subscription .product-template-section { padding: 0; }
+    
+    .main-product-subscription .product-template-section .container-fluid > .row { margin-left: 0; }
+
+    .product-single,
+    .product-image-container { background-color: var(--light-pink-color); }
+
+    .product-single__photos .por .slick-list.draggable, 
+    .sync { 
+      background-image: url('https://cdn.shopify.com/s/files/1/2987/3832/files/background-graphics.png?v=1622479077');
+      background-color: var(--light-pink-color);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain; } 
+
+    .sync .slick-list {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+
+    .bottom-mobile-toolbar { display:none; }
+
+    .mobile-top-semicircle,
+    .grid.product-single > div.grid__item:not(:first-child) {
+      background-color: #fff;  
+      padding-top: 40px; 
+      border-top-left-radius: 40px;    
+      border-top-right-radius: 40px;    
+      margin-top: -30px;
+      -webkit-box-shadow: 0px -15px 25px rgba(67, 67, 67, 0.1);
+              box-shadow: 0px -15px 25px rgba(67, 67, 67, 0.1); }
+
+    .mobile-top-semicircle {
+      padding-left: 23px;
+      margin-top: 20px;
+      margin-left: -15px;
+      min-width: 100vw;
+      width: 100%; }
+
+    h1.product-single__title,
+    .product-single__title.heading {
+      font-family: 'Futura PT';
+      color: var(--dark-blue-title-color); 
+      margin-top: 0;
+      margin-bottom: 0;
+      border: unset;
+      font-size: 24px;
+      line-height: 30.77px;
+      font-weight: 500; }
+
+    .new-mobile-description,
+    .description {
+      margin-top: 25px;
+      color: var(--dark-grey-content-color);
+      font-family: 'Futura PT';
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 24px; }
+
+    #ProductPrice-product-template-new { visibility: hidden; }
+
+    .main-product-subscription   .pg__review-stars { 
+      cursor: default!important;
+      pointer-events: none!important; }
+
+    /* No price shown */
+    .main-product-subscription   .product-price-wrap,
+    /* No ATC badges */
+    .main-product-subscription   .atc-badges-img { display: none; }
+
+    /* quantity selector  */
+    .main-product-subscription   .qty-box {
+      visibility: hidden!important;
+      height:0!important;
+      margin:0!important; }
+
+    .main-product-subscription   .product-form__item > label { display: none; }
+
+     /* Add to Cart */
+    .main-product-subscription   .add-cart-btn {
+      border-radius: 0!important;
+      background-color: var(--new-accent-color)!important;
+      color: var(--dark-grey-main-color)!important;
+      margin-top: 10px;
+      font-family: 'Futura PT';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 23px;
+      width: 100%;
+      border: none; }
+
+    .main-product-subscription  form#AddToCartForm .free-shipping-banner-container,
+    .main-product-subscription  form#AddToCartForm .free-shipping-banner-container + div,
+    .main-product-subscription  form#AddToCartForm .addtocart-container + img,
+    .main-product-subscription  form#AddToCartForm + div,
+    .main-product-subscription  p.line,
+    .main-product-subscription  .product-single__meta > div center,
+    .main-product-subscription  .product-single__meta > div > div.slick-dots,
+    .main-product-subscription  .product-single__description,
+    .main-product-subscription  .payment-icon,
+    .main-product-subscription  #tabs  { display: none!important; }
+
+    .new-mobile-design { width: 100%; }
+    .new-design-mobile { padding: 0; }
+
+    .new-mobile-design div.with-padding { 
+      padding-left: 20px;
+      padding-right: 20px; }
+
+    .new-mobile-design .bold-title {
+      color: var(--dark-blue-title-color);
+      margin-bottom: 24px!important;
+      font-family: 'Futura PT';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 25px;
+      line-height: 31.25px;
+      letter-spacing: 0; }
+    
+    .new-mobile-design .thin-title {
+      font-family: 'Futura PT Book'; 
+      margin-bottom: 16px!important;
+      color: var(--dark-blue-title-color);
+      font-style: normal;
+      font-weight: normal;
+      font-size: 25px;
+      line-height: 37.5px;
+      letter-spacing: 0; }
+    
+    .new-mobile-design .small-thin-title {
+      font-family: 'Futura PT';
+      color: var(--dark-blue-title-color);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 27px;
+      letter-spacing: 0; }
+    
+    .new-mobile-design .subtitle {
+      font-family: 'Futura PT Book';
+      margin-bottom: 16px!important;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0; }
+    
+    .new-mobile-design .sub-subtitle {
+      color: var(--dark-blue-title-color);
+      font-family: 'Futura PT';
+      font-style: normal;
+      font-weight: 450;
+      font-size: 18px;
+      line-height: 27px; }
+    
+    .new-mobile-design .content {
+      margin-bottom: 20px;
+      font-family: 'Futura PT Book';
+      color: var(--dark-grey-content-color);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem; }
+
+    /* alt-testimonial__wrapper */
+    .alt-testimonial__wrapper { 
+      padding-top: 40px;
+      background: #fff; }
+
+    /* boxed layout */
+    .new-mobile-design div.boxed {
+      background-color: #fff;
+      padding: 30px 18px 39px 18px; 
+      margin: -20px 12px 0 12px; 
+      border-radius: 10px;
+      position: relative;
+      z-index: 2;
+      width: calc(100% - 24px); }
+
+    .alt-testimonial__wrapper img { width: 100%; }
+
+    /* alt-what-is__wrapper */
+    .alt-what-is__wrapper { 
+      margin-top: -40px!important;
+      overflow: hidden;
+      -webkit-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+              box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1); }
+
+    .alt-what-is__background-wrapper {
+      position: absolute;
+      right: 0;
+      bottom: 0; 
+      width:70%;
+      height: auto; }
+    
+    .alt-what-is__wrapper-content {
+      position: relative;
+      z-index: 1; }
+    
+    .alt-what-is__wrapper-content .content { color: var(--dark-grey-main-color); }  
+    .alt-what-is__wrapper .subtitle {
+      margin-bottom: 12px;
+      font-family: 'Futura PT';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.5rem; }
+
+    .main-product-subscription  .slick-track { cursor: pointer; }
+
+    .main-product-subscription  .blurb-image { max-width: 100%; }
+
+    /* alt-what-to-expect-slider__wrapper one */
+    .alt-what-to-expect-slider__wrapper { padding: 20px 0 30px 0; }
+    .alt-what-to-expect-slider__wrapper h2 { 
+      text-transform: uppercase;
+      padding: 0 22px; }
+    
+    /* alt-purpose__wrapper */
+    .alt-purpose__wrapper { padding-top: 35px; }
+
+    /* middle-image */
+    .alt-what-to-expect-slider__wrapper .new-slider img, .middle-image img { width: 100%; }
+
+    /* alt-achieve-harmony__wrapper */
+    .alt-achieve-harmony__wrapper { 
+      padding-top: 24px;
+      background-color: #fff; }
+    
+    .alt-achieve-harmony__wrapper .blurbs__wrapper { 
+      padding-top: 20px;
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr 20px 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px; }
+    
+    .alt-achieve-harmony__wrapper .blurb__container { 
+      display: -webkit-box; 
+      display: -ms-flexbox; 
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
+    
+    .alt-achieve-harmony__wrapper .small-thin-title { max-width: 350px; }
+    .alt-achieve-harmony__wrapper .blurb-content { 
+      text-transform: uppercase;
+      margin-top: -10px; }
+
+    .new-mobile-design .blurb-content {
+      font-family: 'Futura PT Book';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1.125rem;
+      line-height: 1.688rem; }
+
+    /* alt-inside-box__wrapper */
+    .alt-inside-box__wrapper { 
+      padding-bottom: 100px;
+      position: relative; }
+    
+    .alt-inside-box__wrapper .content {
+      font-family: 'Futura PT';
+      font-weight: 300;
+      font-style: normal;
+      font-size: 1.125rem;
+      line-height: 1.5rem; }
+    
+    .alt-inside-box__wrapper .blurbs__wrapper { 
+      display: -ms-grid; 
+      display: grid;
+      -ms-grid-columns: 1fr 20px 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px; }
+    
+    .alt-inside-box__wrapper .blurb__container { 
+      display: -webkit-box; 
+      display: -ms-flexbox; 
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      text-align: center;
+      position: relative;
+      z-index: 1; }
+    
+    .alt-inside-box__wrapper .small-thin-title { max-width: 350px; }
+    .alt-inside-box__wrapper .blurb-content { 
+      margin-top: 10px;
+      font-family: 'Futura PT Book';
+      color: var(--dark-grey-content-color);
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.5rem; 
+      max-width: 150px; }
+    
+    .alt-inside-box__wrapper .alt-inside-box__background-wrapper {
+      position: absolute;
+      left:50%;
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+      bottom: 0; }
+    
+    /* alt-exceptional-quality__wrapper */
+    .alt-exceptional-quality__wrapper { 
+      overflow: hidden;
+      -webkit-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+              box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1); }
+    
+    .alt-exceptional-quality__background-wrapper {
+      position: absolute;
+      right: 0;
+      bottom: 0; 
+      width:100%;
+      height: auto; }
+    
+    .alt-exceptional-quality__wrapper-content {
+      position: relative;
+      z-index: 5
+    }
+    .alt-exceptional-quality__wrapper-content .content { 
+      color: var(--dark-grey-content-color);
+      margin-bottom: 0; }  
+
+    /* alt-your-highlight__wrapper */
+    .alt-your-highlight__wrapper { 
+      padding-top: 46px; 
+      position: relative; }
+    
+    .alt-your-highlight__wrapper h2 { 
+      width: 80%;
+      padding-left: 22px; }
+    
+    .alt-your-highlight__wrapper:after {
+      content: url('https://cdn.shopify.com/s/files/1/2987/3832/files/Arrow_down.png?v=1622479077');
+      position: absolute;
+      right: 20px;
+      top: 0; }
+    
+    .alt-your-highlight__wrapper .content { 
+      position: relative; 
+      padding: 0 22px;
+      width: 90%;
+      z-index: 1; }
+    
+    .alt-your-highlight__background-wrapper {
+      position: relative;
+      margin-top:-120px;
+      z-index: 0; }
+    
+    /* alt-how_it-works__wrapper */
+    .alt-how_it-works__wrapper { 
+      position: relative;
+      overflow:hidden; }
+    
+    .alt-how_it-works__wrapper .alt-how_it-works__step .step-title {
+      position: relative;
+      padding: 25px 0 25px 70px; }
+    
+    .alt-how_it-works__wrapper .alt-how_it-works__step .step-title:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+    
+    /* numbers */
+    .alt-how_it-works__wrapper .step-one:before { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/1.svg?v=1622479077"); }
+    .alt-how_it-works__wrapper .step-two:before { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/2.svg?v=1622479077"); }
+    .alt-how_it-works__wrapper .alt-how_it-works__step .step-three:before { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/3.svg?v=1622479077"); }
+
+    /* arrows */
+    .alt-how_it-works__wrapper .step-title:after { 
+      content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/Arrow.svg?v=1622479077");
+      position: absolute; 
+      padding-left: 20px;
+      top: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%); }
+    
+    .alt-how_it-works__step .description {
+      margin-top: 0;
+      font-size: 16px;  
+      font-weight: 300
+    }
+    .alt-how_it-works__wrapper .alt-how_it-works__step,
+    .alt-how_it-works__wrapper .small-thin-title.pink-text {
+      position: relative;
+      z-index: 2
+    }
+
+    .alt-how_it-works__wrapper .small-thin-title.pink-text {
+      color: #FEBCBC;
+      padding: 12px 0 28px 0; }
+
+    .alt-how_it-works__background-wrapper {
+      position: absolute;
+      right: 0;
+      bottom: -100px;
+      z-index: 1; }
+
+    /* alt-reasons-to-subscribe__wrapper */
+    .alt-reasons-to-subscribe__wrapper {
+      -webkit-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+              box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1); }
+    
+    .alt-reasons-to-subscribe__wrapper .blurbs__wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -ms-flex-pack: distribute;
+          justify-content: space-around; }
+    
+    .alt-reasons-to-subscribe__wrapper .blurb__container { 
+      -webkit-box-flex: 0; 
+          -ms-flex: 0 0 50%; 
+              flex: 0 0 50%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      text-align: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -ms-flex-pack: distribute;
+          justify-content: space-around; }
+    
+    .alt-reasons-to-subscribe__wrapper .blurb-content { 
+      text-transform: uppercase;
+      margin-top: 10px;
+      max-width:120px; }
+    
+    /* alt-customers-saying__wrapper */
+    .alt-customers-saying__container {
+      padding-top: 30px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      position: relative;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
+    
+    .alt-customers-saying__container:not(:first-of-type) { margin-top: -40px; }
+    .alt-customers-saying__container:nth-of-type(even) { -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; }
+
+    .alt-customers-saying__container > img {
+      margin-right: -20px;
+      margin-left: unset; }
+    
+    .alt-customers-saying__container:nth-of-type(even) > img {
+      margin-right: unset;
+      margin-left: -20px; }
+    
+    .alt-customers-saying__container .content {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 50%;
+              flex: 0 0 50%; }
+    
+    .alt-customers-saying__container:nth-of-type(2) .content {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 45%;
+              flex: 0 0 45%
+    }
+    .alt-customers-saying__container .content {
+      font-family: 'Futura PT';
+      color: var(--dark-grey-content-color);
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px; }
+    
+    .alt-customers-saying__container .content img.stars {
+      width: 110px; 
+      margin: 0 0 10px -3px; }
+    
+    /* alt-click-here__wrapper */
+    .alt-click-here__wrapper { 
+      margin: 0 0;
+      background-color: #fff; }
+    
+    .alt-click-here__wrapper img { width: 100% }  
+    .alt-click-here__wrapper .fake-button { cursor: pointer; }
+
+    /* alt-faqs-accordeon__wrapper */
+    .alt-faqs-accordeon__wrapper {
+      -webkit-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+              box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+      padding-bottom: 0!important;
+      margin-bottom: 20px!important; }
+    
+    .alt-faqs-accordeon__wrapper .faq { cursor: pointer; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 15px 0; 
+      overflow: hidden; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > input { display: none; }
+
+    .alt-faqs-accordeon__wrapper .faq-question > label {
+      position: relative;
+      display: block;
+      font-family: 'Futura PT';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > label:after {
+      position: absolute;
+      right: 0;
+      top: -2px;
+      -webkit-transition: 3s ease-in-out;
+      -o-transition: 3s ease-in-out;
+      transition: 3s ease-in-out; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > label:after { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/plus_1.svg?v=1622479077"); }
+    .alt-faqs-accordeon__wrapper .faq-question > input:checked + label:after { content: url("https://cdn.shopify.com/s/files/1/2987/3832/files/plus_2.svg?v=1622479077"); }
+
+    .alt-faqs-accordeon__wrapper .faq-answer-new { 
+      font-family: "Futura PT";
+      font-weight: 300;
+      margin: 0!important;
+      max-height:0;
+      font-size: 16px;
+      line-height: 24px;;
+      color: transparent!important;
+      -webkit-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
+    
+    .alt-faqs-accordeon__wrapper .faq-question > input:checked ~ .faq-answer-new {
+        max-height: 100vh;
+        padding-top: 10px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        color: var(--dark-grey-content-color)!important; }
+
+    .alt-faqs-accordeon__wrapper .faq-question:last-of-type .faq-answer-new { overflow: auto; }
+
+    .alt-faqs-accordeon__wrapper .js-tabs__text.faq-tab { margin:0!important; }
+
+    .alt-faqs-accordeon__wrapper .faq__container > .faq-category-title { display: none; }
+
+  /* badges */
+    .new-box-badges { display: none; }
+
+   /* #looxReviews */
+/*     .main-product-subscription  #looxReviews, .grid-active { background-color: #fff!important }
+    .main-product-subscription  #looxReviews div.summary > div.summary-content.b { padding-left: 100px!important }
+    .main-product-subscription  #looxReviews { max-width: 100vw; margin: 0 } */
+
+  }
+   
+  @media all and ( min-width: 768px ){
+  /*   #shopify-section-product-template-subox #product-template-tabs-product-template-subox li:nth-of-type(2), */
+    #shopify-section-product-template-subox #product-template-tabs-product-template-subox li:nth-of-type(n + 5){ display: none }
+    .new-mobile-design { display: none }
+  }
+</style> 
+
+<section class="new-mobile-design">
+  <div class="alt-testimonial__wrapper">
+    <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/CustomerTestimonial.png?v=1623866732" class="lazyload">
+  </div>
+  {% if section.settings.show_mindful_box_section == true %}
+    <div class="alt-what-is__wrapper boxed">
+      <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Artboard_4_4.svg?v=1622812120" class="lazyload alt-what-is__background-wrapper" alt="Mindful Souls">
+      <div class="alt-what-is__wrapper-content">
+        <h2 class="bold-title">{{ section.settings.mindful_box_title }}</h2>
+        <h3 class="subtitle">{{ section.settings.mindful_box_subtitle }}</h3>
+        <p class="content">{{ section.settings.mindful_box_content }}</p>
+        <h4 class="small-thin-title">{{ section.settings.mindful_box_bottom_line }}</h4>
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_what_you_can_expect_one_section == true %}
+    <div class="alt-what-to-expect-slider__wrapper one">
+      <h2 class="bold-title">{{ section.settings.what_you_can_expect_one_title }}</h2>
+      <div class="new-slider">
+        <div class="slide">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-07.png?v=1626172591" class="lazyload" alt="Mindful Souls">
+        </div>
+        <div class="slide">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-04.png?v=1626172643" class="lazyload" alt="Mindful Souls">
+        </div>
+        <div class="slide">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-02.png?v=1626172668" class="lazyload" alt="Mindful Souls">
+        </div>
+        <div class="slide">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-03.png?v=1626172702" class="lazyload" alt="Mindful Souls">
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_alt_purpose == true %}
+    <div class="alt-purpose__wrapper with-padding">
+      <h2 class="bold-title">{{ section.settings.show_alt_purpose_title }}</h2>
+      <p class="content">{{ section.settings.show_alt_purpose_text}}</p>
+    </div>
+    <div class="middle-image">
+      <img data-src="{{ section.settings.middle_image | img_url: 'master' }}" class="lazyload with-padding" alt="Mindful Souls">
+    </div>
+  {% endif %}
+  {% if section.settings.show_achieve_harmony == true %}
+    <div class="alt-achieve-harmony__wrapper with-padding">
+      <h4 class="small-thin-title">{{ section.settings.achieve_harmony_title }}</h4>
+      <div class="blurbs__wrapper">
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/PEACE_-_optimized.png?v=1623336894" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">Peace</div>
+        </div>
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/SELF_LOVE_-_optimized.png?v=1623336979" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">SELF LOVE</div>
+        </div>
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/INSPIRATION_-_optimized.png?v=1623337080" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">Inspiration</div>
+        </div>
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/HEALING_-_Optimized.png?v=1623337115" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">Fulfilment</div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_alt_click_here__wrapper_one == true %}
+    <div class="alt-click-here__wrapper one">
+      <div class="fake-button">
+        <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/ATC-subscribe-2x_7866eea4-ea6e-4f4d-88ec-3646589b25f5.png?v=1623865640" class="lazyload" alt="Add to cart">
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_alt_inside_box == true %}
+    <div class="alt-inside-box__wrapper with-padding">
+      <div class="alt-inside-box__wrapper-content">
+        <h2 class="bold-title">{{ section.settings.alt_inside_box_title }}</h2>
+        <p class="content">{{ section.settings.alt_inside_box_text }}</p>
+
+        <div class="blurbs__wrapper">
+          <div class="blurb__container">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Natural_Healing_Crystals_-_optimized.png?v=1623338230" class="lazyload blurb-image" alt="Mindful Souls">
+            <div class="blurb-content">Natural<br>Crystals</div>
+          </div>
+
+          <div class="blurb__container">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Calming_Aromatherapy_-_optimized.png?v=1623337513" class="lazyload blurb-image" alt="Mindful Souls">
+            <div class="blurb-content">Calming<br>Aromatherapy</div>
+          </div>
+
+          <div class="blurb__container">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/High_Vibrational_Jewelry_-_Optimized.png?v=1623337779" class="lazyload blurb-image" alt="Mindful Souls">
+            <div class="blurb-content">High Vibrational Jewelry</div>
+          </div>
+
+          <div class="blurb__container">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Talismans_for_Your_Home_-_optimized.png?v=1623338386" class="lazyload blurb-image" alt="Mindful Souls">
+            <div class="blurb-content">Talismans For Your Home</div>
+          </div>
+
+          <div class="blurb__container">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Natural_Beauty_Products_-_optimized.png?v=1623338078" class="lazyload blurb-image" alt="Mindful Souls">
+            <div class="blurb-content">Natural Beauty Products</div>
+          </div>
+
+          <div class="blurb__container">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Mystery_Items_-_optimized.png?v=1623337896" class="lazyload blurb-image" alt="Mindful Souls">
+            <div class="blurb-content">Mystery Items</div>
+          </div>
+        </div>
+
+        <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/bckgMystery.png?v=1623865832" height="170" class="lazyload alt-inside-box__background-wrapper" alt="Mindful Souls">
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_exceptional_quality_section == true %}
+    <div class="alt-exceptional-quality__wrapper boxed">
+      <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/background-lemon.svg?v=1622479077" class="lazyload alt-exceptional-quality__background-wrapper" alt="Mindful Souls">
+      <div class="alt-exceptional-quality__wrapper-content">
+        <h2 class="bold-title">{{ section.settings.exceptional_quality_section_title }}</h2>
+        <p class="content">{{ section.settings.exceptional_quality_section_text }}</p>
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_alt_your_highlight_section == true %}
+    <div class="alt-your-highlight__wrapper">
+      <h2 class="bold-title">{{ section.settings.alt_your_highlight_section_title }}</h2>
+      <p class="content">{{ section.settings.alt_your_highlight_section_text }}</p>
+      <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Image_7f1a84b1-e339-44d9-a312-4f9391cb4964.png?v=1622479077" class="lazyload alt-your-highlight__background-wrapper" alt="Mindful Souls">
+    </div>
+  {% endif %}
+  {% if section.settings.show_how_it_works_section == true %}
+    <div class="alt-how_it-works__wrapper with-padding">
+      <h2 class="bold-title">{{ section.settings.how_it_works_section_title }}</h2>
+      <div class="alt-how_it-works__steps-wrapper">
+        <div class="alt-how_it-works__step">
+          <h4 class="small-thin-title step-title step-one">{{ section.settings.how_it_works_section_one_title }}</h4>
+          <p class="description">{{ section.settings.how_it_works_section_one_text }}</p>
+        </div>
+        <div class="alt-how_it-works__step">
+          <h4 class="small-thin-title step-title step-two">{{ section.settings.how_it_works_section_two_title }}</h4>
+          <p class="description">{{ section.settings.how_it_works_section_two_text }}</p>
+        </div>
+        <div class="alt-how_it-works__step">
+          <h4 class="small-thin-title step-title step-three">{{ section.settings.how_it_works_section_three_title }}</h4>
+          <p class="description">{{ section.settings.how_it_works_section_three_text }}</p>
+        </div>
+      </div>  
+      <h4 class="small-thin-title pink-text">{{ section.settings.how_it_works_section_bottom_line_text }}</h4>
+      <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Vector_1.svg?v=1622479077" class="lazyload alt-how_it-works__background-wrapper" alt="Mindful Souls">
+    </div>
+  {% endif %}
+  {% if section.settings.show_alt_reasons_to_subscribe_section == true %}
+    <div class="alt-reasons-to-subscribe__wrapper boxed">
+      <h2 class="bold-title">REASONS TO SUBSCRIBE TODAY</h2>
+      <div class="blurbs__wrapper">
+
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Always_free_shipping.png?v=1623352875" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">Always Free Shipping</div>
+        </div>
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/1ook_happy_customer.png?v=1623352912" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">100k+ happy   customer</div>
+        </div>
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/secure_ordering_f65085c2-9c18-4628-819c-5cfca607e949.png?v=1623352949" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">Secure ordering</div>
+        </div>
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/cancel_anytime.png?v=1623352979" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">Cancel anytime</div>
+        </div>
+        <div class="blurb__container">
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/free_30_days_returns.png?v=1623353000" class="lazyload blurb-image" alt="Mindful Souls">
+          <div class="blurb-content">Free 30 days returns</div>
+        </div>
+
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_what_you_can_expect_two_section == true %}
+    <div class="alt-what-to-expect-slider__wrapper two">
+      <h2 class="bold-title">{{ section.settings.what_you_can_expect_two_title }}</h2>
+      <div class="new-slider">
+        <div class="slide">
+          <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-05.png?v=1626172829" alt="Mindful Souls">
+        </div>
+        <div class="slide">
+          <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-06.png?v=1626172854" alt="Mindful Souls">
+        </div>
+        <div class="slide">
+          <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-01.png?v=1626172879" alt="Mindful Souls">
+        </div>
+        <div class="slide">
+          <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/What-you-can-expect-08.png?v=1626172907" alt="Mindful Souls">
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_happy_customers_section == true %}
+    <div class="alt-customers-saying__wrapper with-padding">
+      <h2 class="bold-title">{{ section.settings.happy_customers_section_title }}</h2>
+      <div class="alt-customers-saying__blurbs">
+        <div class="alt-customers-saying__container">
+          <div class="content">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/stars.svg?v=1622479077" alt="stars" class="lazyload stars">
+            <p>{{ section.settings.happy_customers_text_one }}</p>
+          </div>
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/testimonial2.png?v=1622479077" alt="Happy Client" class="lazyload">
+        </div>
+        <div class="alt-customers-saying__container">
+          <div class="content">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/stars.svg?v=1622479077" alt="stars" class="lazyload stars">
+            <p>{{ section.settings.happy_customers_text_two }}</p>
+          </div>
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Testimonial.png?v=1622479077" alt="Happy Client" class="lazyload">
+        </div>
+        <div class="alt-customers-saying__container">
+          <div class="content">
+            <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/stars.svg?v=1622479077" alt="stars" class="lazyload stars">
+            <p>{{ section.settings.happy_customers_text_three }}</p>
+          </div>
+          <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/Group_55.png?v=1622812570" alt="Happy Client" class="lazyload">
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_alt_click_here__wrapper_two == true %}
+    <div class="alt-click-here__wrapper two">
+      <div class="fake-button">
+        <img data-src="https://cdn.shopify.com/s/files/1/2987/3832/files/ATC-subscribe-2x_7866eea4-ea6e-4f4d-88ec-3646589b25f5.png?v=1623865640" class="lazyload" alt="Add To Cart">
+      </div>
+    </div>
+  {% endif %}
+  {% if section.settings.show_alt_faqs_accordeon_section == true %}
+    <div class="alt-faqs-accordeon__wrapper boxed">
+      <h2 class="bold-title">Shipping & Returns FAQS</h2>
+      <div class="faq__container faq-tab">
+        <div class="faq">
+          <div class="faq-question">
+            <input type="checkbox" id="Q-1">
+            <label class="tab-label accordion-tab-label" for="Q-1">
+              Shipping
+            </label>
+            <p class="faq-answer-new">
+              All our subscription boxes ship FREE anywhere in the United States! Sign up today and your first box will be shipped immediately! You will receive your first box within 2-6 days and all following boxes will be shipped on the 7th of each month.
+            </p>
+          </div>
+        </div>
+        <div class="faq">
+          <div class="faq-question">
+            <input type="checkbox" id="Q-2">
+            <label class="tab-label accordion-tab-label" for="Q-2">
+              Returns
+            </label>
+            <p class="faq-answer-new">
+              You're either fully satisfied... head over heels thrilled with your box, or just return it within 30 days for a full refund. Just shoot us an email or give us a call and we’ll send you a free of charge return label to ensure a hassle-free return.
+            </p>
+          </div>
+        </div>
+        <div class="faq">
+          <div class="faq-question">
+            <input type="checkbox" id="Q-3">
+            <label class="tab-label accordion-tab-label" for="Q-3">
+              FAQS
+            </label>
+            <p class="faq-answer-new"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+<script>
+ 
+  function changeSlider(){
+    if ($(window).width() <= 768) {
+      $(".sync").slick("unslick");
+
+      $(".sync").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        speed: 150,
+        swipe: true,
+        swipeToSlide: true,
+        draggable: true,
+        infinite: false,
+        arrows: false,
+        dots: true
+      });
+    } else {
+      $(".sync").slick("unslick");
+      $(".sync").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        speed: 150,
+        swipe: true,
+        swipeToSlide: true,
+        infinite: false,
+      });
+    }    
+
+    $(".new-slider").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        speed: 150,
+        swipe: true,
+        draggable: true,
+        swipeToSlide: true,
+        infinite: true,
+        arrows: false,
+        dots: true
+      });
+  } 
+    
+  // change original ATC button text to customized one                                                                  
+  document.querySelector(".main-product-subscription .add-cart-btn.button--single-cart span").innerHTML = ("{{ section.settings.new_atc_text }}");
+  
+  //   make fake buttons clickable
+  const origButton = document.querySelector("button.add-cart-btn");
+  let fakeButtons = document.getElementsByClassName("fake-button");
+  for(let fakeButton of fakeButtons) {
+    fakeButton.onclick = function(event) {
+      origButton.click();
+    }
+  }
+                            
+  function showOriginalFAQ(){
+    const tabToMove = $("#product-template-tabs-template--15109359468724__163402235295bbce7d_3");
+//     const originalLocation = $(".tab-accordion.tab-accordion--template--15109359468724__163402235295bbce7d");
+    const destination = $(".main-product-subscription .alt-faqs-accordeon__wrapper .faq__container .faq").last().find(".faq-answer-new");
+    if ($(window).width() < 768){
+      tabToMove.clone().appendTo(destination);
+    }
+  } 
+
+//   $(window).on("resize", function() {
+//     changeSlider();
+//     showOriginalFAQ();
+//   });
+
+  let waitForJQuery = setInterval(function () {
+    if (typeof $ != 'undefined') {
+        changeSlider();
+        showOriginalFAQ();
+        clearInterval(waitForJQuery);
+    }
+  }, 50);
+  
+</script>

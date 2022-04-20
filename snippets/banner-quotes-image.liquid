@@ -1,0 +1,17 @@
+<div class="por {% if add_classes %} {{ add_classes }}{% endif %}">
+	<a href="{% if link %}{{ link }}{% else %}#{% endif %}" title="{% if image %}{{ image.alt | escape }}{% else %}{{ 'homepage.onboarding.blog_title' | t | escape }}{% endif %}"{% if image %} style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;"{% endif %} class="img-container loading zoom-effect">
+		{%- if image -%}
+			{%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+			<img data-aspectratio="{{ image.aspect_ratio }}"
+          data-src="{{ img_url }}"
+          data-sizes="auto" class="w100 img-responsive img-abs lazyload zoom-effect__inner"{% render 'img-one-pixel' %} alt="{{ image.alt | escape }}" data-image-size="1x1" data-expand="-100"/>
+		{%- else -%}
+			{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+		{%- endif -%}
+	</a>
+	{%- if btn_text != blank -%}
+	<a href="{% if link %}{{ link }}{% else %}#{% endif %}" class="bq__btn-image-text-{{ section_id }} bq__btn-image-text-{{ section_id }}-{{ index }} button secondary-font scale-effect" title="{{ btn_text | escape }}">
+		{{ btn_text }}
+	</a>
+	{%- endif -%}
+</div>

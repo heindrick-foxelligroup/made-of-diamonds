@@ -1,0 +1,336 @@
+{%- render 'section-background-start' -%}
+{%- liquid 
+  unless settings.enable_rtl and settings.rtl_language_codes contains request.locale.iso_code
+    assign left_holder = 'left'
+    assign right_holder = 'right'
+  else
+    assign left_holder = 'right'
+    assign right_holder = 'left'
+  endunless  
+-%}
+<div id="featured-blog_{{ section.id }}" class="container{% if section.settings.full_width %}-fluid{% endif %}{% render 'section-gutters-nobkg' %} touch-mobile" data-section-id="{{ section.id }}" data-section-type="featured-blog">
+  {%- if section.settings.title != blank -%}
+  <div class="section__heading text-center">
+    {%- if section.settings.sub_title != blank -%}
+      <h4 class="section__sub-title-{{ section.id }} margin0 gutter-ele-bottom">
+        {{ section.settings.sub_title }}
+      </h4>
+    {%- endif -%}
+    <h2 class="section__title__text-{{ section.id }} secondary-font margin0">{{ section.settings.title | replace: '<hl>','<span class="section__title__highline">' | replace: '</hl>','</span>' | raw }}</h2>
+  </div>
+  {%- endif -%}
+  <div class="section__content">
+    {%- assign blog = blogs[section.settings.blog] -%}
+    {%- assign column_count = section.settings.column_count | times: 1 -%}
+    {%- assign column_count_mobile = 2 -%}
+    {%- assign post_limit = section.settings.post_limit -%}
+    {%- assign data_slider = '{"adaptiveHeight":true,"slidesToShow": ' | append: column_count | append: ',"slidesToScroll":1,"infinite":false,"autoplay":true,"pauseOnHover":true,"autoplaySpeed":5000,"responsive":[{"breakpoint": 992,"settings": {"slidesToShow":2}},{"breakpoint": 768,"settings": {"slidesToShow":1}}]}' -%}
+    {%- unless blog == blank -%}
+      {%- unless blog.articles_count == 0 -%}
+        <div class="grid grid--{% if column_count == 2 %}very-large{% elsif column_count == 3 %}large{% else %}medium{% endif %} use-slider use-touch-mobile" data-slider='{{ data_slider }}'>
+          {%- for article in blog.articles limit: post_limit -%}
+            <div class="grid__item item{% if forloop.index > column_count %} ov-slider-tb{% endif %}{% if forloop.index > column_count_mobile %} ov-slider-mb{% endif %} article-feature__item-{{ section.id }}">
+              <div class="article-feature__inner{% if article.image and section.settings.blog_show_date %} por{% endif %}">
+                {%- if article.image -%}
+                  {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <a href="{{ article.url }}" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;" class="article__image-container img-container loading zoom-effect" title="{{ article.title | escape }}">
+                    <img class="article__image lazyload zoom-fade-slider img-abs w100 zoom-effect__inner"
+                         alt="{{ article.image.alt | escape }}"
+                         data-sizes="auto"
+                         data-src="{{ img_url }}"{% render 'img-one-pixel' %}>
+                  </a>
+                {%- endif -%}
+                {%- if section.settings.blog_show_date -%}
+                  <span class="article__date article__date--{{ section.id }}{% if article.image %} article__date-rotate--{{ section.id }}{% endif %} text-uppercase">
+                    {{ article.published_at | time_tag: format: 'month_day_year' }}
+                  </span>
+                {%- endif -%}
+                <div class="article-feature__bottom gutter-top">
+                  <a href="{{ article.url }}" class="article-feature__title article-feature__title--{{ section.id }} secondary-font transition" title="{{ article.title | escape }}">{{ article.title }}</a>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        {% render 'no-blocks' %}
+      {%- endunless -%}
+    {%- else -%}
+      <div class="grid grid--{% if column_count == 2 %}very-large{% elsif column_count == 3 %}large{% else %}medium{% endif %} use-slider" data-slider='{{ data_slider }}'>
+        {% for i in (1..post_limit) %}
+        <div class="grid__item item{% if forloop.index > column_count %} ov-slider-tb{% endif %}{% if forloop.index > column_count_mobile %} ov-slider-mb{% endif %} effect-hover article-feature__item-{{ section.id }}">
+          <div class="article-feature__inner por">
+            {% if article.image %}
+              <a href="#" class="article__image-container img-container loading" title="{{ 'homepage.onboarding.blog_title' | t | escape }}">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </a>
+            {% endif %}
+            <div class="effect-hover__content article-feature__bottom gutter-top">
+              {%- if section.settings.blog_show_date -%}
+                <span class="article__date article__date--{{ section.id }} db gutter-ele-bottom w100">
+                  {{ "now" | time_tag: format: 'month_day_year' }}
+                </span>
+              {%- endif -%}
+              <a href="#" class="article-feature__title article-feature__title--{{ section.id }} fw-bold transition" title="{{ 'homepage.onboarding.blog_title' | t | escape }}">{{ 'homepage.onboarding.blog_title' | t }}</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>  
+    {%- endunless -%}       
+  </div>
+</div>
+{%- render 'section-background-end' -%}
+{%- style -%}
+.section__title__text-{{ section.id }}{color:{{ section.settings.color_section_heading }};font-size:{{ section.settings.fs_section_heading_mobile }}px;}
+{%- if section.settings.fs_section_heading_mobile != section.settings.fs_section_heading -%}
+@media(min-width:768px){.section__title__text-{{ section.id }}{font-size:{{ section.settings.fs_section_heading }}px;} }
+{%- endif -%}
+.section__sub-title-{{ section.id }}{color:{{ section.settings.color_section_subheading }};font-size:{{ section.settings.fs_section_subheading }}px;}
+.article-feature__title--{{ section.id }}{color:{{ section.settings.color_article_title }};font-size:{{ section.settings.fs_article_title }}px;line-height:1.7em;white-space:normal;}
+.article__date--{{ section.id }}{color:{{ section.settings.color_article_date }};font-size:{{ section.settings.fs_article_date }}px;}
+{%- if section.settings.blog_show_date -%}.article__date-rotate--{{ section.id }}{position:absolute;top:0;{{ left_holder }}:0;background:{{ section.settings.bkg_article_date }};transform:rotate(90deg) translateY(-100%);transform-origin:top {{ left_holder }};padding:10px 15px;}@media(min-width:1200px){.article__date-rotate--{{ section.id }}{padding:15px 25px;} }{%- endif -%}
+{%- endstyle -%}
+{% schema %}
+  {
+    "name": "Blog posts",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "[View the guide for this section](https://beloria-docs.boostheme.com/dynamic-sections/marketing-and-others/featured-blog)"
+      },
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "checkbox",
+        "id": "bkg_enable",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "section_bkg",
+        "label": "Pick a color"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_bkg_image",
+        "label": "Background image"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_gutter",
+        "label": "Background size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "medium"
+          },
+          {
+            "value": "high",
+            "label": "High"
+          }
+        ],
+        "default": "high"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_style",
+        "label": "Background image style",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "header",
+        "content": "Section Gutters"
+      },
+      {
+        "type": "checkbox",
+        "id": "top_gutter",
+        "label": "Enable top gutter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bottom_gutter",
+        "label": "Enable bottom gutter",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "General Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Blog posts"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Subheading"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "radio",
+        "id": "column_count",
+        "label": "The number of posts per slide",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          }
+        ],
+        "default": "2",
+        "info": "Only apply on the desktop screen."
+      },
+      {
+        "type": "range",
+        "id": "post_limit",
+        "label": "Posts",
+        "min": 3,
+        "max": 12,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Wide display"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_section_heading",
+        "label": "Section heading",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_section_subheading",
+        "label": "Section subheading",
+        "default": "#fe0200"
+      },
+      {
+        "type": "color",
+        "id": "color_article_date",
+        "label": "Article date",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "bkg_article_date",
+        "label": "Article date background",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_article_title",
+        "label": "Article title",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Font sizes"
+      },
+      {
+        "type": "range",
+        "id": "fs_section_heading",
+        "label": "Section heading in tablet and desktop",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "fs_section_heading_mobile",
+        "label": "Section heading in mobile",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "fs_section_subheading",
+        "label": "Section subheading",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "fs_article_date",
+        "label": "Article Date",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "fs_article_title",
+        "label": "Article Title",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts",
+        "category": "Blog",
+        "settings": {
+          "blog": "News",
+          "post_limit": 3
+        }
+      }
+    ]
+  }
+{% endschema %}

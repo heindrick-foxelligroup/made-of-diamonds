@@ -1,0 +1,343 @@
+{%- liquid
+  unless settings.enable_rtl and settings.rtl_language_codes contains request.locale.iso_code
+    assign enable_rtl = false
+    assign left_holder = 'left'
+    assign right_holder = 'right'
+  else
+    assign enable_rtl = true
+    assign left_holder = 'right'
+    assign right_holder = 'left'
+  endunless
+-%}
+<div data-section-id="{{ section.id }}" data-section-type="collection-template" id="collection-template" class="collection-template-section">
+  {%- render 'breadcrumbs' -%}
+  <div class="container{% render 'wide-css-class' %}">
+    <div class="row">
+      {%- assign has_lcp = false -%}
+      {%- if settings.breadcrumbs_enble_bkg and settings.breadcrumbs_bkg_image -%}
+        {%- assign has_lcp = true -%}
+        {%- render 'lcp-mark' with image: settings.breadcrumbs_bkg_image -%}
+      {%- endif -%}
+      {%- for block in section.blocks -%}
+        <div class="col-xs-12">
+          {%- case block.type -%}
+          {%- when 'description' -%}
+            {%- render 'collection-description', enable_rtl: enable_rtl, left_holder: left_holder, right_holder: right_holder -%}
+          {%- when 'banner' -%}
+            {%- render 'collection-banner' with has_lcp: has_lcp, block: block, enable_rtl: enable_rtl, left_holder: left_holder, right_holder: right_holder -%} 
+          {%- when 'products-filter' -%}
+            {%- render 'collection-products-filter' with block: block, enable_rtl: enable_rtl, left_holder: left_holder, right_holder: right_holder, has_collection_filter: section.settings.filter_enable -%}
+          {%- else -%}
+            {%- render block -%}       
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{%- if settings.recent_view_enable and settings.recent_view_collection_enable -%}
+  <div class="recent-view rv w100" style="position:fixed;top:auto;right:0;">
+    <h4 class="container-fluid rv__title dib margin0 rv__shadow pull-right"><span class="rv__number">0</span>{{ 'collections.general.recent_view' | t }}{%- render 'icon-arrow-down' with custom_classes: 'rv__title__icon dib transition' -%}</h4>
+    <div class="rv__wrap-content rv__shadow custom-scrollbar" style="display:none;">
+      <div class="container-fluid gutter-top gutter-bottom">
+        <div class="rv__content grid grid--small use-touch-mobile">
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+{%- render 'bottom-mobile-toolbar-custom' with enable_rtl: enable_rtl, left_holder: left_holder, right_holder: right_holder, has_collection_filter: section.settings.filter_enable -%}
+{% schema %}
+  {
+    "name": "Collection pages",
+    "max_blocks": 12,
+    "tag": "section",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "[View the guide for this section](https://beloria-docs.boostheme.com/static-sections/collection-pages)"
+      },
+      {
+        "type": "header",
+        "content": "Products grid"
+      },
+      {
+        "type": "range",
+        "id": "limit",
+        "label": "Limit",
+        "min": 4,
+        "max": 50,
+        "step": 1,
+        "default": 16
+      },
+      {
+        "type": "header",
+        "content": "Infinity loading products"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_infinity_loading",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "radio",
+        "id": "infinity_action",
+        "label": "Load products when customer:",
+        "options": [
+          {
+            "value": "scroll",
+            "label": "Scroll to load more button"
+          },
+          {
+            "value": "click",
+            "label": "Click load more button"
+          }
+        ],
+        "default": "scroll"
+      },
+      {
+        "type": "header",
+        "content" : "Product item"
+      },
+      {
+        "type": "select",
+        "id": "item_size",
+        "label": "Choose item size",
+        "info": "You can change item size to change the number of products per row",
+        "options": [
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          },
+          {
+            "value": "very-large",
+            "label": "Very Large"
+          },
+          {
+            "value": "list",
+            "label": "List"
+          }
+        ],
+        "default": "medium"
+      },
+      {
+        "type": "select",
+        "id": "main_thumbnail",
+        "label": "Show main thumbnail by",
+        "options": [
+          {
+            "value": "product_image",
+            "label": "Featured product image"
+          },
+          {
+            "value": "variant_image",
+            "label": "First available variant image"
+          }
+        ],
+        "default": "product_image"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_label",
+        "label": "Show label",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_btn",
+        "label": "Show Add to cart button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_qs_btn",
+        "label": "Show Quick Shop button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_compare_btn",
+        "label": "Show Compare button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_wishlist_btn",
+        "label": "Show wishlist button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_review_stars",
+        "label": "Show review stars",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_product_options",
+        "label": "Show Product Options",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_countdown_timer",
+        "label": "Show countdown timer",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendors",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "product_name_size",
+        "label": "Product name's size",
+        "info": "Use this configuration to make product name shorted if your product name is too long.Unit : word(wor)",
+        "min": 3,
+        "max": 30,
+        "default": 5,
+        "step": 1
+      },
+      {
+        "type": "header",
+        "content": "Toolbar"
+      },
+      {
+        "type": "checkbox",
+        "id": "toolbar_enable",
+        "label": "Enable toolbar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "toolbar_sort_enable",
+        "label": "Enable sorting",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Filter settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "filter_enable",
+        "label": "Enable the filter sidebar",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "filter_item_format",
+        "label": "Item format",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "circle",
+            "label": "Circle"
+          }
+        ],
+        "default": "circle"
+      },
+      {
+        "type": "select",
+        "id": "filter_default_expand",
+        "label": "Expand/Collapse state",
+        "options": [
+          {
+            "value": "expand",
+            "label": "Expand"
+          },
+          {
+            "value": "collapse",
+            "label": "Collapse"
+          }
+        ],
+        "default": "expand"
+      },
+      {
+        "type": "paragraph",
+        "content": "------ Categories filter block ------"
+      },
+      {
+        "type": "checkbox",
+        "id": "category_filter_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "category_filter_label",
+        "label": "Filter Label",
+        "default": "Category"
+      },
+      {
+        "type": "radio",
+        "id": "category_filter_data_source",
+        "label": "Get data from:",
+        "options": [
+          {
+            "value": "link_list",
+            "label": "Shopify Navigation(link list)"
+          },
+          {
+            "value": "collection_tree",
+            "label": "The collection tree from Boostheme Toolkit app"
+          }
+        ],
+        "default": "collection_tree",
+        "info": "View this guide for installing and edit the collection tree in Boostheme Toolkit app."
+      },
+      {
+        "type": "link_list",
+        "id": "category_filter_category",
+        "label": "Choose a link list"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Collection image",
+        "type": "banner",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Show collection's featured image"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_collection_image_mobile",
+            "label": "Hide collection image in mobile screen",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "Description",
+        "type": "description",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Show collection's description"
+          }
+        ]
+      },
+      {
+        "name": "Products grid and filter",
+        "type": "products-filter",
+        "limit": 1
+      },
+      {
+        "type": "@app"
+      }
+    ],
+    "templates": ["collection"]
+  }
+{% endschema %}

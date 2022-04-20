@@ -1,0 +1,73 @@
+{% if section.settings.enable_custom_scripts %}
+
+  {% if section.settings.klaviyo_scripts %}
+
+  <!--Klaviyo product.liquid snippet -->
+  <script type="text/javascript">
+    var _learnq = _learnq || [];
+
+    var item = {
+      Name: {{ product.title|json }},
+      ProductID: {{ product.id|json }},
+      Categories: {{ product.collections|map:'title'|json }},
+      ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+      URL: "{{ shop.secure_url }}{{ product.url }}",
+      Brand: {{ product.vendor|json }},
+      Price: {{ product.price|money|json }},
+      CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+    };
+
+    _learnq.push(['track', 'Viewed Product', item]);
+    _learnq.push(['trackViewedItem', {
+      Title: item.Name,
+      ItemId: item.ProductID,
+      Categories: item.Categories,
+      ImageUrl: item.ImageURL,
+      Url: item.URL,
+      Metadata: {
+        Brand: item.Brand,
+        Price: item.Price,
+        CompareAtPrice: item.CompareAtPrice
+      }
+    }]);
+  </script>
+  <!-- End of Klaviyo product.liquid snippet -->
+
+  {% endif %}
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Custom FOX PDP Scripts",
+	"tag": "section",
+    "class" : "custom-FOX-pdp-scripts",
+    "templates": ["product"],
+    "settings": 
+      [
+        {
+          "type": "checkbox",
+          "id": "enable_custom_scripts",
+	 	  "label": "Use custom FOX sripts",
+		  "default": true,
+          "info": "Add scripts to 'main-product-custom-scripts' section and add them to schema using {% if %} <script> [script content] </script> {% endif %} "
+        },
+		{
+		  "type": "header",
+		  "content": "Enable custom scripts below"
+		},
+        {
+          "type": "checkbox",
+          "id": "klaviyo_scripts",
+	 	  "label": "Use custom Klaviyo scripts",
+		  "default": false
+        }
+      ],
+  "presets": [
+    {
+      "name": "Main product - Custom FOX scripts"
+    }
+  ]
+  }
+{% endschema %}
+

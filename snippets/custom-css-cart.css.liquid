@@ -1,0 +1,40 @@
+{%- comment -%} 
+  Custom CSS for CART pages.
+  Custom selectors starts with "fox-"
+
+  Structure:
+	overwrite theme files
+	overwrite apps files
+	new custom elements
+{%- endcomment -%}
+
+<style>
+  
+  /***** Overwrite theme styles *****/
+
+    .bottom-mobile-toolbar { display:none; }
+
+    .additional-checkout-buttons { display: none; }
+
+/* make Secure checkout button bigger */
+  .template-cart .cart__checkout {
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+  }
+
+  .template-cart a.cart__continue {
+	text-align: center;
+  }
+  
+  /***** END OF Overwrite theme styles *****/
+
+  /***** Overwrite apps styles *****/
+  /***** END OF Overwrite apps styles *****/
+  .cart-subox-delivery-message {
+	font-size: 13px;
+    color: #FF4367 ;
+  }
+  /***** CSS for new/custom elements *****/
+
+</style>

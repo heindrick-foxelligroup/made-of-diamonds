@@ -1,0 +1,29 @@
+{% comment %} 
+    Edvinas Kilbauskas
+    File is included in "snippets/product-single-form-inner.liquid"
+{% endcomment %}
+
+{% comment %} if it is needed to add by vendor please look the same file in CR shop {% endcomment %}
+{% liquid  
+    assign badge_src_desktop = 'https://cdn.shopify.com/s/files/1/0536/0513/8593/files/02.03.2022.MOD_BADGE_DESKTOP.png'
+    assign badge_src_mobile = 'https://cdn.shopify.com/s/files/1/0536/0513/8593/files/02.03.2022.MOD_BADGE_MOBILE.png'
+    
+    if product.type == "subscription box"
+    	assign badge_src = 'MS_atc_badge_svg.svg' | asset_url
+        assign badge_src = 'MS_atc_badge_svg.svg' | asset_url
+    endif
+%}
+
+<source srcset="{{ badge_src_desktop | img_url: '200x' }}" media="(min-width: 767px)">
+{{ act_desktop_badge_default }}
+<div class="atc-badges-img-wrapper fox-hide--small">
+  <img class="atc-badges-img"
+      src="{{ badge_src_desktop }}"
+      alt="Badges">
+</div>
+
+<div class="atc-badges-img-wrapper fox-hide--medium-up">
+  <img class="atc-badges-img"
+      src="{{ badge_src_mobile }}"
+      alt="Badges">
+</div>

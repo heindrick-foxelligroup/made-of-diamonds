@@ -1,0 +1,26 @@
+{%- if show_wishlist_btn and settings.enable_wishlist -%}
+  {%- if settings.wishlist_type == "growave" and settings.enable_growave %}
+    {% if content_for_header contains 'ssw-empty.js' or shop.metafields.ssw['manual_uninstall'] == 1 or shop.metafields.ssw['script_tags_allowed'] != 1 %}
+    {% if shop.customer_accounts_enabled %}
+    {% assign ssw_fave_enabled = 1 %}
+    {% if shop.metafields.ssw['fave_enabled'] %}
+    {% assign ssw_fave_enabled = shop.metafields.ssw['fave_enabled'] | plus: 0 %}
+    {% endif %}
+    {% if ssw_fave_enabled == 1 %}
+    {% assign productId = product.id %}
+    <div class="ssw-faveiticon sswfaveicon{{ productId }} {% if btn_style_classes %} {{ btn_style_classes }}{% endif %}">
+      <i data-product-id="{{ productId }}" data-count="0" class="ssw-icon-heart-o ssw-fave-icon ssw-wishlist-element ssw-not-synch"
+         title="{{ 'socialshopwave.fave' | t }}"
+         data-params='{"product_id":"{{ productId }}","event":"fave_button","page":"product_profile"}'></i>
+      <span class="faves-count">...</span>
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+  {% else %}
+    <a title="{{ 'collections.product_item.add_to_wishlist' | t | escape }}" data-handle="{{ product.handle }}" href="#" class="button button--wl flex flex-align-ver flex-align-hoz bt-tooltip button--wl-text{% if btn_style_classes %} {{ btn_style_classes }}{% endif %}">
+      {% render 'icon-wishlist' %}{%- unless hide_wishlist_text -%} {{ 'collections.product_item.wishlist' | t }}{%- endunless -%}
+      <span class="bt-tooltip__inner bt-tooltip__inner--{{ tooltip_pos }} wishlist-text">{{ 'collections.product_item.add_to_wishlist' | t }}</span>
+    </a>
+  {% endif %}
+{%- endif -%}

@@ -1,0 +1,59 @@
+{%- if template.suffix != 'quick_view' -%}
+{%- unless no_container -%}
+<div class="container{% include 'wide-css-class' %}">
+{%- endunless -%}  
+  <div class="row">
+{%- endif -%}
+<div class="col-xs-12 col-md-6 product-media-masonry-align no-gutter-left-mb no-gutter-right-mb{% if enable_rtl %} f-right{% endif %}">
+  {%- include 'product-single-media' -%}
+</div>
+
+<div class="col-xs-12 col-md-6 gutter-ele-top-tbs">
+  {%- render 'product-single-vendor' with product: product, gutter_bottom: true -%}
+  {%- render 'product-single-name' with product: product -%}
+  {%- render 'product-single-sku' with current_variant: current_variant -%}
+  <div class="flex flex-align-ver flex-align-space-between">
+    {%- render 'product-single-sold' with product: product -%}
+    {%- render 'product-single-social-sharing' with product: product -%}
+  </div>
+  {%- capture review_single_html -%}
+    {%- render 'product-review-single' with product: product -%}
+  {%- endcapture -%}
+  {%- if review_single_html != blank or sizechart -%}
+  <div class="gutter-ele-top gutter-ele-bottom{% if review_single_html != blank and sizechart %} flex flex-align-space-between{% endif %}">
+    {{ review_single_html }}
+    {%- render 'product-single-size-chart' with product: product, sizechart: sizechart -%}
+  </div>
+  {%- endif -%}
+  {%- render 'product-single-price' with product: product, current_variant: current_variant -%}
+  {%- render 'product-single-short-desc' with product: product, description: description -%}
+  {%- render 'product-single-variants' with product: product -%}
+  {%- render 'product-single-form' with product: product, current_variant: current_variant, full_qty_box: false, left_holder: left_holder -%}
+  {%- render 'product-single-store-availability' with show_top_line: true -%}
+  <hr>
+  {%- render 'product-single-countdown' with product: product -%}
+  {%- render 'product-single-hurry-up' with current_variant: current_variant -%}
+  {%- if template.suffix == 'quick_view' -%}
+    {%- unless section.settings.general_info contains '[description]' -%}
+      <div class="gutter-ele-top gutter-ele-bottom">{{ description }}</div>
+    {%- endunless -%}
+  {%- endif -%}
+  {%- render 'product-single-sub-info' with product: product -%}
+  {%- render 'product-single-payment-badge' -%}
+  {%- render 'product-single-view-details' with product: product -%}
+</div>
+
+{%- if settings.enable_review and template.suffix != 'quick_view' and section.settings.show_review_form_outside_tab -%}
+</div>
+<div class="row">
+<div class="col-xs-12 col-md-6 product-review-masonry{% if enable_rtl %} f-right{% endif %}">
+  {%- render 'product-review-form' with product: product -%}
+</div>
+{%- endif -%}
+
+{%- if template.suffix != 'quick_view' -%}
+</div>
+{%- unless no_container -%}
+</div>
+{%- endunless -%}
+{%- endif -%}

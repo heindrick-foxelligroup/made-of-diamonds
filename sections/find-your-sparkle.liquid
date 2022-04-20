@@ -1,0 +1,394 @@
+{% comment %}
+******************************************
+	Info:
+		New entry-items which are used on homepage.
+		Customizable through theme customizer (homepage currently)
+
+		Requires: slick.js
+
+    Author: Zilvinas Vaisnoras
+	Origin: Edvinas
+    Date created: 2022-01-10
+    Included in: templates/index.json
+******************************************
+{% endcomment %}
+
+{%- render 'section-background-start' -%}
+
+<style>
+  
+  #{{section.id}}.mod-find-sparkle {
+   	background: none;
+    padding: 25px 0 40px 0;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .section__title__text {
+   	font-family: Poppins;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 28px;
+	line-height: 30px;
+	text-align: center;
+	color: #5C2F8D; 
+  }
+  
+  #{{section.id}}.mod-find-sparkle .entry-item {
+   	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	text-align: center;
+    padding: 0 20px;
+    height: 100%;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .entry-item .info-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+    
+  }
+  
+  #{{section.id}}.mod-find-sparkle .entry-item .quote {
+     padding-right: 15px;
+   	 margin-bottom: 5px;
+     color: #003833;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .entry-item .quote p{
+  	display: inline; 
+  }
+  
+  
+  #{{section.id}}.mod-find-sparkle .entry-item .block-title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: start;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FF4367;
+    padding: 20px;
+    justify-content: center;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .entry-item .block-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .block-image img{
+	object-fit: contain;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .slide{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .items-slider .slick-list{
+   /*	padding: 40px 20px !important; */
+  }
+  
+  #{{section.id}}.mod-find-sparkle .slick-track{
+    display: flex;
+    align-items: start;
+  }
+  
+  #{{section.id}}.mod-find-sparkle .slick-dots{
+   	bottom: -35px !important; 
+  }
+  
+  #{{section.id}} ul.slick-dots li.slick-active button:before{
+     background-color: #E26DA7 !important;
+     top: 5px;
+     left: 5px;
+     width: 12px;
+     height: 12px;
+   	 
+  }
+    
+  #{{section.id}} ul.slick-dots li button:before {
+   	 background: none !important;
+     border: 2px solid #E26DA7 !important;
+     top: 5px;
+     left: 5px;
+     width: 12px;
+     height: 12px;
+  }
+  
+   @media only screen and (min-width: 991px) {
+     #{{section.id}}.mod-find-sparkle .slick-dots {
+       display: none;
+     }
+     
+     #{{section.id}}.mod-find-sparkle .section__title__text {
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: 800;
+       font-size: 28px;
+       line-height: 30px;
+       text-align: center;
+       color: #5C2F8D;
+       padding: 30px 0 20px 0;
+     }
+     
+     #{{section.id}}.mod-find-sparkle .entry-item .info-section {
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: 500;
+       font-size: 18px;
+       line-height: 24px;
+       display: flex;
+       align-items: center;
+       color: #30454C; 
+     }
+     
+     .mod-find-sparkle .entry-item .block-title {
+      padding: 20px 28px !important;
+      min-height: 90px;
+     }
+     #{{section.id}}.mod-find-sparkle .slick-track {
+      max-width: 1200px !important;
+    }
+   }
+</style>
+
+<div id="{{section.id}}" class="mod-find-sparkle">
+  <div class="section__title__text text-center fox-uppercase">Find your sparkle</div>
+	<div class="items-slider">
+      {% for block in section.blocks %}
+        <div class="slide">
+          <div class="entry-item">
+
+            <div class="block-title">{{ block.settings.title }}</div>
+
+            <div class="block-image">
+              <img class="lazyload" data-src="{{ block.settings.image | img_url: "356x200" }}" width="356" height="200" />
+            </div>
+
+            <div class="info-section">
+              <div class="quote">{{ block.settings.quote | strip }}</div>
+            </div>          
+
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+  
+</div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function(){
+    $('.items-slider').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      dots: true,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '20px',
+            slidesToShow: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '10px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  });
+
+</script>
+
+{%- render 'section-background-end' -%}
+{% schema %}
+  {
+    "name": "MOD - find your sparkle",
+    "class": "find-your-sparkle",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Custom for mod"
+      },
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "checkbox",
+        "id": "bkg_enable",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "section_bkg",
+        "label": "Pick a color"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_bkg_image",
+        "label": "Background image"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_gutter",
+        "label": "Background size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "medium"
+          },
+          {
+            "value": "high",
+            "label": "High"
+          }
+        ],
+        "default": "high"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_style",
+        "label": "Background image style",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "header",
+        "content": "Section Gutters"
+      },
+      {
+        "type": "checkbox",
+        "id": "top_gutter",
+        "label": "Enable top gutter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bottom_gutter",
+        "label": "Enable bottom gutter",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "General Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "entry-items"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub heading"
+      },
+      {
+        "type": "select",
+        "id": "heading_pos",
+        "label": "Heading position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "above",
+            "label": "Above"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Wide display"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "entry-item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Author's name"
+          },
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Text",
+            "default": "<p>Add customer reviews and entry-items to showcase your store’s happy customers.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "MOD - find your sparkle",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote",
+            "settings": {
+              "title": "Test text"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "title": "Test text"
+            }
+          },
+          {
+            "type": "quote",
+            "settings": {
+              "title": "Test text"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

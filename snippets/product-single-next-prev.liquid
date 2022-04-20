@@ -1,0 +1,60 @@
+{%- if collection and section.settings.show_next_prev_products -%}
+{%- if collection.previous_product or collection.next_product -%}
+<div class="container{% render 'wide-css-class' %} big-gutter-top big-gutter-bottom clearfix">
+	<div class="product-nav flex flex-align-space-between w100 por">
+		<div class="product-nav__label text-uppercase secondary-font">{{ 'products.product.other_products' | t }}</div>
+		<div class="product-nav__item product-nav__item--{% unless enable_rtl %}previous{% else %}next{% endunless %} product-nav__item--border col-xs-6 no-gutter">
+			{%- if collection.previous_product -%}
+				{%- assign prev_product = collection.previous_product -%}
+				<a href="{{ prev_product.url | within: nav_collection }}" title="{{ prev_product.title | escape }}" class="flex flex-align-ver w100">
+					<div class="product-nav__image" style="margin-{% unless enable_rtl %}right{% else %}left{% endunless %}:20px;">
+							{%- assign img_url = prev_product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+	            <img 
+	              data-aspectratio="{{ prev_product.featured_image.aspect_ratio }}"
+	              data-src="{{ img_url }}"
+	              data-sizes="auto"
+	              class="img-responsive lazyload w100" 
+	              data-image-size="1x1" 
+	              alt="{{ prev_product.featured_image.alt | escape }}" {% render 'img-one-pixel' %} width="{{ prev_product.featured_image.width }}" height="{{ prev_product.featured_image.height }}"/>
+					</div>
+					<div class="product-nav__direction product-nav__direction--previous secondary-font">
+						{%- unless enable_rtl -%}
+							{%- render 'icon-arrow-left' -%}
+						{%- endunless -%}		
+						{%- if enable_rtl -%}
+							{%- render 'icon-arrow-right' -%}
+						{%- endif -%}
+						<span class="product-nav__direction__text product-nav__direction__text--prev">{{ 'general.pagination.previous' | t }}</span>
+					</div>
+				</a>
+			{%- endif -%}
+		</div>
+		{%- if collection.next_product -%}
+			{%- assign next_product = collection.next_product -%}
+			<div class="product-nav__item product-nav__item--{% unless enable_rtl %}next{% else %}previous{% endunless %} col-xs-6 no-gutter">
+				<a href="{{ next_product.url | within: nav_collection }}" title="{{ next_product.title | escape }}" class="flex flex-align-ver w100" style="justify-content:flex-end;">
+					<div class="product-nav__direction product-nav__direction--next secondary-font">
+						<span class="product-nav__direction__text product-nav__direction__text--next">{{ 'general.pagination.next' | t }}</span>
+						{%- if enable_rtl -%}
+							{%- render 'icon-arrow-left' -%}
+						{%- endif -%}		
+						{%- unless enable_rtl -%}
+							{%- render 'icon-arrow-right' -%}
+						{%- endunless -%}
+					</div>
+					<div class="product-nav__image" style="margin-{% unless enable_rtl %}left{% else %}right{% endunless %}:20px;">
+							{%- assign img_url = next_product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+	            <img data-aspectratio="{{ next_product.featured_image.aspect_ratio }}"
+	              data-src="{{ img_url }}"
+	              data-sizes="auto"
+	              class="img-responsive lazyload w100" 
+	              data-image-size="1x1" 
+	              alt="{{ next_product.featured_image.alt | escape }}"{% render 'img-one-pixel' %} width="{{ next_product.featured_image.width }}" height="{{ next_product.featured_image.height }}"/>
+					</div>
+				</a>
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+{%- endif -%}
+{%- endif -%}

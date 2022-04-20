@@ -1,0 +1,31 @@
+{%- assign item_size = section.settings.item_size_article -%}
+{%- if item_size == 'small' -%}
+  {%- assign column_count_class = 20 -%}
+{%- elsif item_size == 'medium' -%}
+  {%- assign column_count_class = 3 -%}
+{%- elsif item_size == 'large' -%}
+  {%- assign column_count_class = 4 -%}
+{%- elsif item_size == 'very-large' -%}
+  {%- assign column_count_class = 6 -%}
+{%- else -%}
+  {%- assign column_count_class = '6 flex' -%}  
+{%- endif -%}
+{%- assign item_class = 'col-xs-12 col-md-' | append: column_count_class -%}
+<div class="collection__products">
+{% paginate search.results by section.settings.limit %}
+<div class="products grid--products row flex{% if item_size == 'list' %} grid--list{% endif %}">
+  {% for item in search.results %}
+    {%- render 'article-grid-item' with 
+    article: item,
+    layout: item_size,
+    blog_show_author: section.settings.blog_show_author_search,
+    blog_show_date: section.settings.blog_show_date_search,
+    multi_mode: true,
+    add_classes: 'transition',
+    highlight_text: search.terms,
+    add_classes: item_class -%}
+  {% endfor %}
+</div>
+{%- render 'search-result-pagination' with paginate: paginate -%}
+{% endpaginate %}
+</div>

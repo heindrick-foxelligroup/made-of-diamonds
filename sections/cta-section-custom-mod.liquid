@@ -1,0 +1,344 @@
+{% comment %}
+******************************************
+	Info:
+		Custom new CTA button section for product page.
+
+	Author: Zilvinas Vaisnoras
+    Original author: Edvinas Kilbauskas
+    Date created: 2022-01-10
+    Included in: templates/product.subscription-product.json
+******************************************
+{% endcomment %}
+
+{%- if section.settings.enable_on_mobile == true -%}
+
+<style>
+  
+  #{{ section.id }}.mobile .content {
+    background-color: #FF4367;
+    padding: 20px 0 0 0;
+  }
+  
+  #{{ section.id }}.mobile .button {
+    background: url('https://cdn.shopify.com/s/files/1/0536/0513/8593/files/cta-button-buy-now.png') center center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 88px;
+    border: none;
+  }
+  
+  #{{ section.id }}.mobile .button:hover {
+   opacity: 0.8; 
+  }
+  
+  #{{ section.id }}.mobile .button:active{
+    background: #ffd56a !important;
+  }
+  
+  #{{ section.id }}.mobile .button-pic{
+    position: absolute;
+    top: -46px;
+    left: 211px;
+    width: 42px;
+    height: auto;
+  }
+  
+  #{{ section.id }}.mobile .text1{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #C5F7FF;
+    text-transform: capitalize;
+  }
+  
+  #{{ section.id }}.mobile .text2{
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    text-transform: lowercase;
+    color: #FFFFFF;
+  }
+  	
+  #{{ section.id }}.mobile .content {
+     padding-left: 15px;
+     padding-right: 15px;
+  }
+  	
+  #{{ section.id }}.mobile .cart__payment-badges img{
+   	 min-width: 0;
+     min-height: auto;
+     border-radius: 4px;
+  }
+  
+  #{{ section.id }}.mobile .cart__payment-badges {
+      gap: 5px; 
+    }
+  
+   #{{ section.id }}.mobile .cart__payment-badges-divider {
+    display: flex;
+    justify-content: space-between;
+      margin-top: -36px;
+  }
+  
+  #{{ section.id }}.mobile .badges{
+   	flex-direction: column; 
+  }
+
+   #{{ section.id }}.mobile .cart__payment-badges {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 13px;
+    }
+
+   #{{ section.id }}.mobile .cart__payment-badges img {
+      box-shadow: 0px 0px 13px 0px #00000033;
+    }
+
+   #{{ section.id }}.mobile .cart__payment-badges-divider .line {
+      border-bottom: 0.5px solid #D6D9DC;;
+      flex: 1;
+      margin-bottom: 4px;
+    }
+
+   #{{ section.id }}.mobile .cart__payment-badges-divider .text {
+      font-family: "Avenir Next", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 11px;
+      flex-basis: auto;
+      color: #ffffff;;
+      margin: 25px 8px 0 8px;
+    }
+
+   #{{ section.id }}.mobile .cart__payment-badges {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 13px;
+    }
+  
+     #{{ section.id }}.mobile .badges {
+        margin: 0 auto 0 auto;
+     }
+
+</style>
+
+<div id="{{section.id}}" class="mobile section-cta-section-custom-new fox-hide--medium-up">
+  <div class="wrapper">
+    <div class="content">
+      <div class="text1">Discover your inner artist</div>
+      <div class="text2">{{ product.price | money }} / month</div>
+      <button class="button cta-subox-button">
+        <span class="button-text fox-uppercase"><!-- Subscribe now --></span>
+      </button>
+      <div class="badges">
+        <div class="w100 cart__payment-badges-divider">
+          <div class="line"></div>
+          <div class="text fox-uppercase">Guaranteed safe checkout</div>
+          <div class="line"></div>
+        </div>
+        <div class="cart__payment-badges ">
+          <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment1.svg?v=1641455201" alt="Visa" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment2.svg?v=1641455201" alt="Mastercard" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment3.svg?v=1641455201" alt="Paypal" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment4.svg?v=1641455201" alt="Amex" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment5.svg?v=1641455201" alt="Apple Pay" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment6.svg?v=1641455201" alt="Discover" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}
+
+{%- if section.settings.enable_on_desktop == true -%}
+
+<style>
+  #{{ section.id }}.desktop {
+    background-color: #FF4367;
+  }
+  
+  #{{ section.id }}.desktop .cta-star-left {
+      background: url('https://cdn.shopify.com/s/files/1/0536/0513/8593/files/cta-section-star-desktop.svg') 15% center no-repeat;
+  }
+  
+  #{{ section.id }}.desktop .cta-star-right {
+      background: url('https://cdn.shopify.com/s/files/1/0536/0513/8593/files/cta-section-star-desktop.svg') 85% center no-repeat;
+  }
+  
+  #{{ section.id }}.desktop .content{
+    padding: 20px 0 30px 0;
+  }
+  
+  #{{ section.id }}.desktop .button{
+    background: url('https://cdn.shopify.com/s/files/1/0536/0513/8593/files/cta-button-buy-now.png') center center no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 88px;
+    border: none;
+  }	
+  
+  #{{ section.id }}.desktop .button:active{
+    background: #ffd56a !important;
+  }
+  
+  #{{ section.id }}.desktop .text1{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #C5F7FF;
+    text-transform: capitalize;
+  }
+  
+  #{{ section.id }}.desktop .text2{
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    color: #FFFFFF;
+  }
+  	
+  #{{ section.id }}.desktop	.content {
+     padding-left: 15px;
+     padding-right: 15px;
+     max-width: 500px;
+     margin: auto;
+  }
+  	
+  #{{ section.id }}.desktop .cart__payment-badges img{
+   	 min-width: 0;
+     min-height: auto;
+     border-radius: 4px;
+  }
+  
+  #{{ section.id }}.desktop .cart__payment-badges {
+      gap: 5px; 
+    }
+  
+   #{{ section.id }}.desktop .cart__payment-badges-divider {
+    display: flex;
+    justify-content: space-between;
+      margin-top: -37px;
+  }
+  
+  #{{ section.id }}.desktop .badges{
+   	flex-direction: column;
+    margin-top: 30px;
+  }
+
+   #{{ section.id }}.desktop .cart__payment-badges {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 13px;
+    }
+
+   #{{ section.id }}.desktop .cart__payment-badges img {
+      box-shadow: 0px 0px 13px 0px #00000033;
+    }
+
+   #{{ section.id }}.desktop .cart__payment-badges-divider .line {
+      border-bottom: 0.5px solid #D6D9DC;;
+      flex: 1;
+      margin-bottom: 4px;
+    }
+
+   #{{ section.id }}.desktop .cart__payment-badges-divider .text {
+      font-family: "Avenir Next", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 11px;
+      flex-basis: auto;
+      color: #ffffff;;
+      margin: 25px 8px 0 8px;
+    }
+
+   #{{ section.id }}.desktop .cart__payment-badges {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 13px;
+    }
+  #{{ section.id }}.desktop .image{
+     	width: 100%;
+   		margin-top: -30px;
+    }
+
+</style>
+
+<div id="{{section.id}}" class="desktop section-cta-section-custom-new fox-hide--small">
+  <div class="cta-star-left">
+    <div class="cta-star-right">
+        <div class="content">
+          <div class="text1">discover your inner artist</div>
+            <div class="text2">{{ product.price | money }} / month</div>
+          <button class="button cta-subox-button">
+            <span class="button-text fox-uppercase"><!-- Subscribe now --></span>
+          </button>
+          <div class="badges">
+            <div class="w100 cart__payment-badges-divider">
+              <div class="line"></div>
+              <div class="text fox-uppercase">Guaranteed safe checkout</div>
+              <div class="line"></div>
+            </div>
+            <div class="cart__payment-badges ">
+              <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment1.svg?v=1641455201" alt="Visa" loading="lazy">
+              <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment2.svg?v=1641455201" alt="Mastercard" loading="lazy">
+              <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment3.svg?v=1641455201" alt="Paypal" loading="lazy">
+              <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment4.svg?v=1641455201" alt="Amex" loading="lazy">
+              <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment5.svg?v=1641455201" alt="Apple Pay" loading="lazy">
+              <img src="https://cdn.shopify.com/s/files/1/0598/9649/6312/files/payment6.svg?v=1641455201" alt="Discover" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{%- endif -%}
+
+<script>
+  
+  $("#{{section.id}} button.button").click(function(){
+     $(".add-cart-btn").click();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product - CTA new MOD",
+  "class": "product-cta-section-new-mod",
+  "settings": [
+	{
+      "type": "checkbox",
+      "id": "enable_on_mobile",
+      "label": "Enable on mobile",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_on_desktop",
+      "label": "Enable on desktop",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product - CTA new MOD",
+      "category": "Collection",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

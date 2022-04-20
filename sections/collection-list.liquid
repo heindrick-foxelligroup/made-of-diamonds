@@ -1,0 +1,323 @@
+{%- render 'section-background-start' -%}
+<div class="cl container{% if section.settings.full_width %}-fluid{% endif %}{% include 'section-gutters-nobkg' %}" data-section-id="{{ section.id }}" data-section-type="collection-list" id="collection-list-{{ section.id }}">
+  {%- render 'section-heading' -%}
+  <div class="section__content{% if section.settings.slider_enable and section.blocks.size > 1 %} touch-mobile{% endif %}">
+    {%- if section.blocks.size > 0 -%}
+    {% case section.settings.grid %}
+      {% when 2 %}
+        {%- assign grid_item_width = 'col-md-6' -%}
+        {%- assign column_count = 2 -%}
+      {% when 3 %}
+        {%- assign grid_item_width = 'col-md-4' -%}
+        {%- assign column_count = 3 -%}
+      {% when 4 %}
+        {%- assign grid_item_width = 'col-md-3' -%}
+        {%- assign column_count = 4 -%}
+      {% when 5 %}
+        {%- assign grid_item_width = 'col-md-20' -%}
+        {%- assign column_count = 5 -%}
+      {% when 6 %}
+        {%- assign grid_item_width = 'col-md-2' -%}
+        {%- assign column_count = 6 -%}  
+    {% endcase %}
+
+    {% if section.blocks.size > 1 %}
+      {%- assign grid_item_width_small = 'col-xs-6 col-sm-3' -%}
+    {% else %}
+      {%- assign grid_item_width_small = 'col-xs-12 col-sm-6' -%}
+    {% endif %}
+    {%- assign custom_title_class = 'cl__title-' | append: section.id -%}
+    {%- assign custom_count_class = 'cl__count-' | append: section.id -%}
+    <div class="row{% if section.settings.slider_enable %}{% if section.blocks.size > column_count %} use-slider{% endif %}{% if section.blocks.size > 1 %} use-touch-mobile{% endif %}{% endif %}"{% if section.blocks.size > 0 %} style="margin-bottom: -10px;"{% endif %}{% if section.settings.slider_enable and section.blocks.size > column_count %} data-slider='{"slidesToShow":{{ column_count }},"slidesToScroll": {{ column_count }},"arrows": true, "dots": false}'{% endif %}>
+      {% for block in section.blocks %}
+        <div class="{{ grid_item_width_small }} {{ grid_item_width }} grid__item{% if section.settings.slider_enable and forloop.index > column_count %} ov-slider-tb{% endif %}" {{ block.shopify_attributes }}>
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% render 'collection-grid-item' with collection as collection, collection_bkg_title: section.settings.bkg_title, enable_bkg: section.settings.enable_bkg, custom_title: block.settings.custom_title, custom_image: block.settings.custom_image, show_products_count: section.settings.show_products_count, custom_title_class: custom_title_class, custom_count_class: custom_count_class, full_image: section.settings.full_image, first_screen: section.settings.first_screen %}
+        </div>
+      {% endfor %}
+    </div>
+    {%- endif -%}
+
+    {% if section.blocks.size == 0 %}
+      {% render 'no-blocks' %}
+    {% endif %}
+  </div>
+</div>
+{%- render 'section-background-end' -%}
+{%- if section.blocks.size > 0 -%}
+{%- style -%}
+.{{ custom_title_class }}{color:{{ section.settings.color_title }};font-size:{{ section.settings.collection_title_fs_mb }}px;}
+{%- if show_products_count -%}
+.{{ custom_count_class }}{color:{{ section.settings.color_count }};font-size:{{ section.settings.collection_count_fs_mb }}px;}
+{%- endif -%}
+{%- if show_products_count and section.settings.collection_count_fs_mb != section.settings.collection_count_fs_dk -%}
+  {%- assign has_count_fs_dk = true -%}
+{%- else -%}
+  {%- assign has_count_fs_dk = false -%}  
+{%- endif -%}
+{%- if section.settings.collection_title_fs_mb != section.settings.collection_title_fs_dk or has_count_fs_dk -%}
+@media(min-width:768px){ {%- if section.settings.collection_title_fs_mb != section.settings.collection_title_fs_dk -%}.{{ custom_title_class }}{font-size:{{ section.settings.collection_title_fs_dk }}px;}{%- endif -%}{%- if has_count_fs_dk -%}.{{ custom_count_class }}{font-size:{{ section.settings.collection_count_fs_dk }}px;}{%- endif -%} }
+{%- endif -%}
+{%- endstyle -%}
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Collection list",
+    "class": "index-section collection-list dib w100",
+    "max_blocks": 12,
+    "tag": "section",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "[View the guide for this section](https://beloria-docs.boostheme.com/dynamic-sections/collection-product/collection-list-section)"
+      },
+      {
+        "type": "header",
+        "content": "Background color"
+      },
+      {
+        "type": "checkbox",
+        "id": "bkg_enable",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "section_bkg",
+        "label": "Pick a color"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_bkg_image",
+        "label": "Background image"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_gutter",
+        "label": "Background size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "medium"
+          },
+          {
+            "value": "high",
+            "label": "High"
+          }
+        ],
+        "default": "high"
+      },
+      {
+        "type": "radio",
+        "id": "section_bkg_style",
+        "label": "Background image style",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          },
+          {
+            "value": "contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "cover"
+      },
+      {
+        "type": "header",
+        "content": "Section Gutters"
+      },
+      {
+        "type": "checkbox",
+        "id": "top_gutter",
+        "label": "Enable top gutter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "bottom_gutter",
+        "label": "Enable bottom gutter",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "General Settings"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub heading"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Collections per row",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "checkbox",
+        "id": "show_products_count",
+        "label": "Show products count",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "full_image",
+        "label": "Display full collection image",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_bkg",
+        "label": "Enable background",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "bkg_title",
+        "label": "Title background",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_title",
+        "label": "Collection title color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_count",
+        "label": "Collection count color",
+        "default": "#000"
+      },
+      {
+        "type": "checkbox",
+        "id": "first_screen",
+        "label": "Appear in the first screen?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Wide display"
+      },
+      {
+        "type": "header",
+        "content": "Font sizes"
+      },
+      {
+        "type": "paragraph",
+        "content": "--------- Mobile screen ---------"
+      },
+      {
+        "type": "range",
+        "id": "collection_title_fs_mb",
+        "label": "Collection title",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "collection_count_fs_mb",
+        "label": "Collection count",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 10
+      },
+      {
+        "type": "paragraph",
+        "content": "--------- Desktop screen ---------"
+      },
+      {
+        "type": "range",
+        "id": "collection_title_fs_dk",
+        "label": "Collection title",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 17
+      },
+      {
+        "type": "range",
+        "id": "collection_count_fs_dk",
+        "label": "Collection count",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 13
+      },
+      {
+        "type": "header",
+        "content": "Slider Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "slider_enable",
+        "label": "Enable",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_image",
+            "label": "Custom image",
+            "info": "Leave empty to show the collection image or first product image in the collection."
+          },
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Custom title",
+            "info": "Leave empty to show the collection title. Use the \<hl\> tag to wrap your highlight text."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

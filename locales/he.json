@@ -1,0 +1,616 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "דלגו לתוכן",
+      "close_modal": "סגור",
+      "link_messages": {
+        "new_window": "פתיחת חלון חדש",
+        "external": "פתיחת אתר חיצוני",
+        "new_window_and_external": "פתיחת אתר חיצוני בחלון חדש"
+      },
+      "refresh_page": "הבחירה מביאה לרענון עמוד מלא",
+      "selection_help": "לחץ על מקש הרווח ואז על מקשי החצים כדי לבצע בחירה",
+      "unit_price_separator": "לכל",
+      "back_to_top": "חזרה למעלה",
+      "video": "וידאו",
+      "your_wishlist": "רשימת משאלות",
+      "your_wishlist_html": "רשימת משאלות&nbsp;(<span class=\"רשימת משאלות\"><\/span>)",
+      "your_compare": "להשוות"
+    },
+    "meta": {
+      "tags": "מתויג \"{{ tags }}\"",
+      "page": "עמוד {{ page }}"
+    },
+    "404": {
+      "title": "404 דף לא נמצא",
+      "subtext": "הדף שחיפשת אינו קיים",
+      "link": "המשך בקניה"
+    },
+    "pagination": {
+      "previous": "קודם",
+      "next": "הבא",
+      "current_page": "דף {{ current }} מתוך {{ total }}"
+    },
+    "password_page": {
+      "opening_soon": "ייפתח בקרוב",
+      "login_form_heading": "הכנס לחנות באמצעות סיסמא",
+      "login_form_password_label": "סיסמה",
+      "login_form_password_placeholder": "הסיסמה שלך",
+      "login_form_submit": "להיכנס",
+      "signup_form_email_label": "אימייל",
+      "signup_form_success": "נשלח אליך מייל לפני הפתיחה",
+      "admin_link_html": "האם אתה בעל החנות? <a href=\"\/admin\" class=\"text-link\">היכנס כאן<\/a>",
+      "password_link": "הכנס סיסמת כניסה",
+      "powered_by_shopify_html": "חנות זו תופעל על ידי {{ shopify }}"
+    },
+    "social": {
+      "share_on": "תשתף",
+      "share_on_facebook": "שתף",
+      "share_on_twitter": "Tweet",
+      "share_on_pinterest": "Pin it",
+      "alt_text": {
+        "share_on_facebook": "Share on Facebook",
+        "share_on_twitter": "Tweet on Twitter",
+        "share_on_pinterest": "Pin on Pinterest"
+      },
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "pinterest": "Pinterest",
+      "tumblr": "Tumblr",
+      "snapchat": "Snapchat",
+      "youtube": "Youtube",
+      "vimeo": "Vimeo"
+    },
+    "search": {
+      "no_results_html": "נסה מונח חיפוש אחר או חזור ל- <a href=\"{{ link }}\">דף הבית</a>.",
+      "no_results_product_html": "החיפוש שלך אחר <strong>\"{{terms}}\"<\/strong> לא הניב שום מוצר.",
+      "no_results_article_html": "החיפוש שלך אחר <strong>\"{{ terms }}\"<\/strong> לא הניב מאמרים כלשהם.",
+      "no_results_page_html": "החיפוש שלך אחר <strong>\"{{terms}}\"<\/strong> לא הניב שום דפים.",
+      "empty_search_message": "שדה החיפוש לא יכול להיות ריק",
+      "results_no_count": "תוצאה עבור \"{{ terms }}\"",
+      "results_with_count": {
+        "one": "{{ count }} תוצאה עבור \"{{ terms }}\"",
+        "other": "{{count}} תוצאות עבור \"{{terms}}\""
+      },
+      "results_with_count_html": {
+        "one": "<strong>{{ count }}<\/strong> תוצאה עבור <strong>\"{{ terms }}\"<\/strong>",
+        "other": "<strong>{{ count }}<\/strong> תוצאות עבור <strong>\"{{ terms }}\"<\/strong>"
+      },
+      "products_with_count_html": {
+        "one": "מוצר <strong>{{ count }}<\/strong> עבור <strong>\" {{terms}} \"<\/strong>",
+        "other": "<strong>{{ count }}<\/strong> מוצרים עבור <strong>\"{{ terms }}\"<\/strong>"
+      },
+      "articles_with_count_html": {
+        "one": "מאמר <strong>{{ count }}<\/strong> עבור <strong>\"{{ terms }}\"<\/strong>",
+        "other": "<strong>{{ count }}<\/strong> מאמרים עבור <strong>\"{{ terms }}\"<\/strong>"
+      },
+      "pages_with_count_html": {
+        "one": "דף <strong>{{ count }}<\/strong> עבור <strong>\"{{ terms }}\"<\/strong>",
+        "other": "דפי <strong>{{ count }}<\/strong> עבור <strong>\"{{ terms }}\"<\/strong>"
+      },
+      "see_all_html": "צפה בכל התוצאות (<strong>{{ count }}<\/strong>)",
+      "see_all_products_html": "הצג את כל המוצרים (<strong>{{ count }}<\/strong>)",
+      "see_all_articles_html": "צפה בכל המאמרים (<strong>{{ count }}<\/strong>)",
+      "see_all_pages_html": "צפה בכל הדפים (<strong>{{ count }}<\/strong>)",
+      "title": "חפש באתר שלנו",
+      "placeholder": "חפש",
+      "submit": "אשר",
+      "close": "סגור חיפוש",
+      "all": "הכל",
+      "product": "מוצר",
+      "article": "מאמר",
+      "page": "דף",
+      "heading": {
+        "one": "Страница",
+        "other": "חפש תוצאות"
+      }
+    },
+    "newsletter_form": {
+      "newsletter_email": "הצטרף לרשימת התפוצה שלנו",
+      "email_placeholder": "כתובת מייל",
+      "confirmation": "תודה על הרשמתך",
+      "submit": "הירשם כמנוי",
+      "hide_popup": "אל תראה לי שוב",
+      "terms_label_html": "אני מסכים עם <a href=\"{{ term_url }}\" target=\"_blank\" title=\"תקנון החנות\"><u>תקנון החנות<\/u><\/a>."
+    },
+    "filters": {
+      "show_more": "הראה יותר",
+      "show_less": "הראה פחות"
+    },
+    "payment": {
+      "method": "אמצעי תשלום"
+    },
+    "language": {
+      "link": "שפה"
+    },
+    "currency": {
+      "switcher": "מטבע"
+    },
+    "breadcrumbs": {
+      "home": "בית"
+    },
+    "buttons": {
+      "load_more": "טען עוד",
+      "edit": "עריכה"
+    },
+    "cookie_consent": {
+      "privacy": "מדיניות פרטיות",
+      "accept": "מסכים"
+    },
+    "header": {
+      "hotline": "מוקד",
+      "contact": "איש קשר",
+      "help": "עזרה?",
+      "track_order": "מעקב הזמנה"
+    }
+  },
+  "sections": {
+    "slideshow": {
+      "next_slide": "שקופית הבאה",
+      "previous_slide": "שקופית קודמת",
+      "pause_slideshow": "עצור מצגת",
+      "play_slideshow": "נגן מצגת",
+      "play_video": "נגן וידאו",
+      "close_video": "סגור וידאו"
+    },
+    "map": {
+      "address_error": "טעות בחיפוש כתובת זו",
+      "address_no_results": "אין תוצאות לכתובת זו",
+      "address_query_limit_html": "חרגת ממגבלת השימוש ב- Google API. שקול לשדרג ל- <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">תוכנית פרימיום</a>.",
+      "auth_error_html": "Google Maps שלך היתה בעיה באימות חשבון",
+      "section_heading": "מיקום"
+    },
+    "flex_collection_list": {
+      "shop_btn": "לרכישה"
+    }
+  },
+  "blogs": {
+    "article": {
+      "view_all": "צפה בכל",
+      "all_topics": "כל הנושאים",
+      "by_author": "על ידי{{ author }}",
+      "by_author_html": "רשומה זו פורסמה על ידי <strong class=\"article__author__name\">{{ author }}<\/strong> ב- <a href=\"{{ blog_url }}\" class=\"alternative\" title=\"{{ blog_title_escape | escape }}\">{{ blog_title }}<\/a>",
+      "posted_in": "פורסם",
+      "read_more": "קרא עוד",
+      "back_to_blog": "בחזרה אל {{ title }}",
+      "no_matches": "אין מאמרים בבלוג זה",
+      "note": "כתובת המייל לא תפורסם. שדות חובה מסומנים* ",
+      "previous": "קריאה קודמת",
+      "next": "קריאה הבאה"
+    },
+    "comments": {
+      "title": "רשום תגובה",
+      "name": "שם*",
+      "email": "כתות מייל*",
+      "message": "הודעה*",
+      "post": "פרסם תגובה",
+      "moderated": " שים לב בבקשה, תגובות חייבות לקבל אישור לפני פרסומן",
+      "success_moderated": ".תגובתך התקבלה בהצלחה, נפרסם את תגובתך לאחר אישור הנהלת הבלוג",
+      "success": "תגובתך פורסמה בהצלחה! תודה רבה!",
+      "unapproved": "כתובת המייל שניתנה אינה מאושרת לפרסום תגובות",
+      "comments_with_count": {
+        "one": "{{ count }} תגובה",
+        "other": "{{ count }} תגובות"
+      },
+      "no_comment": "אין תגובות עדיין"
+    },
+    "sidebar": {
+      "filter": "סנן ",
+      "recent_posts": "פוסטים אחרונים",
+      "search": "חפש במאמרים",
+      "categories": "קטגוריות"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "עגלת הקניות שלך",
+      "note": "הוסף הערה להזמנה שלך",
+      "note_placeholder": "הכנס הוראות מיוחדות למוכר כאן",
+      "remove": "הסר",
+      "subtotal": "סיכום",
+      "savings": "בקניה זו חסכת",
+      "taxes_and_shipping_at_checkout": "עלות משלוח יחושבו בגמר החשבון ",
+      "taxes_and_shipping_policy_at_checkout_html": "עלות משלוח <a href=\"{{ link }}\">משלוח<\/a> יחושב בגמר החשבון",
+      "taxes_included_but_shipping_at_checkout": "עלות המשלוח יחושב בגמר חשבון",
+      "taxes_included_and_shipping_policy_html": "עלות המשלוח <a href=\"{{ link }}\">משלוח<\/a> יחושב בגמר חשבון",
+      "update": "עדכן",
+      "checkout": "לקופה",
+      "empty": "עגלת הקנות שלך ריקה כרגע",
+      "cookies_required": "אפשר עוגיות לשימוש בעגלת הקניות",
+      "edit": "עריכה",
+      "cancel": "בטל",
+      "continue_shopping": "המשך בקניה",
+      "view_and_edit_cart": "צפה בעגלת הקניות",
+      "upsell_block_title": "ייתכן ותאהב את המוצרים הבאים",
+      "cross_sell_block_title": "לפני ביצוע התשלום, האם שקלת....",
+      "total_item": "סה\"כ פריטים",
+      "terms_label_html": "אני מסכים עם <a href=\"{{ term_url }}\" target=\"_blank\" title=\"תקנון החנות\"><u>תקנון החנות<\/u><\/a>.",
+      "cart_holder_html": "מישהו ביצע הזמנה על אחד הפריטים בעגלת הקניות שלך. הפריט יישמר לך ל{{ time }} דקות"
+    },
+    "label": {
+      "product": "מוצר",
+      "price": "מחיר",
+      "quantity": "כמות",
+      "total": "סה\"כ"
+    },
+    "message": {
+      "added": "{{ product_title }} התווסף לעגלת הקניות שלך"
+    },
+    "shipping_calculator": {
+      "carriers": "ספקי משלוחים זמינים",
+      "do_not_ship": "אנו לא מבצעים משלוחים ליעד זה"
+    }
+  },
+  "collections": {
+    "general": {
+      "view_all": "צפה בכל",
+      "filter": "סנן",
+      "active_filters": "סנן  פעיל",
+      "filter_clear_all_button": "נקה הכל",
+      "no_matches": "אנו מצטערים, אין מוצרים בקולקציה הזו ",
+      "items_with_count": {
+        "one": "{{ count }} מוצר",
+        "other": "{{ count }} מוצרים"
+      },
+      "all_collections": "כל הקולקציות",
+      "recent_view": "נצפה לאחרונה"
+    },
+    "sorting": {
+      "title": "סדר לפי",
+      "featured": "מומלצים",
+      "best_selling": "הנמכרים ביותר",
+      "az": "באלף בית עולה, א-ת",
+      "za": "באלף בית יורד, ת-א",
+      "price_ascending": "מחיר, מהנמוך לגבוה",
+      "price_descending": "מחיר, מהגבוה לנמוך",
+      "date_descending": "תאריך, מחדש לישן",
+      "date_ascending": "תאריך, מישן לחדש"
+    },
+    "view_mode": {
+      "grid_small": "סמלים קטנים בפריסת רשת",
+      "grid_medium": "סמלים בינוניים בפריסת רשת",
+      "grid_large": "סמלים גדולים בפריסת רשת",
+      "grid_very_large": "סמלים גדולים מאוד בפריסת רשת",
+      "grid_list": "רשימה ",
+      "grid": "רשת"
+    },
+    "filters": {
+      "title_tags": "סנן",
+      "all_tags": "כל המוצרים",
+      "reset": "אִתחוּל",
+      "apply": "להגיש מועמדות"
+    },
+    "product_item": {
+      "quick_shop": "מבט מהיר",
+      "wishlist": "רשימת משאלות",
+      "compare": "השווה",
+      "add_to_compare": "הוסף להשוואה",
+      "add_to_wishlist": "הוסף לרשימת המשאלות",
+      "added_to_wishlist": "נוסף לרשימת המשאלות",
+      "media": "מדיה"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "שם",
+      "email": "מייל",
+      "phone": "טלפון",
+      "message": "הודעה",
+      "submit": "שלח",
+      "post_success": "תודה על פנייתך. ניצור איתך קשר בהקדם האפשרי",
+      "address": "כתובת",
+      "opening_hour": "ימים ושעות פתיחה",
+      "our_address": "כתובתנו"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "החשבון שלי",
+      "details": "פרטי החשבון",
+      "view_addresses": "צפה בכתובות ",
+      "return": "חזור לפרטי החשבון"
+    },
+    "activate_account": {
+      "title": "הפעל חשבון",
+      "subtext": "צור סיסמא על מנת להפעיל את החשבון",
+      "password": "סיסמא",
+      "password_confirm": "אשר סיסמא",
+      "submit": "הפעל חשבון",
+      "cancel": "דחה הזמנה"
+    },
+    "addresses": {
+      "title": "הכתובות שלך",
+      "default": "ברירת מחדל",
+      "add_new": "הוסף כתובת חדשה",
+      "edit_address": "עדכן כתובת",
+      "first_name": "שם פרטי",
+      "last_name": "שם משפחה",
+      "company": "חברה",
+      "address1": "כתובת ראשית",
+      "address2": "כתובת נוספת ",
+      "city": "עיר\/ יישוב",
+      "country": "ארץ",
+      "province": "מחוז",
+      "zip": "מיקוד",
+      "phone": "טלפון",
+      "set_default": "הגדר ככתובת ברירת מחדל",
+      "add": "הוסף כתובת",
+      "update": "עדכן כתובת",
+      "cancel": "לבטל",
+      "edit": "עריכה",
+      "delete": "מחק",
+      "delete_confirm": "האם אתה בטוח שברצונך למחוק\/ להסיר כתובת זו?"
+    },
+    "login": {
+      "title": "התחברות",
+      "email": "מייל",
+      "password": "סיסמא",
+      "forgot_password": "שכחת סיסמא?",
+      "sign_in": "להתחבר",
+      "guest_title": "המשך כאורח",
+      "guest_continue": "המשך",
+      "back": "בחזרה לכניסה"
+    },
+    "orders": {
+      "title": "היסטוריית הזמנות",
+      "order_number": "הזמנה",
+      "order_number_link": "מספר הזמנה {{ number }}",
+      "date": "תאריך",
+      "payment_status": "סטטוס תשלום",
+      "fulfillment_status": "מעמד ביצוע",
+      "total": "סה\"כ",
+      "none": "עדיין לא ביצעת אף הזמנה"
+    },
+    "order": {
+      "title": "הזמנה {{ name }}",
+      "date": "הוכנסה ב {{ date }}",
+      "cancelled": "הזמנה בוטלה ב {{ date }}",
+      "cancelled_reason": "סיבת ביטול {{ reason }}",
+      "billing_address": "כתובת לחיוב",
+      "payment_status": "סטטוס תשלום ",
+      "shipping_address": "כתובת למשלוח",
+      "fulfillment_status": "מעמד ביצוע ",
+      "discount": "הנחה",
+      "shipping": "משלוח",
+      "tax": "מע\"מ",
+      "product": "מוצר",
+      "sku": "מק\"ט",
+      "price": "מחיר",
+      "quantity": "כמות",
+      "total": "סה\"כ",
+      "fulfilled_at": "בוצע {{ date }}",
+      "subtotal": "סיכום",
+      "track_shipment": "מעקב משלוח"
+    },
+    "recover_password": {
+      "title": "אפס את הסיסמא שלך",
+      "email": "מייל",
+      "submit": "שלח",
+      "cancel": "לבטל",
+      "subtext": "נשלח אליך מייל על מנת לאפס את הסיסמא שלך",
+      "success": "\"נשלח אליך מייל עם לינק לעידכון סיסמתך \""
+    },
+    "reset_password": {
+      "title": "אפס את סיסמת החשבון",
+      "subtext": "הכנס סיסמא חדשה עבור {{ email }}",
+      "password": "סיסמא",
+      "password_confirm": "אשר סיסמא",
+      "submit": "אפס סיסמא"
+    },
+    "register": {
+      "title": "צור חשבון",
+      "first_name": "שם פרטי",
+      "last_name": "שם משפחה",
+      "email": "מייל",
+      "password": "סיסמא",
+      "submit": "צור"
+    }
+  },
+  "homepage": {
+    "onboarding": {
+      "product_title": "Your product's name",
+      "product_description": "This area is used to describe your product’s details. Tell customers about the look, feel, and style of your product. Add details on color, materials used, sizing, and where it was made.",
+      "collection_title": "Your collection's name",
+      "blog_title": "Your post's title",
+      "blog_excerpt": "Your store hasn’t published any blog posts yet. A blog can be used to talk about new product launches, tips, or other news you want to share with your customers. You can check out Shopify’s ecommerce blog for inspiration and advice for your own store and blog.",
+      "blog_author": "Author name",
+      "no_content": "This section doesn’t currently include any content. Add content to this section using the sidebar."
+    }
+  },
+  "layout": {
+    "navigation": {
+      "search": "חיפוש",
+      "toggle": "להרחיב\/להתמוטט",
+      "expand": "להרחיב",
+      "collapse": "להתמוטט",
+      "arrow": "חץ",
+      "vertical_bar": "קטגוריות",
+      "shop": "לִקְנוֹת",
+      "menu": "תַפרִיט"
+    },
+    "cart": {
+      "title": "עגלה",
+      "items_count": {
+        "one": "פריט",
+        "other": "פריטים"
+      }
+    },
+    "customer": {
+      "account": "חשבון",
+      "log_out": "להתנתק",
+      "log_in": "התחברות",
+      "create_account": "צור חשבון"
+    },
+    "footer": {
+      "social_platform": "{{name}} ב- {{platform}}"
+    }
+  },
+  "products": {
+    "product": {
+      "regular_price": "מחיר רגיל",
+      "sold_out": "אזל מהמלאי",
+      "unavailable": "לא זמין",
+      "on_sale": "מבצע",
+      "sale_price": "מחיר מבצע",
+      "deal_price_html": "רק {{ price_str }}",
+      "quantity": "כמות",
+      "add_to_cart": "הוסף לעגלה",
+      "loader_label": "מוסיפים את המוצר לעגלה שלך",
+      "back_to_collection": "חזור ל {{ title }}",
+      "description": "תיאור",
+      "review": "סקירה",
+      "no_rating": "אין דירוג",
+      "brand": "מותג",
+      "countdown_weeks": "שבועות",
+      "countdown_days": "ימים",
+      "countdown_hours": "שעות",
+      "countdown_minutes": "דקות",
+      "countdown_seconds": "שניות",
+      "countdown_hour_template": "%H : %M : %S",
+      "countdown_day_template": "%-d יום%!d %H : %M : %S",
+      "countdown_week_template": "%-w שבועות%!w %-d day%!d %H : %M : %S",
+      "countdown_expired_message": "פג תוקפה של הצעה זו!",
+      "image": "תמונה",
+      "name": "שם מוצר",
+      "price": "מחיר",
+      "availability": "זמינות",
+      "rating": "דירוג",
+      "instock": "במלאי",
+      "outstock": "אזל המלאי",
+      "options": "אפשרויות",
+      "actions": "פעולות",
+      "remove": "להסיר",
+      "upsell_block_title": "ייתכן ותאהב את המוצרים הבאים",
+      "related_block_title": "מוצרים קשורים",
+      "size_chart": "טבלת מידות",
+      "comparison_empty": "אין מוצרים להשוואה",
+      "wishlist_empty": "אין מוצרים ברשימת המשאלות שלך",
+      "option_size": "{{ option_size }} {{ option_name }}(s)",
+      "quick_view_details_link": "צפה בפרטים",
+      "shipping_policy_html": "<a href=\"{{ link }}\">משלוחים<\/a> מחושב בקופה.",
+      "cross_sell_block_title": "אנשים שרכשו מוצר זה רכשו בנוסף",
+      "select_option_message": "אנא בחר את האפשרות שתרצה לקנות",
+      "collections": "קולקציות",
+      "tags": "\"תגיות \"",
+      "starting_price": "מתחיל ב",
+      "vendor": " מפיץ",
+      "quantity_minimum_message": "כמות חייבת להיות 1 או יותר",
+      "include_taxes": "כולל מע\"מ",
+      "unit_price_label": "יחידת מחיר",
+      "fre_bought": "נרכש לרוב יחד",
+      "fre_bought_add": "הוסף מסומנים לעגלה",
+      "select_last_option_html": "כדי לקנות, בחר <strong>{{ option_name }}<\/strong>",
+      "sold_text_random_html": "<strong class=\"pg__sales-number alternative\">{{ sold_number }}<\/strong>נמכר ב  <strong class=\"pg__sales-number alternative\">{{ hour_number }}<\/strong> שעות אחרונות",
+      "color": "צבע",
+      "size": "מידה",
+      "select_options": "בחר אפשרויות",
+      "recent_viewed_products": "מוצרים שנצפו לאחרונה",
+      "pre_order": "הזמנה מוקדמת",
+      "recent_viewed_empty": "אין מוצרים שנצפו לאחרונה.",
+      "other_products": "מוצרים אחרים",
+      "view_in_space": "צפו במרחב שלכם",
+      "view_in_space_label": "צפה בחלל שלך, טוען פריט בחלון המציאות הרבודה"
+    },
+    "recommended": {
+      "text": "מישהו רכש",
+      "minute_ago_html": "לפני {{ number }} דקות"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "צפו במידע על חנויות",
+      "check_other_stores": "בדוק זמינות בחנויות אחרות",
+      "pick_up_available": "איסוף זמין",
+      "pick_up_currently_unavailable": "האיסוף כרגע לא זמין",
+      "pick_up_available_at_html": "איסוף זמין ב <strong> {{location_name}} <\/strong>",
+      "pick_up_unavailable_at_html": "איסוף כרגע אינו זמין ב <strong> {{location_name}} <\/strong>",
+      "confirm_address": "צרו קשר עם החנות לאישור הכתובת"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title_html": "הנה ה {{ value }} גיפט כארד שלך עבור {{ shop }}!",
+      "subtext": "הגיפט כארד שלך",
+      "gift_card_code": "קוד הגיפט כארד",
+      "disabled": "לא פעיל",
+      "expired": "פג תוקף ב {{ expiry }}",
+      "active": "תוקף יפוג ב {{ expiry }}",
+      "redeem_html": "השתמש בקוד הזה בזמן התשלום על מנת לנצל את {{ value }} גיפט כארד",
+      "shop_link": "התחל בקנייה",
+      "print": "הדפס את הגיפט כארד",
+      "remaining_html": "{{ balance }} נשאר",
+      "add_to_apple_wallet": "הוסף לארנק אפל",
+      "qr_image_alt": "קוד QR- סרוק למימוש הגיפט כארד"
+    }
+  },
+  "date_formats": {
+    "month_day_year": "%B %d, %Y",
+    "only_day": "%d",
+    "month_year": "%b, %Y"
+  },
+  "socialshopwave": {
+    "log_in": "Log in",
+    "log_in_to_account": "Log in to your account",
+    "cancel": "cancel",
+    "create_account": "Create Account",
+    "sign_up": "Sign up",
+    "not_created_customer_on_shopify": "Not created customer on Shopify",
+    "create_your_account": "Create your account",
+    "my_orders": "My Orders",
+    "logout": "Logout",
+    "faved": "in wishlist",
+    "fave": "Add to wishlist",
+    "unfave": "Remove from Wishlist",
+    "fave_choose_variant": "Choose options",
+    "fave_edit_variant": "Choose options",
+    "add_to_cart": "Add To Cart",
+    "share": "Share",
+    "sharing": "Posting...",
+    "write_a_review": "Write a review",
+    "quantity_review2": "{{ ssw_count_rate }} Review",
+    "quantity_reviews2": "{{ ssw_count_rate }} Reviews",
+    "quantity_review": "{{ ssw_count_rate }} review",
+    "quantity_reviews": "{{ ssw_count_rate }} reviews",
+    "view_cart": "View Cart",
+    "my_faves": "My Wishlist",
+    "close": "Close",
+    "user_commented_product_html": "{{ user_link }} commented {{ product_link }}",
+    "user_faved_product_html": "{{ user_link }} added {{ product_link }} to wishlist",
+    "user_reviewed_product_html": "{{ user_link }} reviewed {{ product_link }}",
+    "adding_to_cart": "Adding...",
+    "sold_out": "Sold Out",
+    "ask_your_friends": "Ask Advice",
+    "description": "Description",
+    "reviews": "Reviews",
+    "comments": "Comments",
+    "view_profile": "View Profile",
+    "invite_friends": "Invite Friends",
+    "edit_profile": "Edit Profile",
+    "sign_in_facebook": "Continue with Facebook",
+    "social_login_facebook": "Continue with Facebook",
+    "sign_in_twitter": "Sign-in with Twitter",
+    "social_login_twitter": "Twitter",
+    "sign_in_gplus": "Google",
+    "social_login_gplus": "Google",
+    "sign_in_yahoo": "Sign-in with Yahoo",
+    "social_login_yahoo": "Yahoo",
+    "sign_in_tumblr": "Sign-in with Tumblr",
+    "social_login_tumblr": "Tumblr",
+    "sign_in_instagram": "Sign-in with Instagram",
+    "social_login_instagram": "Instagram",
+    "sign_in_amazon": "Sign-in with Amazon",
+    "social_login_amazon": "Amazon",
+    "social_login_simple": "Email",
+    "ask_question": "Ask a question",
+    "quantity_question": "{{ ssw_question_count }} answered question",
+    "quantity_questions": "{{ ssw_question_count }} answered questions",
+    "email_address": "Email address",
+    "password": "Password",
+    "forgot_password": "Forgot password?",
+    "give_a_title_for_review": "Give a title for review",
+    "leaving_review": "Posting...",
+    "leave_review": "Post",
+    "share_button": "Post"
+  }
+}

@@ -1,0 +1,77 @@
+<style rel="stylesheet">
+{{ base_font | font_face: font_display: 'swap' }}
+{%- if base_font.weight != '500' -%}
+  {%- assign base_font_500 = base_font | font_modify: 'weight', '500' -%}
+  {{ base_font_500 | font_face: font_display: 'swap' }}
+{%- endif -%}
+{%- if base_font != base_font_bold -%}
+  {{ base_font_bold | font_face: font_display: 'swap' }}
+{%- endif -%}
+{%- if base_font != base_font_bolder and base_font_bolder != base_font_bold -%}
+/* bolder */
+  {{ base_font_bolder | font_face: font_display: 'swap' }}
+{%- endif -%}
+{%- if base_font != base_font_italic -%}
+  {{ base_font_italic | font_face: font_display: 'swap' }}
+{%- endif -%}
+{%- if base_font_bold_italic != base_font_bold  and base_font_bold_italic != base_font and base_font_bold_italic != base_font_italic -%}
+  {{ base_font_bold_italic | font_face: font_display: 'swap' }}
+{%- endif -%}
+{%- render 'preload-styles.css' with left_holder: left_holder, right_holder: right_holder, top_holder: top_holder -%}
+{%- if settings.lazyload_effect -%}{%- render 'preload-lazy-load.css' with left_holder: left_holder, right_holder: right_holder -%}{%- endif -%}
+</style>
+<style rel="stylesheet" media="all and (max-width:767px)">
+  {%- render 'preload-bottom-mobile-toolbar.css' with left_holder: left_holder, right_holder: right_holder -%}
+</style>
+{%- style -%}
+  {%- render 'preload-search-full.css' with left_holder: left_holder, right_holder: right_holder -%}
+  {%- if template.name == 'index' -%}
+    {%- render 'preload-home-page.css' with left_holder: left_holder, right_holder: right_holder -%}
+  {%- else -%}
+    {%- render 'preload-breadcrumbs.css' with left_holder: left_holder, right_holder: right_holder -%}
+  {%- endif -%}
+  {%- if settings.promo_enable -%}
+  {%- render 'preload-promotion.css' with left_holder: left_holder, right_holder: right_holder -%}
+  {%- unless enable_rtl -%}
+    {%- render 'preload-promotion-ltr.css' with left_holder: left_holder, right_holder: right_holder -%}
+  {%- else -%}
+    {%- render 'preload-promotion-rtl.css' with left_holder: left_holder, right_holder: right_holder -%}  
+  {%- endunless -%}
+  {%- endif -%}
+  {%- render 'preload-product-single-general.css' with left_holder: left_holder, right_holder: right_holder, top_holder: top_holder -%}
+  {%- if template.name == 'collection' or template.name == 'search' or template.name == 'blog' -%}{%- render 'preload-grid-list.css' with left_holder: left_holder, right_holder: right_holder -%}{%- endif -%}
+  {%- if template.name contains 'collection' or template.name == 'search' -%}
+    {%- render 'preload-collection-page.css' with left_holder: left_holder, right_holder: right_holder -%}
+  {%- endif -%}
+  {%- if settings.disable_copy -%}body{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}{%- endif -%}
+  {%- if template.name == 'search' -%}
+    {%- render 'preload-search-page.css' with left_holder: left_holder, right_holder: right_holder -%}
+  {%- endif -%}
+  {%- if template.name == 'blog' or template.name == 'article' -%}{%- render 'preload-blog-pages.css' with left_holder: left_holder, right_holder: right_holder -%}{%- endif -%}
+  {%- if settings.thumbnail_ratio != 'auto' -%}.pg__image{padding-top:{{ settings.thumbnail_ratio }}%;}.pg__img-fit{-o-object-fit:contain;object-fit:contain;height:100%;}{%- endif -%}
+  @media(min-width: 992px) {
+    {%- case settings.header_style -%}
+      {%- when 'style1' -%}
+        {%- render 'preload-header-style1.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style2' -%}
+        {%- render 'preload-header-style2.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style3' -%}
+        {%- render 'preload-header-style3.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style4' -%}
+        {%- render 'preload-header-style4.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style5' -%}
+        {%- render 'preload-header-style5.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style6' -%}
+        {%- render 'preload-header-style6.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style7' -%}
+        {%- render 'preload-header-style7.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style8' -%}
+        {%- render 'preload-header-style8.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- when 'style9' -%}
+        {%- render 'preload-header-style9.css' with left_holder: left_holder, right_holder: right_holder -%}
+      {%- else -%}
+        {%- render 'preload-header-style10.css' with left_holder: left_holder, right_holder: right_holder -%}
+    {%- endcase -%}
+    .aligning-menu{overflow-x:hidden;}
+  }
+{%- endstyle -%}

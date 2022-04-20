@@ -1,0 +1,84 @@
+{%- if template.suffix != 'quick_view' -%}
+{%- unless no_container -%}
+<div class="container{% include 'wide-css-class' %}">
+{%- endunless -%}  
+  <div class="row">
+{%- endif -%}
+<div class="col-xs-12 col-md-8{% if enable_rtl %} f-right{% endif %}">
+  <div class="row">
+    <div class="col-xs-12 col-md-6{% unless enable_rtl %} f-right{% endunless %} no-gutter-left-mb no-gutter-right-mb gutter-ele-bottom-tbs">
+      <div class="product-single__photos pg__mains scroll-main-ver pg__mains--grid por">
+        {%- assign single_custom_class = 'grid__item grid__item--media por no-gutter' -%}
+        {%- include 'product-single-main' with media: featured_media, lazyload: false, use_slider: false, no_gutter: true, custom_class: single_custom_class, show_media_btn_inner: true -%}
+        {%- for media in product.media -%}
+          {%- if media != featured_media -%}
+            {%- include 'product-single-main' with lazyload: true, use_slider: false, custom_class: single_custom_class, no_gutter: true, show_media_btn_inner: true -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {{ youtubeCapture }}
+        {{ vimeoCapture }}
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6 pos-sticky pg__sticky-content flex flex-align-ver">
+      <div>
+        {%- render 'product-single-vendor' with product: product, gutter_bottom: true -%}
+        {%- render 'product-single-name' with product: product -%}
+        {%- render 'product-single-sku' with current_variant: current_variant -%}
+        {%- capture review_single_html -%}
+          {%- render 'product-review-single' with product: product -%}
+        {%- endcapture -%}
+        {%- if review_single_html != blank or sizechart -%}
+        <div class="gutter-ele-small-top gutter-ele-bottom{% if review_single_html != blank and sizechart %} flex flex-align-space-between{% endif %}">
+          {{ review_single_html }}
+          {%- render 'product-single-size-chart' with product: product, sizechart: sizechart -%}
+        </div>
+        {%- endif -%}
+        {%- render 'product-single-short-desc' with product: product, description: description -%}
+        <div class="hidden-xs hidden-sm">
+          {%- render 'product-single-countdown' with product: product -%}
+          {%- render 'product-single-hurry-up' with current_variant: current_variant -%}
+          {%- render 'product-single-social-sharing' with product: product -%}
+          {%- render 'product-single-payment-badge' -%}
+          {%- render 'product-single-sub-info' with product: product -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xs-12 col-md-4 gutter-ele-top-tbs pos-sticky pg__sticky-content flex flex-align-ver">
+  <div class="w100">
+    {%- render 'product-single-sold' with product: product, no_padding_top: true -%}
+    {%- render 'product-single-price' with product: product, current_variant: current_variant -%}
+    
+    <div class="pg__main-options">
+      {%- unless product.has_only_default_variant -%}
+      {%- render 'product-single-variants' with product: product -%}
+      {%- endunless -%}
+      {%- render 'product-single-form' with product: product, current_variant: current_variant, full_qty_box: false, left_holder: left_holder -%}
+    </div>
+    {%- render 'product-single-store-availability' with custom_classes: 'gutter-ele-top gutter-ele-bottom' -%}
+    <div class="hidden-md hidden-lg">
+      {%- render 'product-single-countdown' with product: product -%}
+      {%- render 'product-single-hurry-up' with current_variant: current_variant -%}
+      {%- render 'product-single-social-sharing' with product: product -%}
+      {%- render 'product-single-payment-badge' -%}
+      {%- render 'product-single-sub-info' with product: product -%}
+    </div>
+    
+    {%- if template.suffix == 'quick_view' -%}
+      {%- unless section.settings.general_info contains '[description]' -%}
+        <div class="gutter-ele-top gutter-ele-bottom">{{ description }}</div>
+      {%- endunless -%}
+    {%- endif -%}
+    
+    {%- render 'product-single-view-details' with product: product -%}
+  </div>
+</div>
+
+{%- if template.suffix != 'quick_view' -%}
+</div>
+{%- unless no_container -%}
+</div>
+{%- endunless -%}
+{%- endif -%}
