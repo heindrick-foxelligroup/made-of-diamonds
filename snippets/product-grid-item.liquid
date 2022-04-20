@@ -67,10 +67,10 @@
         {%- endunless -%} 
       </a>
       <div class="flex flex-align-space-between flex-align-ver w100">
-        {%- render 'product-price-varies' with product as product -%}  
         {%- if show_review_stars -%}
           {%- render 'product-review' with product as product -%}
         {%- endif -%}
+        {%- render 'product-price-varies' with product as product -%}  
       </div>
         
       {%- if show_desc -%}
