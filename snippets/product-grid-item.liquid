@@ -51,7 +51,7 @@
       {%- if show_vendor -%}
         {%- render 'product-vendor' with product as product -%}
       {%- endif -%}
-      <a class="item__name pg__sync-url pg__name gutter-ele-bottom secondary-font" href="{{ product_url }}" title="{{ product.title | escape }}">
+      <a class="item__name pg__sync-url pg__name secondary-font" href="{{ product_url }}" title="{{ product.title | escape }}">
         {%- unless highlight_text -%}
           {%- if truncate_count > 0 -%}
             {{ product.title | truncatewords: truncate_count }}
