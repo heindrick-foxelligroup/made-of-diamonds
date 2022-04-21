@@ -54,4 +54,13 @@
   
 })
 
+  /* Create H1 tag if no H1 tag */
+  if(!document.querySelector('h1')) {
+    let metaTitle = document.querySelector('meta[property="og:title"]').content;
+    let h = document.createElement("H1"); // Create the H1 element 
+    let t = document.createTextNode(metaTitle); // Create a text element 
+    h.appendChild(t).className = 'hidden'; // Append the text node to the H1 element
+    h.className = 'hidden'; 
+    document.body.prepend(h); // Append the H1 element to the document body 
+  }
 </script>
