@@ -234,4 +234,11 @@
 
 
   /***** END OF custom new elements to theme *******/
+
+  /* ASANA 1201691612733535 - Fix Footer Issue white space*/
+  html { min-height: 100vh; }
+  body { display: flex; min-height: 100vh; flex-direction: column; }
+  body > main { flex: 1; }
+  @media screen and (max-width: 767px) { body { padding-bottom: 0px !important; } }
+  /* END ASANA 1201691612733535 - Fix Footer Issue white space */
 </style>
